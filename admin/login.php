@@ -1,3 +1,7 @@
+<?php 
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -11,54 +15,45 @@
     rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
     integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-  <link rel="stylesheet" href="../public/css/style.css">
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-    crossorigin="anonymous"></script>
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
-    crossorigin="anonymous"></script>
+    integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
+  </script>
+  <link rel="stylesheet" href="../public/css/style.css">
 </head>
 
 <body>
   <nav id="navbar-login">
     <div class="nav-logo">Dr. <span>Daniel</span></div>
-    <button class="lang-btn" id="langToggle">EN</button>
   </nav>
 
-  <!-- HERO -->
+  <!-- LOGIN -->
   <section class="section-login">
-    <h2>Login administrador</h2>
+    <?php if(isset($_SESSION['msg_erro'])){
+      echo '<p style="color: red; font-weigth: bold;">' . $_SESSION['msg_erro'] . '</p>';
+      unset($_SESSION['msg_erro']);
+    } ?>
     <div class="container">
-      <form class="form-login">
+      <form class="form-login" action="validar.php" method="POST">
+        <h2 style="text-align: center;">Admin</h2>
         <div class="form-group">
           <label for="usuario">Nome de usuário</label>
           <input type="text" class="form-control" name="usuario">
         </div>
         <div class="form-group">
           <label for="senha">Senha</label>
-          <input type="text" class="form-control" name="senha">
+          <input type="password" class="form-control" name="senha">
         </div>
+        <input type="submit" class="btn btn-primary" style="margin-left: auto; margin-right: auto;">
       </form>
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer>
-    <div>
-      <div class="footer-brand">Dr. <span>Daniel</span></div>
-      <div class="lgpd-note"><span data-lang="pt">© 2026 · Todos os direitos reservados · LGPD</span><span
-          data-lang="en">© 2026 · All rights reserved · LGPD</span></div>
-    </div>
-    <div class="footer-links">
-      <a href="#home"><span data-lang="pt">Início</span><span data-lang="en">Home</span></a>
-      <a href="#sobre"><span data-lang="pt">Sobre</span><span data-lang="en">About</span></a>
-      <a href="#servicos"><span data-lang="pt">Serviços</span><span data-lang="en">Services</span></a>
-      <a href="#blog">Blog</a>
-      <a href="#contato"><span data-lang="pt">Contato</span><span data-lang="en">Contact</span></a>
-    </div>
-    <div class="footer-copy">CRP 06/130646</div>
-  </footer>
+  <?php 
+  include "../includes/footer.php";
+  ?>
 
   <script src="../public/js/script.js" defer></script>
 </body>

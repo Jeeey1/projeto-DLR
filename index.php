@@ -11,38 +11,26 @@
     rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
     integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-  <link rel="stylesheet" href="public/css/style.css">
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-    crossorigin="anonymous"></script>
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
-    crossorigin="anonymous"></script>
+    integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
+  </script>
+  <link rel="stylesheet" href="./public/css/style.css">
 </head>
 
-<body>
-  <nav id="navbar">
-    <div class="nav-logo">Dr. <span>Daniel</span></div>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#home"><span data-lang="pt">Início</span><span data-lang="en">Home</span></a></li>
-      <li><a href="#sobre"><span data-lang="pt">Sobre</span><span data-lang="en">About</span></a></li>
-      <li><a href="#servicos"><span data-lang="pt">Serviços</span><span data-lang="en">Services</span></a></li>
-      <li><a href="#blog">Blog</a></li>
-      <li><a href="#contato"><span data-lang="pt">Contato</span><span data-lang="en">Contact</span></a></li>
-      <li><a class="nav-cta" href="https://www.doctoralia.com.br" target="_blank"><span data-lang="pt">Agendar
-            Consulta</span><span data-lang="en">Book Now</span></a></li>
-    </ul>
-    <button class="lang-btn" id="langToggle">EN</button>
-    <div class="hamburger" id="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
-      <span></span><span></span><span></span>
-    </div>
-  </nav>
 
+<body>
+  <?php 
+  include "./includes/header.php";
+  ?>
   <!-- HERO -->
   <section id="home">
     <div class="hero-content">
       <div class="hero-badge"><span data-lang="pt">Psicólogo & Neuropsicólogo Clínico</span><span
-          data-lang="en">Clinical Psychologist & Neuropsychologist</span></div>
+          data-lang="en">Clinical
+          Psychologist & Neuropsychologist</span></div>
       <h1 class="hero-title">
         <span data-lang="pt">Cuidado <em>especializado</em><br>para sua saúde<br>mental e cognitiva</span>
         <span data-lang="en">Specialized <em>care</em><br>for your mental<br>and cognitive health</span>
@@ -225,7 +213,8 @@
         <div class="section-eyebrow"><span data-lang="pt">Conteúdo educativo</span><span data-lang="en">Educational
             content</span></div>
         <h2 class="section-title"><span data-lang="pt">Artigos & <em>Publicações</em></span><span
-            data-lang="en">Articles & <em>Publications</em></span></h2>
+            data-lang="en">Articles
+            & <em>Publications</em></span></h2>
       </div>
       <a href="#blog" class="btn-secondary" style="align-self:flex-end"><span data-lang="pt">Ver todos</span><span
           data-lang="en">See all</span></a>
@@ -358,7 +347,8 @@
         <textarea placeholder="Como posso ajudá-lo(a)?"></textarea>
       </div>
       <p class="form-note"><span data-lang="pt">Seus dados são protegidos conforme a LGPD.</span><span
-          data-lang="en">Your data is protected under LGPD regulations.</span></p>
+          data-lang="en">Your
+          data is protected under LGPD regulations.</span></p>
       <button class="btn-submit" style="margin-top:1rem"><span data-lang="pt">Enviar mensagem</span><span
           data-lang="en">Send message</span></button>
     </div>
@@ -373,34 +363,21 @@
     <span style="font-size:.85rem;font-family:'DM Sans',sans-serif"><span data-lang="pt">Alto da Boa Vista · Ribeirão
         Preto, SP</span><span data-lang="en">Alto da Boa Vista · Ribeirão Preto, SP, Brazil</span></span>
   </div>
+  <?php 
+  include "./includes/footer.php";
+  ?>
+</body>
 
-  <!-- FOOTER -->
-  <footer>
-    <div>
-      <div class="footer-brand">Dr. <span>Daniel</span></div>
-      <div class="lgpd-note"><span data-lang="pt">© 2026 · Todos os direitos reservados · LGPD</span><span
-          data-lang="en">© 2026 · All rights reserved · LGPD</span></div>
-    </div>
-    <div class="footer-links">
-      <a href="#home"><span data-lang="pt">Início</span><span data-lang="en">Home</span></a>
-      <a href="#sobre"><span data-lang="pt">Sobre</span><span data-lang="en">About</span></a>
-      <a href="#servicos"><span data-lang="pt">Serviços</span><span data-lang="en">Services</span></a>
-      <a href="#blog">Blog</a>
-      <a href="#contato"><span data-lang="pt">Contato</span><span data-lang="en">Contact</span></a>
-    </div>
-    <div class="footer-copy">CRP 06/130646</div>
-  </footer>
+<!-- WHATSAPP FLOAT -->
+<a class="whatsapp-float" href="https://wa.me/5516999999999?text=Olá%2C%20gostaria%20de%20agendar%20uma%20consulta"
+  target="_blank" title="WhatsApp">
+  <svg viewBox="0 0 24 24">
+    <path
+      d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+  </svg>
+</a>
 
-  <!-- WHATSAPP FLOAT -->
-  <a class="whatsapp-float" href="https://wa.me/5516999999999?text=Olá%2C%20gostaria%20de%20agendar%20uma%20consulta"
-    target="_blank" title="WhatsApp">
-    <svg viewBox="0 0 24 24">
-      <path
-        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-    </svg>
-  </a>
-
-  <script src="public/js/script.js" defer></script>
+<script src="public/js/script.js" defer></script>
 </body>
 
 </html>
