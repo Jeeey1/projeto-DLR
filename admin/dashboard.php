@@ -34,7 +34,7 @@ if($_SESSION['logado'] != true){
   <nav id="navbar">
     <div class="nav-logo">Dr. <span>Daniel</span></div>
     <ul class="nav-links" id="navLinks">
-      <li><a href="#home"><span data-lang="pt">Blog</span></a></li>
+      <li><a href="./blog/posts.php"><span data-lang="pt">Post</span></a></li>
       <li><a href="#home"><span data-lang="pt">Logout</span></a></li>
       <div class="hamburger" id="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
         <span></span><span></span><span></span>
@@ -48,39 +48,6 @@ if($_SESSION['logado'] != true){
     } else {
       echo "<h1>Seja bem-vindo(a) ao sistema!";
     }
-    ?>
-    <div class="div-btn-criar">
-      <a href="criar-post.php"><button class="btn-criar-post btn btn-primary">Criar novo post</button></a>
-    </div>
-    <div class="post-content">
-      <?php 
-        $pdo = new Conexao();
-        $query = $pdo->conectar();
-        $query = $query->prepare("SELECT * FROM posts");
-        $query->execute();
-
-        if($query->rowCount() > 0){
-          while($row = $query->fetch(PDO::FETCH_ASSOC)){
-            ?>
-      <div class="preview-posts">
-        <img src=<?php echo $row['imagem'] ?> alt="Imagem ilustrativa do blog">
-        <div>
-          <h3><?php echo  $row['titulo'] ?></h3>
-          <p><?php echo $row['corpo'] ?></p>
-          <div class="footer-preview-posts">
-            <p><?php if(!empty($row['autor'])){
-              echo $row['autor'];
-            }else{
-              echo "Desconhecido";
-            }  ?></p>
-            <p><?php echo transformaAno(strtotime($row['data_criacao']))?></p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <?php 
-          }
-        } 
     ?>
 
   </section>

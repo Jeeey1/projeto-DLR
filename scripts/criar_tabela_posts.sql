@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `imagem` VARCHAR(255) DEFAULT NULL,
   `tag` VARCHAR(100),
   'autor' VARCHAR(100),
-  `data_criacao` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  `data_criacao` TIMESTAMP,
   `usuario_id` INT,
   CONSTRAINT `fk_autor` FOREIGN KEY (`usuario_id`) 
     REFERENCES `usuarios`(`id`) 
