@@ -19,6 +19,10 @@
   padding: 0;
 }
 
+a {
+  text-decoration: none;
+}
+
 body {
   font-family: "DM Sans", sans-serif;
   background: var(--bp-warm-white);

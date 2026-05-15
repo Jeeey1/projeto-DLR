@@ -1,6 +1,9 @@
 <?php 
 session_start();
 
+include "../includes/conexao.php";
+include "../includes/funcoes.php";
+
 if($_SESSION['logado'] != true){
   header("Location: login.php");
   exit();
@@ -22,7 +25,7 @@ if($_SESSION['logado'] != true){
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="../public/css/admin_style.css" />
-  <link rel="stylesheet" href="../public/css/style.css" />
+  <link rel="stylesheet" href="../public/css/index_style.css" />
 </head>
 
 <body class="blog-page">
@@ -39,55 +42,47 @@ if($_SESSION['logado'] != true){
   </nav>
 
 
-  <section style="margin-top: 200px; max-width: 1650px; margin-left: auto; margin-right: auto;">
+  <section>
     <?php if($_SESSION['usuario_nome']){
       echo "<h1>Seja bem-vindo(a) ao sistema " . ucfirst($_SESSION['usuario_nome']) . "!";
     } else {
       echo "<h1>Seja bem-vindo(a) ao sistema!";
     }
     ?>
-
+    <div class="div-btn-criar">
+      <a href="criar-post.php"><button class="btn-criar-post btn btn-primary">Criar novo post</button></a>
+    </div>
     <div class="post-content">
       <?php 
-        
-      ?>
+        $pdo = new Conexao();
+        $query = $pdo->conectar();
+        $query = $query->prepare("SELECT * FROM posts");
+        $query->execute();
+
+        if($query->rowCount() > 0){
+          while($row = $query->fetch(PDO::FETCH_ASSOC)){
+            ?>
       <div class="preview-posts">
-        <img src="../src/img/daniel.jpeg" alt="">
+        <img src=<?php echo $row['imagem'] ?> alt="Imagem ilustrativa do blog">
         <div>
-          <h3>Titulo</h3>
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-            industry's standard dummy text ever since the 1500s.</p>
+          <h3><?php echo  $row['titulo'] ?></h3>
+          <p><?php echo $row['corpo'] ?></p>
           <div class="footer-preview-posts">
-            <p>Autor</p>
-            <p>12/02/2026</p>
-          </div>
-        </div>
-      </div>
-      <div class="preview-posts">
-        <img src="../src/img/daniel.jpeg" alt="">
-        <div>
-          <h3>Titulo</h3>
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-            industry's standard dummy text ever since the 1500s.</p>
-          <div class="footer-preview-posts">
-            <p>Autor</p>
-            <p>12/02/2026</p>
-          </div>
-        </div>
-      </div>
-      <div class="preview-posts">
-        <img src="../src/img/daniel.jpeg" alt="">
-        <div>
-          <h3>Titulo</h3>
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-            industry's standard dummy text ever since the 1500s.</p>
-          <div class="footer-preview-posts">
-            <p>Autor</p>
-            <p>12/02/2026</p>
+            <p><?php if(!empty($row['autor'])){
+              echo $row['autor'];
+            }else{
+              echo "Desconhecido";
+            }  ?></p>
+            <p><?php echo transformaAno(strtotime($row['data_criacao']))?></p>
           </div>
         </div>
       </div>
     </div>
+    <?php 
+          }
+        } 
+    ?>
+
   </section>
 
   <!-- FOOTER -->

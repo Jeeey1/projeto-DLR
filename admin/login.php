@@ -1,5 +1,7 @@
 <?php 
 session_start();
+include "../includes/funcoes.php";
+$help = new HelpFunc();
 ?>
 
 <!DOCTYPE html>
@@ -29,6 +31,8 @@ session_start();
     <div class="nav-logo">Dr. <span>Daniel</span></div>
   </nav>
 
+
+
   <!-- LOGIN -->
   <section class="section-login">
     <?php if(isset($_SESSION['msg_erro'])){
@@ -48,6 +52,9 @@ session_start();
         </div>
         <input type="submit" class="btn btn-primary" style="margin-left: auto; margin-right: auto;">
       </form>
+      <!-- <?php 
+        echo password_hash("123123", PASSWORD_DEFAULT);
+      ?> -->
     </div>
   </section>
 
