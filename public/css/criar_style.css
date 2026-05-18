@@ -30,7 +30,6 @@ body {
 
 /* ── NAV ── */
 nav {
-  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -758,33 +757,6 @@ footer {
   color: var(--gold);
 }
 
-/* ── WHATSAPP FLOAT ── */
-.whatsapp-float {
-  position: fixed;
-  bottom: 2.2rem;
-  right: 2.2rem;
-  z-index: 200;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: #25d366;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-  cursor: pointer;
-  transition: transform 0.25s;
-  text-decoration: none;
-}
-.whatsapp-float:hover {
-  transform: scale(1.1);
-}
-.whatsapp-float svg {
-  width: 28px;
-  height: 28px;
-  fill: #fff;
-}
-
 /* ── ANIMATIONS ── */
 @keyframes fadeUp {
   from {
@@ -837,6 +809,25 @@ footer {
   color: white;
 }
 
+.alerta-sucesso-criar-post {
+  position: fixed;
+  background-color: green;
+  z-index: 100;
+  max-width: max-content;
+  padding: 15px;
+  border-radius: 5px;
+  top: 80px;
+  right: 20px;
+}
+
+.alerta-sucesso-criar-post p {
+  font-family:
+    "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans",
+    Arial, sans-serif;
+  color: white;
+  margin-bottom: 0;
+}
+
 /* ── MOBILE ── */
 @media (max-width: 900px) {
   nav {
@@ -851,7 +842,6 @@ footer {
   .nav-links.open {
     display: flex;
     flex-direction: column;
-    position: fixed;
     top: 64px;
     left: 0;
     right: 0;

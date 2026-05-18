@@ -9,7 +9,14 @@ if($_SESSION['logado'] != true){
   exit();
 }
 
+$id = $_GET['id'];
+
+$pdo = (new Conexao())->conectar();
+$stmt = $pdo->prepare('SELECT * FROM posts WHERE id = ?');
+$stmt->execute([$id]);
+$post = $stmt->fetch(PDO::FETCH_ASSOC);
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -56,30 +63,43 @@ if($_SESSION['logado'] != true){
         <button class="btn btn-primary btn-voltar"><a href="posts.php">Voltar</a></button>
       </div>
 
-      <h3>Criar novo post</h3>
-
+      <h3>Editar post</h3>
       <div class="mb-3 col-6">
         <label for="titulo" class="form-label">Título</label>
-        <input type="text" name="titulo" class="form-control" id="titulo" maxlength="100">
+        <input type="text" name="titulo" class="form-control" id="titulo" maxlength="100"
+          value="<?php echo $post['titulo']?>">
       </div>
       <div class="mb-3 col-3">
         <label for="autor" class="form-label">Autor</label>
         <input type="text" name="autor" class="form-control" id="autor" disabled
-          value="<?php echo ucfirst($_SESSION['usuario_nome'])?>">
+          value="<?php echo ucfirst($post['autor'])?>">
       </div>
       <div class="mb-3 col-3">
         <label for="data" class="form-label">Data criação</label>
-        <input type="date" name="data" class="form-control" id="data">
+        <input type="date" name="data" class="form-control" id="data" value="<?php echo $post['data_criacao']?>">
       </div>
       <div class="mb-3 col">
         <label for="descricao" class="form-label">Descrição curta</label>
-        <input type="text" class="form-control" name="descricao" id="descricao" maxlength="150">
+        <input type="text" class="form-control" name="descricao" id="descricao" maxlength="150"
+          value="<?php echo $post['descricao']?>">
       </div>
       <div class="mb-3 col-12">
-        <div id="editor"></div>
+        <div id="editor">
+          <?php echo $post['corpo']?>
+        </div>
       </div>
       <div class="mb-3 col-6">
         <label for="foto" class="form-label">Ilustração</label>
+
+        <?php if(!empty($post['imagem'])): ?>
+        <div class="mb-2">
+          <p class="text-muted mb-1">Imagem atual:</p>
+          <img src="../../<?php echo $post['imagem'] ?>" alt="Imagem atual"
+            style="max-height: 120px; border-radius: 6px;">
+          <p class="text-muted mt-1" style="font-size:12px">Deixe o campo abaixo vazio para manter essa imagem.</p>
+        </div>
+        <?php endif; ?>
+
         <input type="file" name="foto" class="form-control" id="img">
         <p id="message"></p>
       </div>
@@ -90,8 +110,9 @@ if($_SESSION['logado'] != true){
         </select>
       </div>
 
+
       <div class="mb-3 col">
-        <input type="submit" class="btn btn-primary" value="Criar post" id="btn-submit">
+        <input type="submit" class="btn btn-primary" value="Confirmar" id="btn-submit">
       </div>
 
     </form>
@@ -135,6 +156,9 @@ if($_SESSION['logado'] != true){
 
     const selectElement = document.getElementById('servicos-select');
 
+    // ID do post
+    const id = <?php echo $post['categoria']?>;
+
     function renderizarOpcoes() {
       // Limpa o "Carregando..." e deixa apenas a opção padrão
       selectElement.innerHTML = '<option value="0">Selecione uma opção</option>';
@@ -143,11 +167,12 @@ if($_SESSION['logado'] != true){
       categorias.forEach(servico => {
         // Cria o elemento option
         const option = document.createElement('option');
-
         option.value = servico.id;
-
-        // Define as propriedades // Ou servico.id, dependendo da sua lógica
         option.textContent = servico.nome;
+
+        if (servico.id === id) {
+          option.selected = true;
+        }
 
         // Adiciona ao select
         selectElement.appendChild(option);
@@ -167,9 +192,6 @@ if($_SESSION['logado'] != true){
     const form = $('#form-criar');
     let descricao = $('#descricao')
 
-    // Pega data atual e preenche no campo data
-    const hoje = new Date().toISOString().split('T')[0];
-    dataCriacao.val(hoje);
     dataCriacao.prop('disabled', 'true');
 
     btnSubmit.click(function(e) {
@@ -229,6 +251,8 @@ if($_SESSION['logado'] != true){
         formData.append('autor', autor.val());
         formData.append('data', dataCriacao.val());
         formData.append('categ', categoria.val());
+        formData.append('id', <?php echo $post['id']?>)
+        formData.append('id_usuario', <?php echo $_SESSION['usuario_id']?>)
 
         if (img[0].files[0]) {
           formData.append('img', img[0].files[0]);
@@ -238,7 +262,7 @@ if($_SESSION['logado'] != true){
         let textoAlerta = $('.alerta-sucesso-criar-post p');
 
         $.ajax({
-          url: '../../db/create-post.php',
+          url: '../../db/insert-post.php',
           type: 'POST',
           data: formData,
           processData: false,

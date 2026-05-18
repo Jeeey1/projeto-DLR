@@ -33,6 +33,22 @@ if($_SESSION['logado'] != true){
 
 <body class="blog-page">
 
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Deseja mesmo excluir esse post?</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-danger" id="btn-excluir-modal">Excluir</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- HEADER/NAV -->
   <nav id="navbar">
     <div class="nav-logo">Dr. <span>Daniel</span></div>
@@ -52,6 +68,7 @@ if($_SESSION['logado'] != true){
     $pdo = $pdo->conectar();
     $qry = "SELECT * FROM posts";
     $stmt = $pdo->prepare($qry);
+    $stmt->execute();
 
     if($stmt->rowCount() > 0){
     ?>
@@ -68,19 +85,19 @@ if($_SESSION['logado'] != true){
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <?php 
-            foreach($stmt as $post){
-            ?>
-            <td><?php $post['titulo']?></td>
-            <td><?php $post['corpo']?></td>
-            <td><?php $post['autor']?></td>
-            <td><?php $post['tag']?></td>
-            <td><?php $post['data_criacao']?></td>
+          <?php foreach($stmt as $post){ ?>
+          <tr id="<?php echo $post['id']?>">
+            <td><?php echo htmlspecialchars($post['titulo']) ?></td>
+            <td><?php echo htmlspecialchars($post['descricao']) ?></td>
+            <td><?php echo htmlspecialchars($post['autor']) ?></td>
+            <td><?php echo htmlspecialchars($post['categoria']) ?></td>
+            <td><?php echo htmlspecialchars($post['data_criacao']) ?></td>
             <td>
               <div style="display: flex; gap: 20px;">
-                <a href="#"><i class="fas fa-solid fa-pencil"></i></a>
-                <a href="#"><i class="fa-solid fa-trash"></i></a>
+                <a href="editar-post.php?id=<?php echo $post['id']?>" id="editar"><i
+                    class="fas fa-solid fa-pencil"></i></a>
+                <button class="btn-excluir" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                  data-id="<?php echo $post['id']?>"><i class="fa-solid fa-trash"></i></button>
               </div>
             </td>
           </tr>
@@ -100,6 +117,56 @@ if($_SESSION['logado'] != true){
   <?php 
   include "../../includes/footer-admin.php";
 ?>
+
+  <script>
+  let postId = null;
+  const modal = $('#staticBackdrop');
+
+  // Garante limpeza do backdrop após o modal fechar
+  $('#staticBackdrop').on('hidden.bs.modal', function() {
+    $('.modal-backdrop').remove();
+    $('body').removeClass('modal-open');
+    $('body').css('padding-right', '');
+  });
+
+  $(document).on('click', '.btn-excluir', function() {
+    postId = $(this).data('id');
+  });
+
+  $('#btn-excluir-modal').on('click', function() {
+    if (!postId) return;
+
+    let formData = new FormData();
+    formData.append('id', postId);
+
+    $.ajax({
+      url: '../../db/delete-post.php',
+      type: 'POST',
+      data: formData,
+      processData: false,
+      contentType: false,
+      dataType: 'json',
+      success: function(data) {
+        if (data.sucesso) {
+          document.activeElement.blur();
+
+          $('#staticBackdrop').modal('hide');
+
+          $('#' + postId).fadeOut(400, function() {
+            $(this).remove();
+          });
+
+          postId = null;
+        } else {
+          alert('Erro: ' + data.mensagem);
+        }
+      },
+      error: function() {
+        console.log('Erro na requisição excluir post.')
+      }
+    })
+  })
+  </script>
 
 </body>
 
