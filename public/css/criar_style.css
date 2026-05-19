@@ -248,12 +248,6 @@ nav {
   font-weight: 300;
   color: var(--brown);
 }
-.stat-label {
-  font-size: 0.75rem;
-  color: var(--text-light);
-  letter-spacing: 0.06em;
-  margin-top: 0.2rem;
-}
 
 .hero-image {
   position: relative;
@@ -677,17 +671,6 @@ nav {
   fill: none;
   stroke-width: 1.5;
 }
-.contact-item-label {
-  font-size: 0.9rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--gold);
-}
-.contact-item-value {
-  font-size: 1.1rem;
-  color: rgba(245, 240, 232, 0.8);
-  line-height: 1.5;
-}
 
 /* ── MAP ── */
 .map-section {
@@ -705,22 +688,6 @@ nav {
 }
 .map-container:hover {
   filter: grayscale(0);
-}
-.map-address-label {
-  padding: 2rem;
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  font-family: "Cormorant Garamond", serif;
-  font-size: 1.1rem;
-  color: var(--text-light);
-}
-.map-address-label svg {
-  width: 20px;
-  height: 20px;
-  stroke: var(--gold);
-  fill: none;
-  stroke-width: 1.5;
 }
 
 /* ── FOOTER ── */
@@ -784,24 +751,6 @@ footer {
   max-width: 1650px;
   margin-left: auto;
   margin-right: auto;
-}
-
-#form-criar h3 {
-  text-align: center;
-  margin-top: 25px;
-  margin-bottom: 25px;
-}
-
-#editor {
-  height: 300px; /* Define uma altura fixa */
-  overflow-y: auto; /* Cria o scroll apenas quando o texto ultrapassar a altura */
-  padding: 15px; /* Espaçamento para o texto não colar na borda */
-  border: 1px solid #ccc;
-  border-radius: 0 0 5px 5px;
-}
-
-.erro-input {
-  border-color: #ff2c2c !important;
 }
 
 .btn-voltar a {

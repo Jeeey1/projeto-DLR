@@ -5,7 +5,7 @@ include "../includes/conexao.php";
 include "../includes/funcoes.php";
 
 if($_SESSION['logado'] != true){
-  header("Location: login.php");
+  header("Location: index.php");
   exit();
 }
 
@@ -24,6 +24,7 @@ if($_SESSION['logado'] != true){
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500&display=swap"
     rel="stylesheet" />
+  <link rel="stylesheet" href="../public/css/common.css" />
   <link rel="stylesheet" href="../public/css/admin_style.css" />
   <link rel="stylesheet" href="../public/css/index_style.css" />
 </head>
@@ -35,7 +36,7 @@ if($_SESSION['logado'] != true){
     <div class="nav-logo">Dr. <span>Daniel</span></div>
     <ul class="nav-links" id="navLinks">
       <li><a href="./blog/posts.php"><span data-lang="pt">Post</span></a></li>
-      <li><a href="#home"><span data-lang="pt">Logout</span></a></li>
+      <li><a href="logout.php"><span data-lang="pt">Logout</span></a></li>
       <div class="hamburger" id="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
         <span></span><span></span><span></span>
       </div>

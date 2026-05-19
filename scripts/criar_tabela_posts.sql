@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `corpo` LONGTEXT NOT NULL,
   `imagem` VARCHAR(255) DEFAULT NULL,
   `categoria` INT,
-  'autor' VARCHAR(100),
+  `autor` VARCHAR(100),
   `data_criacao` DATETIME,
   `usuario_id` INT,
   CONSTRAINT `fk_autor` FOREIGN KEY (`usuario_id`) 

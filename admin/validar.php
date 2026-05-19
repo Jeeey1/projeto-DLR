@@ -15,7 +15,7 @@ $query->execute();
 
 if($query->rowCount() == 0){
   $_SESSION['msg_erro'] = "Usuário não encontrado";
-  header("Location: login.php");
+  header("Location: index.php");
   exit();
   
 } else {
@@ -34,7 +34,7 @@ if($query->rowCount() == 0){
 
   } else {
     $_SESSION['msg_erro'] = "Senha incorreta!";
-    header("Location: login.php");
+    header("Location: index.php");
     exit(); 
 
   }

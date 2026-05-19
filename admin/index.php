@@ -1,5 +1,10 @@
 <?php 
 session_start();
+
+if(isset($_SESSION['logado']) && $_SESSION['logado'] == true){
+  header("Location: dashboard.php");
+  exit();
+}
 include "../includes/funcoes.php";
 ?>
 
@@ -22,6 +27,7 @@ include "../includes/funcoes.php";
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
   </script>
+  <link rel="stylesheet" href="../public/css/common.css">
   <link rel="stylesheet" href="../public/css/style.css">
 </head>
 
@@ -31,25 +37,41 @@ include "../includes/funcoes.php";
   </nav>
 
 
-
   <!-- LOGIN -->
   <section class="section-login">
-    <?php if(isset($_SESSION['msg_erro'])){
-      echo '<p style="color: red; font-weigth: bold;">' . $_SESSION['msg_erro'] . '</p>';
-      unset($_SESSION['msg_erro']);
-    } ?>
-    <div class="container">
+    <div class="container" id="container-login">
       <form class="form-login" action="validar.php" method="POST">
-        <h2 style="text-align: center;">Admin</h2>
-        <div class="form-group">
-          <label for="usuario">Nome de usuário</label>
-          <input type="text" class="form-control" name="usuario">
+        <div class="row">
+          <div class="col-md">
+            <h2 style="text-align: center;">Admin</h2>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="senha">Senha</label>
-          <input type="password" class="form-control" name="senha">
+        <div class="row">
+          <div class="col-md">
+            <?php if(isset($_SESSION['msg_erro'])){
+              echo '<p style="color: red; font-weigth: bold; text-align: center;">' . $_SESSION['msg_erro'] . '</p>';
+              unset($_SESSION['msg_erro']);
+            } ?>
+          </div>
         </div>
-        <input type="submit" class="btn btn-primary" style="margin-left: auto; margin-right: auto;">
+        <div class="row">
+          <div class="col-md pb-3">
+            <label for="usuario" class="form-label">Nome de usuário</label>
+            <input type="text" class="form-control" name="usuario">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md py-3">
+            <label for="senha" class="form-label">Senha</label>
+            <input type="password" class="form-control" name="senha">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md justify-content-center d-flex">
+            <input id="btn-enviar" type="submit" class="btn btn-primary" style="margin-left: auto; margin-right: auto;"
+              value="Entrar">
+          </div>
+        </div>
       </form>
       <!-- <?php 
         echo password_hash("123123", PASSWORD_DEFAULT);
