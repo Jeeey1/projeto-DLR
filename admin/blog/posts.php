@@ -47,7 +47,7 @@ if($_SESSION['logado'] != true){
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-danger" id="btn-excluir-modal">Excluir</button>
+          <a type="button" class="btn btn-danger" id="btn-excluir-modal">Excluir</a>
         </div>
       </div>
     </div>
@@ -66,7 +66,8 @@ if($_SESSION['logado'] != true){
   </nav>
 
   <section class="container-fluid mt-3 px-3 section-posts">
-    <button class="btn btn-primary btn-criar"><a href="criar-post.php">Criar novo post</a></button>
+    <a href="criar-post.php" class="btn mb-3 btn-criar btn-primary">Criar novo
+      post</a>
     <?php 
     $pdo = new Conexao();
     $pdo = $pdo->conectar();
@@ -98,10 +99,11 @@ if($_SESSION['logado'] != true){
             <td><?php echo (new DateTime(htmlspecialchars($post['data_criacao'])))->format('d/m/Y') ?></td>
             <td>
               <div style="display: flex; gap: 20px;">
-                <a href="editar-post.php?id=<?php echo $post['id']?>" id="editar"><i
-                    class="fas fa-solid fa-pencil"></i></a>
-                <button class="btn-excluir" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-                  data-id="<?php echo $post['id']?>"><i class="fa-solid fa-trash"></i></button>
+                <a href="editar-post.php?id=<?php echo $post['id']?>" id="editar"><i class="fas fa-solid fa-pencil"
+                    style="color: black;"></i></a>
+                <a class="btn-excluir" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                  data-id="<?php echo $post['id']?>" style="text-decoration: none; color: red"><i
+                    class="fa-solid fa-trash"></i></a>
               </div>
             </td>
           </tr>
