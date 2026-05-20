@@ -1,0 +1,16 @@
+INSERT INTO categorias (name) VALUES
+('Ansiedade'),
+('Conceitos Psicanalíticos'),
+('Relacionamentos'),
+('Afeto'),
+('Autoconhecimento'),
+('Depressão'),
+('Luto'),
+('Psicanálise'),
+('Cultura'),
+('Burnout'),
+('Trabalho'),
+('Autoestima'),
+('Infância'),
+('Trauma'),
+('Desejos');

@@ -22,13 +22,13 @@ if($_SESSION['logado'] != true){
   <meta name="robots" content="noindex, nofollow" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="../../public/css/common.css" />
   <link rel="stylesheet" href="../../public/css/criar_style.css" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
   <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
@@ -54,7 +54,7 @@ if($_SESSION['logado'] != true){
     <form class="row m-5" action="../db/insert-post.php" id="form-criar">
 
       <div class="mb-3 col">
-        <button class="btn btn-primary btn-voltar">Voltar</button>
+        <a class="btn btn-primary btn-voltar">Voltar</a>
       </div>
 
       <h3>Criar novo post</h3>
