@@ -132,3 +132,15 @@ footer {
 .btn-primary:hover {
   background: var(--brown);
 }
+
+.erro-input {
+  border-color: red !important;
+}
+
+#editor {
+  min-height: 150px;
+}
+
+div:has(#editor) {
+  margin-bottom: 20px;
+}

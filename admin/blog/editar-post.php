@@ -2,6 +2,7 @@
 session_start();
 
 include "../../includes/conexao.php";
+$categorias = include_once "../../db/getCategoria.php";
 include "../../includes/funcoes.php";
 
 if($_SESSION['logado'] != true){
@@ -58,13 +59,13 @@ $post = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
   <section class="content-criar content">
-    <form class="row m-5" action="../db/insert-post.php" id="form-criar">
+    <form class="row m-5" action="../db/update-post.php" id="form-criar">
 
       <div class="mb-3 col">
-        <button class="btn btn-primary btn-voltar"><a href="posts.php">Voltar</a></button>
+        <button class="btn btn-primary btn-voltar">Voltar</button>
       </div>
 
-      <h3>Editar post</h3>
+      <h3 style="text-align: center;" class="mb-5 mt-2">Editar post</h3>
       <div class="mb-3 col-6">
         <label for="titulo" class="form-label">Título</label>
         <input type="text" name="titulo" class="form-control" id="titulo" maxlength="100"
@@ -84,12 +85,12 @@ $post = $stmt->fetch(PDO::FETCH_ASSOC);
         <input type="text" class="form-control" name="descricao" id="descricao" maxlength="150"
           value="<?php echo $post['descricao']?>">
       </div>
-      <div class="mb-3 col-12">
+      <div class="pb-5 col-12">
         <div id="editor">
           <?php echo $post['corpo']?>
         </div>
       </div>
-      <div class="mb-3 col-6">
+      <div class="col-6 align-self-end">
         <label for="foto" class="form-label">Ilustração</label>
 
         <?php if(!empty($post['imagem'])): ?>
@@ -104,10 +105,15 @@ $post = $stmt->fetch(PDO::FETCH_ASSOC);
         <input type="file" name="foto" class="form-control" id="img">
         <p id="message"></p>
       </div>
-      <div class="mb-3 col-6">
+      <div class="mb-3 col-6 align-self-end">
         <label for="servicos-select" class="form-label">Categoria</label>
         <select id="servicos-select" class="form-control">
-          <option value="">Carregando opções...</option>
+          <?php 
+            foreach($categorias as $categoria) {
+              $selected = $categoria['id'] == $post['categoria'] ? 'selected' : '';
+              echo "<option value='" . $categoria['id'] . "' $selected>" . ucfirst($categoria['nome']) . "</option>";
+            }
+          ?>
         </select>
       </div>
 
@@ -132,57 +138,6 @@ $post = $stmt->fetch(PDO::FETCH_ASSOC);
       theme: 'snow' // Carrega a barra de ferramentas padrão
     });
 
-    //ENUMS
-    const categorias = [{
-        id: 1,
-        nome: "Neuropsicologia"
-      },
-      {
-        id: 2,
-        nome: "Saúde Mental"
-      },
-      {
-        id: 3,
-        nome: "Autismo"
-      },
-      {
-        id: 4,
-        nome: "Neurodivergente"
-      },
-      {
-        id: 5,
-        nome: "Psicanalise"
-      },
-    ];
-
-    const selectElement = document.getElementById('servicos-select');
-
-    // ID do post
-    const id = <?php echo $post['categoria']?>;
-
-    function renderizarOpcoes() {
-      // Limpa o "Carregando..." e deixa apenas a opção padrão
-      selectElement.innerHTML = '<option value="0">Selecione uma opção</option>';
-
-      // O Loop
-      categorias.forEach(servico => {
-        // Cria o elemento option
-        const option = document.createElement('option');
-        option.value = servico.id;
-        option.textContent = servico.nome;
-
-        if (servico.id === id) {
-          option.selected = true;
-        }
-
-        // Adiciona ao select
-        selectElement.appendChild(option);
-      });
-    }
-
-    // Executa a função ao carregar a página
-    renderizarOpcoes();
-
     let titulo = $('#titulo');
     let autor = $('#autor');
     let dataCriacao = $('#data');
@@ -193,6 +148,9 @@ $post = $stmt->fetch(PDO::FETCH_ASSOC);
     const form = $('#form-criar');
     let descricao = $('#descricao')
 
+    // Pega data atual e preenche no campo data
+    const hoje = new Date().toISOString().split('T')[0];
+    dataCriacao.val(hoje);
     dataCriacao.prop('disabled', 'true');
 
     btnSubmit.click(function(e) {
@@ -251,7 +209,7 @@ $post = $stmt->fetch(PDO::FETCH_ASSOC);
         formData.append('corpoTexto', quill.root.innerHTML);
         formData.append('autor', autor.val());
         formData.append('data', dataCriacao.val());
-        formData.append('categ', categoria.val());
+        formData.append('categoria', categoria.val());
         formData.append('id', <?php echo $post['id']?>)
         formData.append('id_usuario', <?php echo $_SESSION['usuario_id']?>)
 
@@ -263,7 +221,7 @@ $post = $stmt->fetch(PDO::FETCH_ASSOC);
         let textoAlerta = $('.alerta-sucesso-criar-post p');
 
         $.ajax({
-          url: '../../db/insert-post.php',
+          url: '../../db/update-post.php',
           type: 'POST',
           data: formData,
           processData: false,
@@ -325,6 +283,13 @@ $post = $stmt->fetch(PDO::FETCH_ASSOC);
         }
       });
     }
+
+    // Evitar que ao voltar seja enviado o formulário novamente acarretando em erro na solicitação
+    $('.btn-voltar').on('click', function(e) {
+      e.preventDefault();
+      window.history.back();
+    });
+
   });
   </script>
 </body>

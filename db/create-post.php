@@ -12,6 +12,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
   $arquivo = $_FILES['img'] ?? null;
   $temArquivo = $arquivo && $arquivo['error'] === UPLOAD_ERR_OK;
 
+  $pdo = (new Conexao())->conectar();
+
   if($arquivo){
     $extensao = pathinfo($arquivo['name'], PATHINFO_EXTENSION);
 
@@ -35,8 +37,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
       1
       ];
 
-      $pdo = new Conexao();
-      $pdo = $pdo->conectar();
       $qry = "INSERT INTO posts (titulo, descricao, corpo, imagem, categoria, autor, data_criacao, usuario_id) values (?, ?, ?, ?, ?, ?, ?, ?)";
       $stmt = $pdo->prepare($qry);
       $stmt->execute($data);

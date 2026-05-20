@@ -2,12 +2,15 @@
 session_start();
 
 include "../../includes/conexao.php";
+$categorias = include_once '../../db/getCategoria.php';
 include "../../includes/funcoes.php";
 
 if($_SESSION['logado'] != true){
   header("Location: index.php");
   exit();
 }
+
+
 
 ?>
 <!DOCTYPE html>
@@ -75,8 +78,8 @@ if($_SESSION['logado'] != true){
     ?>
     <div class="card div-content-post">
       <table class="table">
-        <thead class="thead-dark">
-          <tr>
+        <thead style="text-align: center;">
+          <tr class="table-dark">
             <th>Titulo</th>
             <th>Descrição</th>
             <th>Autor</th>
@@ -85,14 +88,14 @@ if($_SESSION['logado'] != true){
             <th></th>
           </tr>
         </thead>
-        <tbody>
+        <tbody style="text-align: center;">
           <?php foreach($stmt as $post){ ?>
           <tr id="<?php echo $post['id']?>">
             <td><?php echo htmlspecialchars($post['titulo']) ?></td>
             <td><?php echo htmlspecialchars($post['descricao']) ?></td>
             <td><?php echo htmlspecialchars($post['autor']) ?></td>
-            <td><?php echo htmlspecialchars($post['categoria']) ?></td>
-            <td><?php echo htmlspecialchars($post['data_criacao']) ?></td>
+            <td><?php echo ucfirst(htmlspecialchars(getCategoriaNome($post['categoria'], $categorias))) ?></td>
+            <td><?php echo (new DateTime(htmlspecialchars($post['data_criacao'])))->format('d/m/Y') ?></td>
             <td>
               <div style="display: flex; gap: 20px;">
                 <a href="editar-post.php?id=<?php echo $post['id']?>" id="editar"><i
@@ -121,19 +124,16 @@ if($_SESSION['logado'] != true){
 
   <script>
   let postId = null;
-  const modal = $('#staticBackdrop');
 
-  // Garante limpeza do backdrop após o modal fechar
-  $('#staticBackdrop').on('hidden.bs.modal', function() {
-    $('.modal-backdrop').remove();
-    $('body').removeClass('modal-open');
-    $('body').css('padding-right', '');
-  });
+  // 1. REMOVA aquele bloco inteiro do $('#staticBackdrop').on('hidden.bs.modal'...)
+  // O Bootstrap 5 já limpa o backdrop automaticamente se o modal for fechado do jeito certo.
 
+  // 2. Captura o ID ao clicar na lixeira
   $(document).on('click', '.btn-excluir', function() {
     postId = $(this).data('id');
   });
 
+  // 3. Ação do botão de excluir dentro do modal
   $('#btn-excluir-modal').on('click', function() {
     if (!postId) return;
 
@@ -149,24 +149,27 @@ if($_SESSION['logado'] != true){
       dataType: 'json',
       success: function(data) {
         if (data.sucesso) {
-          document.activeElement.blur();
 
-          $('#staticBackdrop').modal('hide');
+          // Isso obriga o Bootstrap a rodar o ciclo natural dele e limpar a tela escura perfeitamente.
+          $('#staticBackdrop .btn-close').click();
 
-          $('#' + postId).fadeOut(400, function() {
-            $(this).remove();
-          });
+          // Isso evita que o navegador se perca nas animações.
+          setTimeout(function() {
+            $('#' + postId).fadeOut(400, function() {
+              $(this).remove();
+            });
+            postId = null;
+          }, 300);
 
-          postId = null;
         } else {
           alert('Erro: ' + data.mensagem);
         }
       },
       error: function() {
-        console.log('Erro na requisição excluir post.')
+        console.log('Erro na requisição excluir post.');
       }
-    })
-  })
+    });
+  });
   </script>
 
 </body>

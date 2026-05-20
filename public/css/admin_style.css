@@ -69,6 +69,10 @@ div .preview-posts {
   max-width: 1650px;
 }
 
+.admin-section {
+  height: 80vh;
+}
+
 @media (max-width: 1600px) {
   .post-content,
   .div-btn-criar {

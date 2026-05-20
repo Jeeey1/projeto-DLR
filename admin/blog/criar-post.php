@@ -3,6 +3,7 @@ session_start();
 
 include "../../includes/conexao.php";
 include "../../includes/funcoes.php";
+$categorias = include '../../db/getCategoria.php';
 
 if($_SESSION['logado'] != true){
   header("Location: index.php");
@@ -53,7 +54,7 @@ if($_SESSION['logado'] != true){
     <form class="row m-5" action="../db/insert-post.php" id="form-criar">
 
       <div class="mb-3 col">
-        <button class="btn btn-primary btn-voltar"><a href="posts.php">Voltar</a></button>
+        <button class="btn btn-primary btn-voltar">Voltar</button>
       </div>
 
       <h3>Criar novo post</h3>
@@ -75,7 +76,7 @@ if($_SESSION['logado'] != true){
         <label for="descricao" class="form-label">Descrição curta</label>
         <input type="text" class="form-control" name="descricao" id="descricao" maxlength="150">
       </div>
-      <div class="mb-3 col-12">
+      <div class="pb-5 col-12">
         <div id="editor"></div>
       </div>
       <div class="mb-3 col-6">
@@ -86,7 +87,12 @@ if($_SESSION['logado'] != true){
       <div class="mb-3 col-6">
         <label for="servicos-select" class="form-label">Categoria</label>
         <select id="servicos-select" class="form-control">
-          <option value="">Carregando opções...</option>
+          <option value="">Selecione...</option>
+          <?php 
+            foreach($categorias as $categoria) {
+              echo "<option value='" . $categoria['id'] . "'>" . ucfirst($categoria['nome']) . "</option>";
+            }
+          ?>
         </select>
       </div>
 
@@ -109,53 +115,6 @@ if($_SESSION['logado'] != true){
     var quill = new Quill('#editor', {
       theme: 'snow' // Carrega a barra de ferramentas padrão
     });
-
-    //ENUMS
-    const categorias = [{
-        id: 1,
-        nome: "Neuropsicologia"
-      },
-      {
-        id: 2,
-        nome: "Saúde Mental"
-      },
-      {
-        id: 3,
-        nome: "Autismo"
-      },
-      {
-        id: 4,
-        nome: "Neurodivergente"
-      },
-      {
-        id: 5,
-        nome: "Psicanalise"
-      },
-    ];
-
-    const selectElement = document.getElementById('servicos-select');
-
-    function renderizarOpcoes() {
-      // Limpa o "Carregando..." e deixa apenas a opção padrão
-      selectElement.innerHTML = '<option value="0">Selecione uma opção</option>';
-
-      // O Loop
-      categorias.forEach(servico => {
-        // Cria o elemento option
-        const option = document.createElement('option');
-
-        option.value = servico.id;
-
-        // Define as propriedades // Ou servico.id, dependendo da sua lógica
-        option.textContent = servico.nome;
-
-        // Adiciona ao select
-        selectElement.appendChild(option);
-      });
-    }
-
-    // Executa a função ao carregar a página
-    renderizarOpcoes();
 
     let titulo = $('#titulo');
     let autor = $('#autor');
@@ -203,7 +162,7 @@ if($_SESSION['logado'] != true){
         }
       }
 
-      if (categoria.val() == 0) {
+      if (categoria.val() == '') {
         categoria.addClass('erro-input');
         bool = false;
       } else {
@@ -216,8 +175,8 @@ if($_SESSION['logado'] != true){
         descricao.addClass('erro-input');
         bool = false;
       } else {
-        if (categoria.hasClass('erro-input')) {
-          categoria.removeClass('erro-input');
+        if (descricao.hasClass('erro-input')) {
+          descricao.removeClass('erro-input');
         }
       }
 
@@ -300,6 +259,11 @@ if($_SESSION['logado'] != true){
         }
       });
     }
+
+    $('.btn-voltar').on('click', function(e) {
+      e.preventDefault();
+      window.history.back();
+    })
   });
   </script>
 </body>
