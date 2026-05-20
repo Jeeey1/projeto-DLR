@@ -73,6 +73,7 @@ div .preview-posts {
   height: 80vh;
 }
 
+
 @media (max-width: 1600px) {
   .post-content,
   .div-btn-criar {
