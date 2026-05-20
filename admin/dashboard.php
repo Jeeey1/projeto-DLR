@@ -96,20 +96,11 @@ $postsVitrine = $stmtVitrine->fetchAll(PDO::FETCH_ASSOC);
 
     <div class="row mb-4">
       <div class="col-md-4 mb-3">
-<<<<<<< Updated upstream
         <div class="card h-100 shadow-sm" style="background-color: #c9a84c;">
           <div class="card-body d-flex justify-content-between align-items-center">
             <div>
               <h6 class="card-title text-uppercase mb-0 text-black-50">Posts Publicados</h6>
               <h2 class="display-5 mb-0"><?php echo $totalPosts; ?></h2>
-=======
-        <div class="card text-bg-primary h-100 shadow-sm border-0">
-          <div class="card-body d-flex justify-content-between align-items-center">
-            <div>
-              <h6 class="card-title text-uppercase mb-0 text-white-50" style="font-weight: 600; letter-spacing: 1px;">
-                Posts Publicados</h6>
-              <h2 class="display-5 mb-0" style="font-weight: 700;"><?php echo $totalPosts; ?></h2>
->>>>>>> Stashed changes
             </div>
             <i class="fa-solid fa-file-lines fa-3x opacity-50"></i>
           </div>
