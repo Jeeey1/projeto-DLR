@@ -392,7 +392,7 @@ $postsPublicos = $stmtBlog->fetchAll(PDO::FETCH_ASSOC);
   ?>
 </body>
 
-<a class="whatsapp-float" href="https://wa.me/5516999999999?text=Olá%2C%20gostaria%20de%20agendar%20uma%20consulta"
+<a class="whatsapp-float" href="https://wa.me/5516991286116?text=Olá%2C%20gostaria%20de%20agendar%20uma%20consulta"
   target="_blank" title="WhatsApp">
   <svg viewBox="0 0 24 24">
     <path
