@@ -56,7 +56,8 @@ $postsPublicos = $stmtBlog->fetchAll(PDO::FETCH_ASSOC);
           clinical and research experience.</span>
       </p>
       <div class="hero-actions">
-        <a href="https://www.doctoralia.com.br" target="_blank" class="btn-primary">
+        <a href="https://www.doctoralia.com.br/daniel-lataro-de-robbio/psicologo/ribeirao-preto" target="_blank"
+          class="btn-primary">
           <span data-lang="pt">Agendar Consulta</span><span data-lang="en">Book a Session</span>
         </a>
         <a href="#sobre" class="btn-secondary">
@@ -164,13 +165,15 @@ $postsPublicos = $stmtBlog->fetchAll(PDO::FETCH_ASSOC);
   </section>
 
   <section id="servicos">
-    <div class="services-header reveal">
+    <div class="reveal">
       <div class="section-eyebrow"><span data-lang="pt">O que ofereço</span><span data-lang="en">What I offer</span>
       </div>
       <div class="" style="  text-align: center;
 ">
-        <h2 class="section-title"><span data-lang="pt">Serviços <em>especializados</em></span><span
-            data-lang="en">Specialized <em>services</em></span></h2>
+        <div class="d-flex justify-content-start mb-3">
+          <h2 class="section-title"><span data-lang="pt">Serviços <em>especializados</em></span><span
+              data-lang="en">Specialized <em>services</em></span></h2>
+        </div>
       </div>
     </div>
     <div class="services-grid">
@@ -283,14 +286,22 @@ $postsPublicos = $stmtBlog->fetchAll(PDO::FETCH_ASSOC);
   </section>
 
   <section id="instagram">
-    <div class="section-eyebrow" style="display:flex;margin-bottom:.5rem">Instagram</div>
+    <div class="section-eyebrow" style="display:flex;margin-bottom:.5rem;justify-content:center;">Instagram</div>
     <h2 class="section-title" style="text-align:center"><span data-lang="pt">Conteúdo nas <em>redes</em></span><span
         data-lang="en">Content on <em>social</em></span></h2>
     <div class="instagram-grid reveal">
-      <div class="insta-placeholder">▶</div>
-      <div class="insta-placeholder">▶</div>
-      <div class="insta-placeholder">▶</div>
-      <div class="insta-placeholder">▶</div>
+      <div class="insta-placeholder">
+        <img src="src/img/social_media/post1.png" alt="Imagem post instagram">
+      </div>
+      <div class="insta-placeholder">
+        <img src="src/img/social_media/post2.png" alt="Imagem post instagram">
+      </div>
+      <div class="insta-placeholder">
+        <img src="src/img/social_media/post3.png" alt="Imagem post instagram">
+      </div>
+      <div class="insta-placeholder">
+        <img src="src/img/social_media/post4.png" alt="Imagem post instagram">
+      </div>
     </div>
     <p style="margin-top:1.5rem;font-size:.82rem;color:var(--text-light)"><span data-lang="pt">Siga @drdaniel para mais
         conteúdos</span><span data-lang="en">Follow @drdaniel for more content</span></p>
@@ -327,60 +338,40 @@ $postsPublicos = $stmtBlog->fetchAll(PDO::FETCH_ASSOC);
             </svg>
           </div>
           <div>
-            <div class="contact-item-label">WhatsApp</div>
+            <div class="contact-item-label"><span data-lang="pt">WhatsApp</span>
+            </div>
             <div class="contact-item-value"><a
-                href="https://wa.me/5516999999999?text=Olá%2C%20gostaria%20de%20agendar%20uma%20consulta"
-                target="_blank" style="color:rgba(245,240,232,.8);text-decoration:none">(16) 99999-9999</a></div>
+                href="https://wa.me/5516991286116?text=Olá%2C%20gostaria%20de%20agendar%20uma%20consulta"
+                target="_blank" style="color:rgba(245,240,232,.8);text-decoration:none">(16) 99128-6116</a></div>
           </div>
         </div>
-        <div class="contact-item">
-          <div class="contact-item-icon">
-            <svg viewBox="0 0 24 24">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-              <polyline points="22,6 12,13 2,6" />
-            </svg>
-          </div>
-          <div>
-            <div class="contact-item-label">Doctoralia</div>
-            <div class="contact-item-value"><a href="https://www.doctoralia.com.br" target="_blank"
-                style="color:rgba(245,240,232,.8);text-decoration:none"><span data-lang="pt">Agendar online</span><span
-                  data-lang="en">Book online</span> →</a></div>
-          </div>
+        <div class="contact-item mt-2">
+          <a class="btn btn-primary"
+            href="https://www.doctoralia.com.br/daniel-lataro-de-robbio/psicologo/ribeirao-preto"><span
+              data-lang="pt">Mais detalhes</span><span data-lang="en">More
+              Details</span></a>
         </div>
       </div>
     </div>
-    <div class="contato-form reveal form-index" style="transition-delay:.15s">
-      <h3
-        style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;color:var(--cream);margin-bottom:1.5rem">
-        <span data-lang="pt">Envie uma mensagem</span><span data-lang="en">Send a message</span>
-      </h3>
-      <div class="form-group">
-        <label><span data-lang="pt">Nome completo</span><span data-lang="en">Full name</span></label>
-        <input type="text" placeholder="Dr. João Silva">
+    <div class="agenda-consulta">
+      <div>
+        <a id="zl-url" class="zl-url"
+          href="https://www.doctoralia.com.br/daniel-lataro-de-robbio/psicologo/ribeirao-preto" rel="nofollow"
+          data-zlw-doctor="daniel-lataro-de-robbio" data-zlw-type="big_with_calendar" data-zlw-opinion="false"
+          data-zlw-hide-branding="true" data-zlw-saas-only="true"
+          data-zlw-a11y-title="Widget de marcação de consultas médicas">Marque uma consulta</a>
+        <script>
+        ! function($_x, _s, id) {
+          var js, fjs = $_x.getElementsByTagName(_s)[0];
+          if (!$_x.getElementById(id)) {
+            js = $_x.createElement(_s);
+            js.id = id;
+            js.src = "//platform.docplanner.com/js/widget.js";
+            fjs.parentNode.insertBefore(js, fjs);
+          }
+        }(document, "script", "zl-widget-s");
+        </script>
       </div>
-      <div class="form-group">
-        <label>E-mail</label>
-        <input type="email" placeholder="joao@email.com">
-      </div>
-      <div class="form-group">
-        <label><span data-lang="pt">Serviço de interesse</span><span data-lang="en">Service of interest</span></label>
-        <select>
-          <option value=""><span data-lang="pt">Selecione</span></option>
-          <option><span data-lang="pt">Psicoterapia</span><span data-lang="en">Psychotherapy</span></option>
-          <option><span data-lang="pt">Avaliação Neuropsicológica</span><span data-lang="en">Neuropsychological
-              Assessment</span></option>
-          <option><span data-lang="pt">Outros</span><span data-lang="en">Other</span></option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label><span data-lang="pt">Mensagem</span><span data-lang="en">Message</span></label>
-        <textarea placeholder="Como posso ajudá-lo(a)?"></textarea>
-      </div>
-      <p class="form-note"><span data-lang="pt">Seus dados são protegidos conforme a LGPD.</span><span
-          data-lang="en">Your
-          data is protected under LGPD regulations.</span></p>
-      <button class="btn-submit" style="margin-top:1rem"><span data-lang="pt">Enviar mensagem</span><span
-          data-lang="en">Send message</span></button>
     </div>
   </section>
 
