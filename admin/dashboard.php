@@ -60,7 +60,9 @@ $postsVitrine = $stmtVitrine->fetchAll(PDO::FETCH_ASSOC);
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../public/css/common.css" />
   <link rel="stylesheet" href="../public/css/admin_style.css" />
-  <link rel="stylesheet" href="../public/css/index_style.css" />
+  <link rel="stylesheet" href="../public/css/header_admin.css" />
+  <link rel="stylesheet" href="../public/css/footer_admin.css" />
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
   <style>
@@ -76,16 +78,9 @@ $postsVitrine = $stmtVitrine->fetchAll(PDO::FETCH_ASSOC);
 
 <body>
 
-  <nav id="navbar">
-    <div class="nav-logo">Dr. <span>Daniel</span></div>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="./blog/posts.php"><span data-lang="pt">Posts</span></a></li>
-      <li><a href="logout.php"><span data-lang="pt">Logout</span></a></li>
-      <div class="hamburger" id="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
-        <span></span><span></span><span></span>
-      </div>
-    </ul>
-  </nav>
+  <?php 
+    include '../includes/header-admin.php';
+  ?>
 
   <section class="container mb-5 section-dashboard">
 
@@ -258,16 +253,9 @@ $postsVitrine = $stmtVitrine->fetchAll(PDO::FETCH_ASSOC);
   }(document, "script", "zl-widget-s");
   </script>
 
-  <footer class="footer-admin">
-    <div>
-      <div class="footer-brand">Dr. <span>Daniel</span></div>
-      <div class="lgpd-note">
-        <span data-lang="pt">© 2026 · Todos os direitos reservados · LGPD</span>
-        <span data-lang="en">© 2026 · All rights reserved · LGPD</span>
-      </div>
-    </div>
-    <div class="footer-copy">CRP 06/130646</div>
-  </footer>
+  <?php
+  include '../includes/footer-admin.php'; 
+  ?>
 
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

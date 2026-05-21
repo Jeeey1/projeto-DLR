@@ -74,26 +74,40 @@ function formataDataPT($dataStr, $mesesArray) {
 <body>
 
   <nav id="navbar">
-    <div class="nav-logo">Dr. <span>Daniel</span></div>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="index.php#home"><span data-lang="pt">Início</span><span data-lang="en">Home</span></a></li>
-      <li><a href="index.php#sobre"><span data-lang="pt">Sobre</span><span data-lang="en">About</span></a></li>
-      <li><a href="index.php#servicos"><span data-lang="pt">Serviços</span><span data-lang="en">Services</span></a></li>
-      <li><a href="index.php#contato"><span data-lang="pt">Contato</span><span data-lang="en">Contact</span></a></li>
-      <li><a class="nav-cta" href="https://www.doctoralia.com.br" target="_blank"><span data-lang="pt">Agendar
-            Consulta</span><span data-lang="en">Book Now</span></a></li>
-    </ul>
-    <button class="lang-btn" id="langToggle">EN</button>
-    <div class="hamburger" id="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
-      <span></span><span></span><span></span>
+    <div class="nav-content">
+      <div class="nav-logo">Dr. <span>Daniel</span></div>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/projeto-DLR/index.php"><span data-lang="pt">Início</span><span data-lang="en">Home</span></a></li>
+        <li><a href="/projeto-DLR/index.php#sobre"><span data-lang="pt">Sobre</span><span
+              data-lang="en">About</span></a></li>
+        <li><a href="/projeto-DLR/index.php#servicos"><span data-lang="pt">Serviços</span><span
+              data-lang="en">Services</span></a></li>
+        <li><a href="/projeto-DLR/blog.php">Blog</a></li>
+        <li><a href="/projeto-DLR/index.php#contato"><span data-lang="pt">Contato</span><span
+              data-lang="en">Contact</span></a></li>
+        <li>
+          <a class="nav-cta" href="https://www.doctoralia.com.br/daniel-lataro-de-robbio/psicologo/ribeirao-preto"
+            target="_blank">
+            <span data-lang="pt">Agendar Consulta</span><span data-lang="en">Book Now</span>
+          </a>
+        </li>
+      </ul>
+      <button class="lang-btn" id="langToggle">EN</button>
+      <div class="hamburger" id="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </div>
     </div>
   </nav>
 
   <header class="bp-header">
     <span class="bp-eyebrow">Blog</span>
-    <h1 class="bp-title">Artigos & <em>Publicações</em></h1>
-    <p class="bp-subtitle">Reflexões cuidadosas sobre saúde mental, neuropsicologia e os caminhos do bem-estar
-      emocional.</p>
+    <h1 class="bp-title"><span data-lang="pt">Artigos & <em>Publicações</em></span><span data-lang="en">Articles &
+        <em>Publications</em></span></h1>
+    <p class="bp-subtitle"><span data-lang="pt">Reflexões cuidadosas sobre saúde mental, neuropsicologia e os caminhos
+        do bem-estar
+        emocional.</span><span data-lang="en">Thoughtful reflections on mental health, neuropsychology and the paths to
+        emotional well-being.</span></p>
   </header>
 
   <div class="bp-filters">
@@ -162,31 +176,9 @@ function formataDataPT($dataStr, $mesesArray) {
     <?php endif; ?>
   </section>
 
-  <section class="bp-newsletter">
-    <div class="bp-news-inner">
-      <span class="bp-eyebrow bp-eyebrow-light">Newsletter</span>
-      <h2 class="bp-news-title">Receba reflexões <em>mensais</em></h2>
-      <p class="bp-news-sub">Conteúdo cuidadoso, sem spam. Cancele quando quiser.</p>
-      <form class="bp-news-form"
-        onsubmit="event.preventDefault(); this.querySelector('input').value=''; this.querySelector('button').textContent='Inscrito ✓';">
-        <input type="email" placeholder="seu@email.com" required />
-        <button type="submit">Inscrever</button>
-      </form>
-    </div>
-  </section>
-
-  <footer class="bp-footer">
-    <div>
-      <div class="bp-footer-brand">Dr. <span>Daniel</span></div>
-      <div class="bp-lgpd">© 2026 — Todos os direitos reservados • LGPD</div>
-    </div>
-    <div class="bp-footer-links">
-      <a href="#">Política de Privacidade</a>
-      <a href="#">Termos</a>
-      <a href="#">Contato</a>
-    </div>
-    <div class="bp-crp">CRP 06/130646</div>
-  </footer>
+  <?php 
+  include "./includes/footer.php";
+  ?>
 
   <a href="https://wa.me/5516999999999" class="bp-whatsapp" aria-label="WhatsApp" target="_blank" rel="noopener">
     <svg viewBox="0 0 24 24">
@@ -218,6 +210,7 @@ function formataDataPT($dataStr, $mesesArray) {
     });
   });
   </script>
+  <script src="public/js/script.js"></script>
 
 </body>
 

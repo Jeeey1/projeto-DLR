@@ -1,0 +1,147 @@
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(253, 250, 245, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+  transition: all 0.3s;
+  padding: 0 2rem; /* Adicionado para não encostar nas bordas da tela */
+}
+
+.nav-content {
+  display: flex; /* Mudança de Grid para Flex */
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 0;
+  margin: 0 auto;
+  max-width: 1450px;
+  width: 100%; /* Força o preenchimento do max-width */
+}
+
+.nav-logo {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--brown);
+  letter-spacing: 0.04em;
+}
+
+.nav-logo span {
+  color: var(--gold);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center; /* Garante que os itens fiquem centralizados na linha */
+  gap: 2.2rem;
+  list-style: none;
+  margin-bottom: 0px !important;
+}
+
+.nav-links a {
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--gold);
+}
+
+.nav-links ul {
+  margin-bottom: 0;
+}
+
+.nav-cta {
+  background: var(--gold);
+  color: #fff !important;
+  padding: 0.5rem 1.4rem;
+  border-radius: 2px;
+  font-weight: 500 !important;
+  transition: background 0.2s !important;
+}
+
+.nav-cta:hover {
+  background: var(--brown) !important;
+  color: #fff !important;
+}
+
+.nav-logo a {
+  text-decoration: none;
+  color: black;
+}
+
+.lang-btn {
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: none;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  padding: 0.35rem 0.85rem;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-left: 0.5rem;
+}
+
+.lang-btn:hover {
+  background: var(--gold);
+  color: #fff;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 24px;
+  height: 2px;
+  background: var(--brown);
+  transition: all 0.3s;
+}
+
+@media (max-width: 900px) {
+  nav {
+    padding: 0 1.5rem;
+  }
+
+  .nav-content {
+    padding: 1rem 0;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: fixed;
+    top: 64px;
+    left: 0;
+    right: 0;
+    background: var(--warm-white);
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+    gap: 1.2rem;
+    z-index: 99;
+  }
+}

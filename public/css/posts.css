@@ -14,3 +14,11 @@ button a {
   margin-top: 150px;
   margin-bottom: 30px;
 }
+
+.btn-excluir:hover {
+  cursor: pointer;
+}
+
+.btn-excluir:hover i {
+  color: #ff4d4d;
+}
