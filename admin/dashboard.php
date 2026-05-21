@@ -74,7 +74,7 @@ $postsVitrine = $stmtVitrine->fetchAll(PDO::FETCH_ASSOC);
   </style>
 </head>
 
-<body class="blog-page">
+<body>
 
   <nav id="navbar">
     <div class="nav-logo">Dr. <span>Daniel</span></div>
@@ -87,11 +87,11 @@ $postsVitrine = $stmtVitrine->fetchAll(PDO::FETCH_ASSOC);
     </ul>
   </nav>
 
-  <section class="container mt-4 mb-5 admin-section">
+  <section class="container mb-5 section-dashboard">
 
     <?php 
     $nomeUsuario = !empty($_SESSION['usuario_nome']) ? ucfirst($_SESSION['usuario_nome']) : '';
-    echo "<h2 class='mb-4' style='font-family: \"Cormorant Garamond\", serif;'>Seja bem-vindo(a), " . htmlspecialchars($nomeUsuario) . "! 👋</h2>";
+    echo "<h1 class='pb-4' style='font-family: \"Cormorant Garamond\", serif;'>Seja bem-vindo(a), " . htmlspecialchars($nomeUsuario) . "!</h1>";
     ?>
 
     <div class="row mb-4">
@@ -234,26 +234,6 @@ $postsVitrine = $stmtVitrine->fetchAll(PDO::FETCH_ASSOC);
       </div>
     </div>
   </section>
-
-  <div style="width: 100%; max-width: 900px; margin: 0 auto;">
-    <a id="zl-url" class="zl-url" href="https://www.doctoralia.com.br/daniel-lataro-de-robbio/psicologo/ribeirao-preto"
-      rel="nofollow" data-zlw-doctor="daniel-lataro-de-robbio" data-zlw-type="big_with_calendar"
-      data-zlw-opinion="false" data-zlw-hide-branding="true" data-zlw-saas-only="true"
-      data-zlw-a11y-title="Widget de marcação de consultas médicas">Marque uma consulta</a>
-  </div>
-
-  <script>
-  ! function($_x, _s, id) {
-    var js, fjs = $_x.getElementsByTagName(_s)[0];
-    if (!$_x.getElementById(id)) {
-      js = $_x.createElement(_s);
-      js.id = id;
-      js.src = "//platform.docplanner.com/js/widget.js";
-      fjs.parentNode.insertBefore(js, fjs);
-    }
-  }(document, "script", "zl-widget-s");
-  </script>
-
 
   <script>
   ! function($_x, _s, id) {
