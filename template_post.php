@@ -162,7 +162,7 @@ if (!$post) { header("Location: index.php"); exit(); }
       <?php echo $post['corpo']; ?>
     </article>
 
-    <a href="posts.php" class="btn-back">&larr; Voltar para a lista de posts</a>
+    <a href="index.php#blog" class="btn-back">&larr; Voltar para a página inicial</a>
   </main>
 
 </body>

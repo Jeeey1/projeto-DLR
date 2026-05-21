@@ -1,0 +1,404 @@
+/* ==========================================================================
+   ESTILOS DA PÁGINA DE BLOG (blog_style.css)
+   ========================================================================== */
+
+/* Container base para centralizar o conteúdo */
+.bp-header,
+.bp-filters,
+.bp-featured,
+.bp-grid {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+/* --- HEADER DO BLOG --- */
+.bp-header {
+  text-align: center;
+  padding-top: 140px; /* Espaço para o menu fixo */
+  padding-bottom: 40px;
+}
+
+.bp-eyebrow {
+  display: block;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.bp-title {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  color: var(--brown);
+  margin-bottom: 24px;
+  line-height: 1.1;
+  font-weight: 600;
+}
+
+.bp-title em {
+  color: var(--gold);
+  font-style: italic;
+}
+
+.bp-subtitle {
+  font-family: "DM Sans", sans-serif;
+  font-size: 1.15rem;
+  color: var(--text-light);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* --- FILTROS (CHIPS) --- */
+.bp-filters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 60px;
+}
+
+.bp-chip {
+  background: transparent;
+  border: 1px solid rgba(201, 168, 76, 0.4);
+  color: var(--brown-mid);
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.bp-chip:hover {
+  border-color: var(--gold);
+  color: var(--brown);
+}
+
+.bp-chip-active {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #fff !important;
+}
+
+/* --- POST EM DESTAQUE --- */
+.bp-featured {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 60px;
+  align-items: center;
+  margin-bottom: 80px;
+  padding-bottom: 80px;
+  border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+}
+
+.bp-featured-thumb {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: 12px;
+  background-color: var(--cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.bp-thumb-inner {
+  font-size: 3rem;
+  color: rgba(201, 168, 76, 0.3);
+}
+
+.bp-tag {
+  display: inline-block;
+  background: rgba(201, 168, 76, 0.1);
+  color: var(--brown-mid);
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 20px;
+}
+
+.bp-featured-title {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  color: var(--dark);
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.bp-featured-excerpt {
+  font-size: 1.1rem;
+  color: var(--text-light);
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+
+.bp-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: #8c7665;
+  font-weight: 500;
+  margin-bottom: 24px;
+}
+
+.bp-dot {
+  color: var(--gold);
+}
+
+.bp-read-more {
+  display: inline-block;
+  background: none;
+  border: none;
+  color: var(--gold);
+  font-family: "DM Sans", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.bp-read-more:hover {
+  color: var(--brown);
+}
+
+/* --- GRID DE POSTS (CARTÕES) --- */
+.bp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 40px;
+  margin-bottom: 100px;
+}
+
+.bp-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.bp-card .bp-thumb {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 8px;
+  background-color: var(--cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.bp-card:hover .bp-thumb {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+.bp-card-title {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.8rem;
+  color: var(--dark);
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+
+.bp-card-excerpt {
+  font-size: 1rem;
+  color: var(--text-light);
+  line-height: 1.6;
+  margin-bottom: 20px;
+  flex-grow: 1; /* Empurra os metadados para baixo */
+}
+
+/* --- NEWSLETTER --- */
+.bp-newsletter {
+  background-color: var(--brown);
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.bp-news-inner {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.bp-eyebrow-light {
+  color: var(--gold-light);
+}
+
+.bp-news-title {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2.5rem;
+  color: var(--warm-white);
+  margin-bottom: 15px;
+}
+
+.bp-news-title em {
+  color: var(--gold-light);
+  font-style: italic;
+}
+
+.bp-news-sub {
+  color: rgba(253, 250, 245, 0.8);
+  margin-bottom: 30px;
+}
+
+.bp-news-form {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.bp-news-form input {
+  padding: 14px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  color: white;
+  width: 100%;
+  max-width: 300px;
+  font-family: "DM Sans", sans-serif;
+  outline: none;
+}
+
+.bp-news-form input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.bp-news-form input:focus {
+  border-color: var(--gold-light);
+}
+
+.bp-news-form button {
+  background-color: var(--gold);
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 4px;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.bp-news-form button:hover {
+  background-color: var(--gold-light);
+}
+
+/* --- FOOTER SIMPLIFICADO --- */
+.bp-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px 60px;
+  background-color: var(--warm-white);
+  border-top: 1px solid rgba(201, 168, 76, 0.2);
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.bp-footer-brand {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.4rem;
+  color: var(--brown);
+  font-weight: 600;
+}
+
+.bp-footer-brand span {
+  color: var(--gold);
+}
+
+.bp-lgpd {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  margin-top: 5px;
+}
+
+.bp-footer-links {
+  display: flex;
+  gap: 20px;
+}
+
+.bp-footer-links a {
+  color: var(--text-light);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.bp-footer-links a:hover {
+  color: var(--gold);
+}
+
+.bp-crp {
+  font-size: 0.9rem;
+  color: var(--brown-mid);
+  font-weight: 600;
+}
+
+/* --- WHATSAPP FLUTUANTE --- */
+.bp-whatsapp {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #25d366;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+  z-index: 1000;
+  transition: transform 0.3s ease;
+}
+
+.bp-whatsapp:hover {
+  transform: scale(1.1);
+}
+
+.bp-whatsapp svg {
+  fill: white;
+  width: 32px;
+  height: 32px;
+}
+
+/* --- RESPONSIVIDADE (Telas menores) --- */
+@media (max-width: 992px) {
+  .bp-featured {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .bp-featured-thumb {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@media (max-width: 768px) {
+  .bp-footer {
+    flex-direction: column;
+    text-align: center;
+    padding: 30px 20px;
+  }
+
+  .bp-news-form {
+    flex-direction: column;
+  }
+
+  .bp-news-form input {
+    max-width: 100%;
+  }
+}

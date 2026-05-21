@@ -56,7 +56,7 @@ $postsVitrine = $stmtVitrine->fetchAll(PDO::FETCH_ASSOC);
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap"
     rel="stylesheet" />
-  
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../public/css/common.css" />
   <link rel="stylesheet" href="../public/css/admin_style.css" />
@@ -139,8 +139,8 @@ $postsVitrine = $stmtVitrine->fetchAll(PDO::FETCH_ASSOC);
                       <?php echo (new DateTime($p['data_criacao']))->format('d/m/Y'); ?>
                     </td>
                     <td class="text-end pe-3">
-                      <a href="./blog/editar-post.php?id=<?php echo $p['id']; ?>" class="text-primary" title="Editar" >
-                        <i class="fa-solid fa-pencil" style="color: black;" ></i>
+                      <a href="./blog/editar-post.php?id=<?php echo $p['id']; ?>" class="text-primary" title="Editar">
+                        <i class="fa-solid fa-pencil" style="color: black;"></i>
                       </a>
                     </td>
                   </tr>
@@ -183,7 +183,7 @@ $postsVitrine = $stmtVitrine->fetchAll(PDO::FETCH_ASSOC);
     <div class="row mt-4 mb-5 pb-5">
       <div class="col-12 mb-4">
         <h4 class="text-secondary" style="font-family: 'DM Sans', sans-serif; font-weight: 600;">
-          <i class="fa-solid fa-images me-2 text-primary"></i> Vitrine Visual
+          Vitrine Visual
         </h4>
         <hr class="text-muted opacity-25">
       </div>

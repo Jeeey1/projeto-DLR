@@ -1,3 +1,17 @@
+<?php 
+// 1. Conexão com o banco de dados
+include_once "./includes/conexao.php";
+$pdo = (new Conexao())->conectar();
+
+// 2. Busca os últimos 3 posts
+$qryBlog = "SELECT p.id, p.titulo, p.imagem, p.data_criacao, c.nome as nome_categoria 
+            FROM posts p 
+            LEFT JOIN categorias c ON p.categoria = c.id 
+            ORDER BY p.id DESC 
+            LIMIT 3";
+$stmtBlog = $pdo->query($qryBlog);
+$postsPublicos = $stmtBlog->fetchAll(PDO::FETCH_ASSOC);
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -21,12 +35,10 @@
   <link rel="stylesheet" href="/projeto-DLR/public/css/index_style.css">
 </head>
 
-
 <body>
   <?php 
   include "./includes/header.php";
   ?>
-  <!-- HERO -->
   <section id="home">
     <div class="hero-content">
       <div class="hero-badge"><span data-lang="pt">Psicólogo & Neuropsicólogo Clínico</span><span
@@ -89,7 +101,6 @@
     </div>
   </section>
 
-  <!-- SOBRE -->
   <section id="sobre">
     <div class="reveal">
       <div class="section-eyebrow"><span data-lang="pt">Sobre o Profissional</span><span data-lang="en">About</span>
@@ -151,7 +162,6 @@
     </div>
   </section>
 
-  <!-- SERVIÇOS -->
   <section id="servicos">
     <div class="services-header reveal">
       <div class="section-eyebrow"><span data-lang="pt">O que ofereço</span><span data-lang="en">What I offer</span>
@@ -207,51 +217,67 @@
     </div>
   </section>
 
-  <!-- BLOG -->
   <section id="blog">
     <div class="blog-header reveal">
       <div>
         <div class="section-eyebrow"><span data-lang="pt">Conteúdo educativo</span><span data-lang="en">Educational
             content</span></div>
         <h2 class="section-title"><span data-lang="pt">Artigos & <em>Publicações</em></span><span
-            data-lang="en">Articles
-            & <em>Publications</em></span></h2>
+            data-lang="en">Articles & <em>Publications</em></span></h2>
       </div>
-      <a href="#blog" class="btn-secondary" style="align-self:flex-end"><span data-lang="pt">Ver todos</span><span
+      <a href="blog.php" class="btn-secondary" style="align-self:flex-end"><span data-lang="pt">Ver todos</span><span
           data-lang="en">See all</span></a>
     </div>
+
     <div class="blog-grid">
-      <div class="blog-card reveal">
-        <div class="blog-thumb">
-          <div class="blog-thumb-inner">Ψ</div>
-        </div>
-        <div class="blog-tag">Neuropsicologia</div>
-        <h3 class="blog-title"><span data-lang="pt">O que é avaliação neuropsicológica e quando realizá-la?</span><span
-            data-lang="en">What is neuropsychological assessment and when should it be done?</span></h3>
-        <div class="blog-meta"><span data-lang="pt">5 min de leitura</span><span data-lang="en">5 min read</span></div>
-      </div>
-      <div class="blog-card reveal" style="transition-delay:.1s">
-        <div class="blog-thumb">
-          <div class="blog-thumb-inner">◎</div>
-        </div>
-        <div class="blog-tag">Saúde Mental</div>
-        <h3 class="blog-title"><span data-lang="pt">Ansiedade e estresse: como diferenciar e tratar</span><span
-            data-lang="en">Anxiety and stress: how to differentiate and treat</span></h3>
-        <div class="blog-meta"><span data-lang="pt">7 min de leitura</span><span data-lang="en">7 min read</span></div>
-      </div>
-      <div class="blog-card reveal" style="transition-delay:.2s">
-        <div class="blog-thumb">
-          <div class="blog-thumb-inner">◈</div>
-        </div>
-        <div class="blog-tag">Psicoterapia</div>
-        <h3 class="blog-title"><span data-lang="pt">Benefícios da psicoterapia baseada em evidências</span><span
-            data-lang="en">Benefits of evidence-based psychotherapy</span></h3>
-        <div class="blog-meta"><span data-lang="pt">6 min de leitura</span><span data-lang="en">6 min read</span></div>
-      </div>
+      <?php 
+      // Loop travado em 3 para manter o Grid sempre perfeito
+      for ($i = 0; $i < 3; $i++) {
+          $delay = $i * 0.1; // Cria o efeito cascata do reveal (0s, 0.1s, 0.2s)
+          
+          if (isset($postsPublicos[$i])) {
+              $p = $postsPublicos[$i];
+              
+              // Ajusta imagem (se o caminho já estiver salvo no banco como relativo, ex: src/img/posts/foto.jpg)
+              $imagem = !empty($p['imagem']) ? $p['imagem'] : '';
+              $bgStyle = $imagem ? "background-image: url('".$imagem."'); background-size: cover; background-position: center;" : "";
+              
+              // Ajusta categoria e data
+              $categoria = !empty($p['nome_categoria']) ? ucfirst($p['nome_categoria']) : 'Sem categoria';
+              $dataFmt = (new DateTime($p['data_criacao']))->format('d/m/Y');
+              
+              // Renderiza o POST REAL
+              echo '<div class="blog-card reveal" style="position: relative; transition-delay:'.$delay.'s">';
+              echo '  <div class="blog-thumb" style="'.$bgStyle.'">';
+              
+              // Se não tiver foto, exibe o símbolo Psi padrão do seu CSS
+              if (!$imagem) { echo '<div class="blog-thumb-inner">Ψ</div>'; }
+              
+              echo '  </div>';
+              echo '  <div class="blog-tag">'.htmlspecialchars($categoria).'</div>';
+              echo '  <h3 class="blog-title">';
+              // A classe stretched-link faz o card todo ficar clicável
+              echo '    <a href="template_post.php?id='.$p['id'].'" class="text-decoration-none text-reset stretched-link">'.htmlspecialchars($p['titulo']).'</a>';
+              echo '  </h3>';
+              echo '  <div class="blog-meta">Publicado em '.$dataFmt.'</div>';
+              echo '</div>';
+              
+          } else {
+              // Renderiza o POST FANTASMA (Para não quebrar a tela)
+              echo '<div class="blog-card reveal" style="transition-delay:'.$delay.'s; border: 2px dashed rgba(201,168,76,.4); background: transparent; box-shadow: none;">';
+              echo '  <div class="blog-thumb" style="background: rgba(201,168,76,.05); display: flex; align-items: center; justify-content: center;">';
+              echo '    <svg viewBox="0 0 24 24" width="40" height="40" stroke="rgba(201,168,76,.5)" stroke-width="1" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>';
+              echo '  </div>';
+              echo '  <div class="blog-tag" style="background: rgba(201,168,76,.1); color: transparent; width: 100px; height: 22px; margin-bottom: 15px;"></div>';
+              echo '  <h3 class="blog-title" style="color: rgba(201,168,76,.6); font-size: 1.2rem;">Espaço disponível</h3>';
+              echo '  <div class="blog-meta" style="color: rgba(201,168,76,.5);">Aguardando publicação</div>';
+              echo '</div>';
+          }
+      }
+      ?>
     </div>
   </section>
 
-  <!-- INSTAGRAM -->
   <section id="instagram">
     <div class="section-eyebrow" style="justify-content:center;display:flex;margin-bottom:.5rem">Instagram</div>
     <h2 class="section-title" style="text-align:center"><span data-lang="pt">Conteúdo nas <em>redes</em></span><span
@@ -266,7 +292,6 @@
         conteúdos</span><span data-lang="en">Follow @drdaniel for more content</span></p>
   </section>
 
-  <!-- CONTATO -->
   <section id="contato">
     <div class="contato-info reveal">
       <div class="section-eyebrow"><span data-lang="pt">Fale comigo</span><span data-lang="en">Get in touch</span></div>
@@ -355,7 +380,6 @@
     </div>
   </section>
 
-  <!-- MAP PLACEHOLDER -->
   <div class="map-section">
     <svg viewBox="0 0 24 24">
       <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
@@ -364,12 +388,12 @@
     <span style="font-size:.85rem;font-family:'DM Sans',sans-serif"><span data-lang="pt">Alto da Boa Vista · Ribeirão
         Preto, SP</span><span data-lang="en">Alto da Boa Vista · Ribeirão Preto, SP, Brazil</span></span>
   </div>
+
   <?php 
   include "./includes/footer.php";
   ?>
 </body>
 
-<!-- WHATSAPP FLOAT -->
 <a class="whatsapp-float" href="https://wa.me/5516999999999?text=Olá%2C%20gostaria%20de%20agendar%20uma%20consulta"
   target="_blank" title="WhatsApp">
   <svg viewBox="0 0 24 24">
