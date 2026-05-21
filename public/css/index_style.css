@@ -268,7 +268,7 @@ nav {
   width: 420px;
   height: 520px;
   background: linear-gradient(135deg, var(--gold) 0%, var(--brown) 100%);
-  background-image: url("img/foto-perfil.jpeg");
+  background-image: url("../../src/img/daniel.jpeg");
   background-size: cover;
   background-position: center;
   border-radius: 4px;
@@ -673,13 +673,18 @@ nav {
 
 /* ── CONTATO ── */
 #contato {
-  padding: 8rem 4rem;
+  padding: 2rem 3rem 2rem 3rem;
   background: var(--brown);
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 6rem;
   align-items: start;
 }
+
+.contato-info {
+  align-self: center;
+}
+
 .contato-info .section-eyebrow {
   border-color: var(--gold-light);
   color: var(--gold-light);
@@ -947,6 +952,22 @@ footer {
   transform: translateY(0);
 }
 
+.agenda-consulta {
+  display: grid;
+  grid-template-columns: 1fr;
+  background: linear-gradient(
+    to right,
+    var(--brown) 10%,
+    /* Esquerda: Começa escuro (80% de opacidade) */ var(--brown-mid) 60%,
+    /* Aos 25% da tela: Fica 100% transparente */ var(--brown-mid) 20%,
+    /* Aos 75% da tela: Continua transparente */ var(--brown) 90%
+      /* Direita: Volta a ficar escuro no final */
+  );
+  border-radius: 6px;
+  padding: 1.5rem;
+  justify-content: center;
+}
+
 /* ── MOBILE ── */
 @media (max-width: 900px) {
   nav {
@@ -1024,4 +1045,3 @@ body.en span[data-lang="en"] {
 body.en span[data-lang="pt"] {
   display: none;
 }
-
