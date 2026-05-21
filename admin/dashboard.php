@@ -81,7 +81,7 @@ if($_SESSION['logado'] != true){
         <div class="card h-100 shadow-sm" style="background-color: #c9a84c;">
           <div class="card-body d-flex justify-content-between align-items-center">
             <div>
-              <h6 class="card-title text-uppercase mb-0 text-black-50">Posts Publicados</h6>
+              <h6 class="card-title text-uppercase mb-0 text-black-50"><strong>Posts Publicados</strong></h6>
               <h2 class="display-5 mb-0"><?php echo $totalPosts; ?></h2>
             </div>
             <i class="fa-solid fa-file-lines fa-3x opacity-50"></i>
@@ -90,9 +90,9 @@ if($_SESSION['logado'] != true){
       </div>
 
       <div class="col-md-4 mb-3">
-        <div class="card h-100 shadow-sm border-primary">
+        <div class="card h-100 shadow-sm">
           <div class="card-body d-flex flex-column justify-content-center align-items-center text-center">
-            <h5 class="card-title text-primary">Tem um novo assunto?</h5>
+            <h5 class="card-title">Tem um novo assunto?</h5>
             <a href="./blog/criar-post.php" class="btn btn-primary mt-2">
               <i class="fa-solid fa-plus me-2"></i> Criar Novo Post
             </a>
@@ -120,8 +120,8 @@ if($_SESSION['logado'] != true){
                       <?php echo (new DateTime($p['data_criacao']))->format('d/m/Y'); ?>
                     </td>
                     <td class="text-end pe-3">
-                      <a href="./blog/editar-post.php?id=<?php echo $p['id']; ?>" class="text-primary" title="Editar">
-                        <i class="fa-solid fa-pencil"></i>
+                      <a href="./blog/editar-post.php?id=<?php echo $p['id']; ?>" class="text-primary" title="Editar" >
+                        <i class="fa-solid fa-pencil" style="color: black;" ></i>
                       </a>
                     </td>
                   </tr>
