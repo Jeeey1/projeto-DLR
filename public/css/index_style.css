@@ -801,10 +801,17 @@ nav {
 /* ── MAP ── */
 .map-section {
   background: var(--cream);
-  padding: 4rem 0 0 0; /* Espaço superior para separar da seção anterior */
+  /* padding: 4rem 0 0 0; Espaço superior para separar da seção anterior */
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+#map-local {
+  height: 500px;
+  width: 100%;
 }
 
 .map-container {
@@ -1017,3 +1024,4 @@ body.en span[data-lang="en"] {
 body.en span[data-lang="pt"] {
   display: none;
 }
+
