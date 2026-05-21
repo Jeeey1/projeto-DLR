@@ -30,8 +30,10 @@ if($_SESSION['logado'] != true){
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../../public/css/common.css" />
   <link rel="stylesheet" href="../../public/css/admin_style.css" />
-  <link rel="stylesheet" href="../../public/css/index_style.css" />
   <link rel="stylesheet" href="../../public/css/posts.css" />
+  <link rel="stylesheet" href="../../public/css/header_admin.css" />
+  <link rel="stylesheet" href="../../public/css/footer_admin.css" />
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 
@@ -53,17 +55,9 @@ if($_SESSION['logado'] != true){
     </div>
   </div>
 
-  <!-- HEADER/NAV -->
-  <nav id="navbar">
-    <div class="nav-logo">Dr. <span>Daniel</span></div>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="../dashboard.php"><span data-lang="pt">Dashboard</span></a></li>
-      <li><a href="posts.php"><span data-lang="pt">Post</span></a></li>
-      <li><a href="../logout.php"><span data-lang="pt">Logout</span></a></li>
-      <div class="hamburger" id="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
-        <span></span><span></span><span></span>
-      </div>
-  </nav>
+  <?php 
+  include '../../includes/header-admin.php';
+  ?>
 
   <section class="container-fluid mt-3 px-3 section-posts">
     <div class="d-flex justify-content-end"><a href="criar-post.php" class="btn mb-3 btn-criar btn-primary">Criar novo

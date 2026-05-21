@@ -35,9 +35,12 @@ $post = $stmt->fetch(PDO::FETCH_ASSOC);
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
   <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+
   <link rel="stylesheet" href="../../public/css/common.css" />
   <link rel="stylesheet" href="../../public/css/criar_style.css" />
-  <!-- <link rel="stylesheet" href="../../public/css/index_style.css" /> -->
+  <link rel="stylesheet" href="../../public/css/header_admin.css" />
+  <link rel="stylesheet" href="../../public/css/footer_admin.css" />
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 
@@ -47,16 +50,9 @@ $post = $stmt->fetch(PDO::FETCH_ASSOC);
     <p></p>
   </div>
 
-  <!-- HEADER/NAV -->
-  <nav id="navbar">
-    <div class="nav-logo">Dr. <span>Daniel</span></div>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="posts.php"><span data-lang="pt">Post</span></a></li>
-      <li><a href="#home"><span data-lang="pt">Logout</span></a></li>
-      <div class="hamburger" id="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
-        <span></span><span></span><span></span>
-      </div>
-  </nav>
+  <?php 
+    include ''."../../includes/header-admin.php";
+  ?>
 
 
   <section class="content-criar content container-fluid mt-3 px-3">

@@ -1,11 +1,13 @@
   <!-- FOOTER -->
   <footer>
-    <div>
-      <div class="footer-brand">Dr. <span>Daniel</span></div>
-      <div class="lgpd-note"><span data-lang="pt">© 2026 · Todos os direitos reservados · LGPD</span><span
-          data-lang="en">© 2026 · All rights reserved · LGPD</span></div>
+    <div class="footer-content">
+      <div>
+        <div class="footer-brand">Dr. <span>Daniel</span></div>
+        <div class="lgpd-note"><span data-lang="pt">© 2026 · Todos os direitos reservados · LGPD</span><span
+            data-lang="en">© 2026 · All rights reserved · LGPD</span></div>
+      </div>
+      <div class="footer-copy">CRP 06/130646</div>
     </div>
-    <div class="footer-copy">CRP 06/130646</div>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"

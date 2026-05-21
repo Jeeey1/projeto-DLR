@@ -1,0 +1,51 @@
+/* ── FOOTER ── */
+footer {
+  background: var(--dark);
+  color: rgba(245, 240, 232, 0.5);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+}
+
+.footer-brand {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.3rem;
+  color: var(--cream);
+}
+.footer-brand span {
+  color: var(--gold);
+}
+.footer-links {
+  display: flex;
+  gap: 1.8rem;
+}
+.footer-links a {
+  font-size: 1.1rem;
+  color: rgba(245, 240, 232, 0.4);
+  text-decoration: none;
+  letter-spacing: 0.06em;
+  transition: color 0.2s;
+}
+.footer-links a:hover {
+  color: var(--gold);
+}
+.footer-copy {
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+}
+
+.lgpd-note {
+  font-size: 0.7rem;
+  color: rgba(245, 240, 232, 0.3);
+  margin-top: 0.4rem;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1450px;
+  margin: 0 auto;
+}

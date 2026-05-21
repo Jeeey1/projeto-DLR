@@ -27,27 +27,23 @@ if($_SESSION['logado'] != true){
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500&display=swap"
     rel="stylesheet" />
+
   <link rel="stylesheet" href="../../public/css/common.css" />
   <link rel="stylesheet" href="../../public/css/criar_style.css" />
+  <link rel="stylesheet" href="../../public/css/header_admin.css" />
+  <link rel="stylesheet" href="../../public/css/footer_admin.css" />
+
   <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 
-<body class="blog-page">
+<body>
 
   <div class="alerta-sucesso-criar-post" style="display: none;">
     <p></p>
   </div>
 
-  <!-- HEADER/NAV -->
-  <nav id="navbar">
-    <div class="nav-logo">Dr. <span>Daniel</span></div>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="posts.php"><span data-lang="pt">Post</span></a></li>
-      <div class="hamburger" id="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
-        <span></span><span></span><span></span>
-      </div>
-  </nav>
+  <?php include "../../includes/header-admin.php"; ?>
 
 
   <section class="content-criar content container-fluid mt-3 px-3">

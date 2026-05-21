@@ -19,6 +19,8 @@
 
 html {
   scroll-behavior: smooth;
+  width: 100vw;
+  height: 100vh;
 }
 
 body {
@@ -35,15 +37,23 @@ nav {
   left: 0;
   right: 0;
   z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1.2rem 4rem;
   background: rgba(253, 250, 245, 0.92);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(201, 168, 76, 0.2);
   transition: all 0.3s;
+  padding: 0 2rem; /* Adicionado para não encostar nas bordas da tela */
 }
+
+.nav-content {
+  display: flex; /* Mudança de Grid para Flex */
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 0;
+  margin: 0 auto;
+  max-width: 1450px;
+  width: 100%; /* Força o preenchimento do max-width */
+}
+
 .nav-logo {
   font-family: "Cormorant Garamond", serif;
   font-size: 1.4rem;
@@ -51,14 +61,19 @@ nav {
   color: var(--brown);
   letter-spacing: 0.04em;
 }
+
 .nav-logo span {
   color: var(--gold);
 }
+
 .nav-links {
   display: flex;
+  align-items: center; /* Garante que os itens fiquem centralizados na linha */
   gap: 2.2rem;
   list-style: none;
+  margin-bottom: 0px !important;
 }
+
 .nav-links a {
   font-size: 1rem;
   font-weight: 400;
@@ -68,9 +83,15 @@ nav {
   text-decoration: none;
   transition: color 0.2s;
 }
+
 .nav-links a:hover {
   color: var(--gold);
 }
+
+.nav-links ul {
+  margin-bottom: 0;
+}
+
 .nav-cta {
   background: var(--gold);
   color: #fff !important;
@@ -79,10 +100,12 @@ nav {
   font-weight: 500 !important;
   transition: background 0.2s !important;
 }
+
 .nav-cta:hover {
   background: var(--brown) !important;
   color: #fff !important;
 }
+
 .lang-btn {
   font-size: 1rem;
   font-weight: 500;
@@ -97,16 +120,19 @@ nav {
   transition: all 0.2s;
   margin-left: 0.5rem;
 }
+
 .lang-btn:hover {
   background: var(--gold);
   color: #fff;
 }
+
 .hamburger {
   display: none;
   flex-direction: column;
   gap: 5px;
   cursor: pointer;
 }
+
 .hamburger span {
   width: 24px;
   height: 2px;
@@ -117,13 +143,7 @@ nav {
 /* ── HERO ── */
 #home {
   min-height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  padding: 8rem 4rem 4rem;
   background: var(--cream);
-  position: relative;
-  overflow: hidden;
 }
 #home::before {
   content: "";
@@ -341,12 +361,7 @@ nav {
 
 /* ── SOBRE ── */
 #sobre {
-  padding: 8rem 4rem;
   background: var(--warm-white);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 6rem;
-  align-items: center;
 }
 .section-eyebrow {
   font-size: 1.1rem;
@@ -439,7 +454,6 @@ nav {
   background: var(--cream);
 }
 .services-header {
-  /* text-align: center; */
   max-width: 600px;
   margin: 0 auto 4rem;
 }
@@ -616,69 +630,43 @@ nav {
 
 .instagram-grid {
   display: grid;
-  /* Mantém 4 colunas em telas grandes */
   grid-template-columns: repeat(4, 1fr);
-  /* Aumentei um pouco o gap para 10px para as fotos respirarem, 
-     mas pode manter 2px se quiser colado */
   gap: 10px;
   margin: 3rem auto 0 auto;
-  max-width: 1000px; /* Aumentei um pouco para as fotos ficarem maiores */
+  max-width: 1000px;
 }
 
 .insta-placeholder {
-  aspect-ratio: 1; /* Garante que o container seja sempre um quadrado perfeito */
-  overflow: hidden; /* Corta o que sobrar da imagem */
+  aspect-ratio: 1;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
   cursor: pointer;
-  background: #eee; /* Cor de fundo enquanto a imagem carrega */
+  background: #eee;
 }
 
-/* Ajuste vital para as imagens reais */
 .insta-placeholder img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Faz a foto preencher o quadrado sem achatar */
+  object-fit: cover;
   display: block;
   transition: transform 0.5s ease;
 }
 
 .insta-placeholder:hover img {
-  transform: scale(1.1); /* Efeito de zoom elegante no hover */
+  transform: scale(1.1);
 }
 
 .insta-placeholder:hover {
-  /* Removemos o gradiente para não cobrir a foto do Dr. Daniel */
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
-
-/* ── RESPONSIVIDADE ── */
-@media (max-width: 900px) {
-  .instagram-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 fotos por linha em tablets */
-    padding: 0 1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  #instagram {
-    padding: 3rem 1.5rem;
-  }
-  .instagram-grid {
-    gap: 5px;
-  }
 }
 
 /* ── CONTATO ── */
 #contato {
   padding: 2rem 3rem 2rem 3rem;
   background: var(--brown);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 6rem;
-  align-items: start;
 }
 
 .contato-info {
@@ -806,7 +794,6 @@ nav {
 /* ── MAP ── */
 .map-section {
   background: var(--cream);
-  /* padding: 4rem 0 0 0; Espaço superior para separar da seção anterior */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -822,12 +809,12 @@ nav {
 .map-container {
   width: 100%;
   height: 450px;
-  filter: grayscale(0.2) sepia(0.2) contrast(0.9); /* Deixa o mapa mais harmônico com o site */
+  filter: grayscale(0.2) sepia(0.2) contrast(0.9);
   transition: filter 0.3s ease;
 }
 
 .map-container:hover {
-  filter: grayscale(0); /* Volta a cor original ao interagir */
+  filter: grayscale(0);
 }
 
 .map-address-label {
@@ -848,29 +835,12 @@ nav {
   stroke-width: 1.5;
 }
 
-/* Responsividade */
-@media (max-width: 768px) {
-  .map-container {
-    height: 350px;
-  }
-  .map-address-label {
-    font-size: 0.9rem;
-    text-align: center;
-    padding: 1.5rem;
-  }
-}
-
 /* ── FOOTER ── */
 footer {
   background: var(--dark);
   color: rgba(245, 240, 232, 0.5);
-  padding: 3rem 4rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1.5rem;
 }
+
 .footer-brand {
   font-family: "Cormorant Garamond", serif;
   font-size: 1.3rem;
@@ -958,20 +928,68 @@ footer {
   background: linear-gradient(
     to right,
     var(--brown) 10%,
-    /* Esquerda: Começa escuro (80% de opacidade) */ var(--brown-mid) 60%,
-    /* Aos 25% da tela: Fica 100% transparente */ var(--brown-mid) 20%,
-    /* Aos 75% da tela: Continua transparente */ var(--brown) 90%
-      /* Direita: Volta a ficar escuro no final */
+    var(--brown-mid) 60%,
+    var(--brown-mid) 20%,
+    var(--brown) 90%
   );
   border-radius: 6px;
   padding: 1.5rem;
   justify-content: center;
 }
 
-/* ── MOBILE ── */
+.home-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  justify-content: center;
+  max-width: 1450px;
+  margin: 0 auto;
+  padding-top: 8rem;
+}
+
+.sobre-content {
+  padding: 8rem 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+  max-width: 1450px;
+  margin: 0 auto;
+}
+
+.servicos-content,
+.blog-content,
+.contato-content {
+  max-width: 1450px;
+  margin: 0 auto;
+}
+
+.footer-content {
+  padding: 3rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 1450px;
+  margin: 0 auto;
+}
+
+.contato-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+/* ── MOBILE E RESPONSIVIDADE ── */
 @media (max-width: 900px) {
   nav {
-    padding: 1rem 1.5rem;
+    padding: 0 1.5rem; /* Ajustado para acompanhar o padding novo do desktop */
+  }
+  .nav-content {
+    padding: 1rem 0;
   }
   .nav-links {
     display: none;
@@ -982,6 +1000,7 @@ footer {
   .nav-links.open {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     position: fixed;
     top: 64px;
     left: 0;
@@ -1026,6 +1045,23 @@ footer {
   }
   .hero-stats {
     gap: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  #instagram {
+    padding: 3rem 1.5rem;
+  }
+  .instagram-grid {
+    gap: 5px;
+  }
+  .map-container {
+    height: 350px;
+  }
+  .map-address-label {
+    font-size: 0.9rem;
+    text-align: center;
+    padding: 1.5rem;
   }
 }
 
