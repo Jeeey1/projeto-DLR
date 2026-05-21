@@ -1,0 +1,16 @@
+.section-posts {
+  height: 90vh;
+  margin-top: 150px;
+  max-width: 1650px;
+}
+
+button a {
+  text-decoration: none;
+  color: white;
+}
+
+.btn-criar {
+  max-width: max-content;
+  margin-top: 150px;
+  margin-bottom: 30px;
+}

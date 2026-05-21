@@ -1,3 +1,17 @@
+<?php 
+// 1. Conexão com o banco de dados
+include_once "./includes/conexao.php";
+$pdo = (new Conexao())->conectar();
+
+// 2. Busca os últimos 3 posts
+$qryBlog = "SELECT p.id, p.titulo, p.imagem, p.data_criacao, c.nome as nome_categoria 
+            FROM posts p 
+            LEFT JOIN categorias c ON p.categoria = c.id 
+            ORDER BY p.id DESC 
+            LIMIT 3";
+$stmtBlog = $pdo->query($qryBlog);
+$postsPublicos = $stmtBlog->fetchAll(PDO::FETCH_ASSOC);
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -11,38 +25,26 @@
     rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
     integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-  <link rel="stylesheet" href="public/css/style.css">
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-    crossorigin="anonymous"></script>
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
-    crossorigin="anonymous"></script>
+    integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
+  </script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="/projeto-DLR/public/css/common.css">
+  <link rel="stylesheet" href="/projeto-DLR/public/css/index_style.css">
 </head>
 
 <body>
-  <nav id="navbar">
-    <div class="nav-logo">Dr. <span>Daniel</span></div>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#home"><span data-lang="pt">Início</span><span data-lang="en">Home</span></a></li>
-      <li><a href="#sobre"><span data-lang="pt">Sobre</span><span data-lang="en">About</span></a></li>
-      <li><a href="#servicos"><span data-lang="pt">Serviços</span><span data-lang="en">Services</span></a></li>
-      <li><a href="#blog">Blog</a></li>
-      <li><a href="#contato"><span data-lang="pt">Contato</span><span data-lang="en">Contact</span></a></li>
-      <li><a class="nav-cta" href="https://www.doctoralia.com.br" target="_blank"><span data-lang="pt">Agendar
-            Consulta</span><span data-lang="en">Book Now</span></a></li>
-    </ul>
-    <button class="lang-btn" id="langToggle">EN</button>
-    <div class="hamburger" id="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
-      <span></span><span></span><span></span>
-    </div>
-  </nav>
-
-  <!-- HERO -->
+  <?php
+  include "./includes/header.php";
+  ?>
   <section id="home">
     <div class="hero-content">
       <div class="hero-badge"><span data-lang="pt">Psicólogo & Neuropsicólogo Clínico</span><span
-          data-lang="en">Clinical Psychologist & Neuropsychologist</span></div>
+          data-lang="en">Clinical
+          Psychologist & Neuropsychologist</span></div>
       <h1 class="hero-title">
         <span data-lang="pt">Cuidado <em>especializado</em><br>para sua saúde<br>mental e cognitiva</span>
         <span data-lang="en">Specialized <em>care</em><br>for your mental<br>and cognitive health</span>
@@ -100,7 +102,6 @@
     </div>
   </section>
 
-  <!-- SOBRE -->
   <section id="sobre">
     <div class="reveal">
       <div class="section-eyebrow"><span data-lang="pt">Sobre o Profissional</span><span data-lang="en">About</span>
@@ -162,13 +163,15 @@
     </div>
   </section>
 
-  <!-- SERVIÇOS -->
   <section id="servicos">
     <div class="services-header reveal">
       <div class="section-eyebrow"><span data-lang="pt">O que ofereço</span><span data-lang="en">What I offer</span>
       </div>
-      <h2 class="section-title"><span data-lang="pt">Serviços <em>especializados</em></span><span
-          data-lang="en">Specialized <em>services</em></span></h2>
+      <div class="" style="  text-align: center;
+">
+        <h2 class="section-title"><span data-lang="pt">Serviços <em>especializados</em></span><span
+            data-lang="en">Specialized <em>services</em></span></h2>
+      </div>
     </div>
     <div class="services-grid">
       <div class="service-card reveal">
@@ -218,7 +221,6 @@
     </div>
   </section>
 
-  <!-- BLOG -->
   <section id="blog">
     <div class="blog-header reveal">
       <div>
@@ -227,43 +229,61 @@
         <h2 class="section-title"><span data-lang="pt">Artigos & <em>Publicações</em></span><span
             data-lang="en">Articles & <em>Publications</em></span></h2>
       </div>
-      <a href="#blog" class="btn-secondary" style="align-self:flex-end"><span data-lang="pt">Ver todos</span><span
+      <a href="blog.php" class="btn-secondary" style="align-self:flex-end"><span data-lang="pt">Ver todos</span><span
           data-lang="en">See all</span></a>
     </div>
+
     <div class="blog-grid">
-      <div class="blog-card reveal">
-        <div class="blog-thumb">
-          <div class="blog-thumb-inner">Ψ</div>
-        </div>
-        <div class="blog-tag">Neuropsicologia</div>
-        <h3 class="blog-title"><span data-lang="pt">O que é avaliação neuropsicológica e quando realizá-la?</span><span
-            data-lang="en">What is neuropsychological assessment and when should it be done?</span></h3>
-        <div class="blog-meta"><span data-lang="pt">5 min de leitura</span><span data-lang="en">5 min read</span></div>
-      </div>
-      <div class="blog-card reveal" style="transition-delay:.1s">
-        <div class="blog-thumb">
-          <div class="blog-thumb-inner">◎</div>
-        </div>
-        <div class="blog-tag">Saúde Mental</div>
-        <h3 class="blog-title"><span data-lang="pt">Ansiedade e estresse: como diferenciar e tratar</span><span
-            data-lang="en">Anxiety and stress: how to differentiate and treat</span></h3>
-        <div class="blog-meta"><span data-lang="pt">7 min de leitura</span><span data-lang="en">7 min read</span></div>
-      </div>
-      <div class="blog-card reveal" style="transition-delay:.2s">
-        <div class="blog-thumb">
-          <div class="blog-thumb-inner">◈</div>
-        </div>
-        <div class="blog-tag">Psicoterapia</div>
-        <h3 class="blog-title"><span data-lang="pt">Benefícios da psicoterapia baseada em evidências</span><span
-            data-lang="en">Benefits of evidence-based psychotherapy</span></h3>
-        <div class="blog-meta"><span data-lang="pt">6 min de leitura</span><span data-lang="en">6 min read</span></div>
-      </div>
+      <?php 
+      // Loop travado em 3 para manter o Grid sempre perfeito
+      for ($i = 0; $i < 3; $i++) {
+          $delay = $i * 0.1; // Cria o efeito cascata do reveal (0s, 0.1s, 0.2s)
+          
+          if (isset($postsPublicos[$i])) {
+              $p = $postsPublicos[$i];
+              
+              // Ajusta imagem (se o caminho já estiver salvo no banco como relativo, ex: src/img/posts/foto.jpg)
+              $imagem = !empty($p['imagem']) ? $p['imagem'] : '';
+              $bgStyle = $imagem ? "background-image: url('".$imagem."'); background-size: cover; background-position: center;" : "";
+              
+              // Ajusta categoria e data
+              $categoria = !empty($p['nome_categoria']) ? ucfirst($p['nome_categoria']) : 'Sem categoria';
+              $dataFmt = (new DateTime($p['data_criacao']))->format('d/m/Y');
+              
+              // Renderiza o POST REAL
+              echo '<div class="blog-card reveal" style="position: relative; transition-delay:'.$delay.'s">';
+              echo '  <div class="blog-thumb" style="'.$bgStyle.'">';
+              
+              // Se não tiver foto, exibe o símbolo Psi padrão do seu CSS
+              if (!$imagem) { echo '<div class="blog-thumb-inner">Ψ</div>'; }
+              
+              echo '  </div>';
+              echo '  <div class="blog-tag">'.htmlspecialchars($categoria).'</div>';
+              echo '  <h3 class="blog-title">';
+              // A classe stretched-link faz o card todo ficar clicável
+              echo '    <a href="template_post.php?id='.$p['id'].'" class="text-decoration-none text-reset stretched-link">'.htmlspecialchars($p['titulo']).'</a>';
+              echo '  </h3>';
+              echo '  <div class="blog-meta">Publicado em '.$dataFmt.'</div>';
+              echo '</div>';
+              
+          } else {
+              // Renderiza o POST FANTASMA (Para não quebrar a tela)
+              echo '<div class="blog-card reveal" style="transition-delay:'.$delay.'s; border: 2px dashed rgba(201,168,76,.4); background: transparent; box-shadow: none;">';
+              echo '  <div class="blog-thumb" style="background: rgba(201,168,76,.05); display: flex; align-items: center; justify-content: center;">';
+              echo '    <svg viewBox="0 0 24 24" width="40" height="40" stroke="rgba(201,168,76,.5)" stroke-width="1" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>';
+              echo '  </div>';
+              echo '  <div class="blog-tag" style="background: rgba(201,168,76,.1); color: transparent; width: 100px; height: 22px; margin-bottom: 15px;"></div>';
+              echo '  <h3 class="blog-title" style="color: rgba(201,168,76,.6); font-size: 1.2rem;">Espaço disponível</h3>';
+              echo '  <div class="blog-meta" style="color: rgba(201,168,76,.5);">Aguardando publicação</div>';
+              echo '</div>';
+          }
+      }
+      ?>
     </div>
   </section>
 
-  <!-- INSTAGRAM -->
   <section id="instagram">
-    <div class="section-eyebrow" style="justify-content:center;display:flex;margin-bottom:.5rem">Instagram</div>
+    <div class="section-eyebrow" style="display:flex;margin-bottom:.5rem">Instagram</div>
     <h2 class="section-title" style="text-align:center"><span data-lang="pt">Conteúdo nas <em>redes</em></span><span
         data-lang="en">Content on <em>social</em></span></h2>
     <div class="instagram-grid reveal">
@@ -276,7 +296,6 @@
         conteúdos</span><span data-lang="en">Follow @drdaniel for more content</span></p>
   </section>
 
-  <!-- CONTATO -->
   <section id="contato">
     <div class="contato-info reveal">
       <div class="section-eyebrow"><span data-lang="pt">Fale comigo</span><span data-lang="en">Get in touch</span></div>
@@ -358,49 +377,35 @@
         <textarea placeholder="Como posso ajudá-lo(a)?"></textarea>
       </div>
       <p class="form-note"><span data-lang="pt">Seus dados são protegidos conforme a LGPD.</span><span
-          data-lang="en">Your data is protected under LGPD regulations.</span></p>
+          data-lang="en">Your
+          data is protected under LGPD regulations.</span></p>
       <button class="btn-submit" style="margin-top:1rem"><span data-lang="pt">Enviar mensagem</span><span
           data-lang="en">Send message</span></button>
     </div>
   </section>
 
-  <!-- MAP PLACEHOLDER -->
   <div class="map-section">
-    <svg viewBox="0 0 24 24">
-      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-      <circle cx="12" cy="10" r="3" />
-    </svg>
-    <span style="font-size:.85rem;font-family:'DM Sans',sans-serif"><span data-lang="pt">Alto da Boa Vista · Ribeirão
-        Preto, SP</span><span data-lang="en">Alto da Boa Vista · Ribeirão Preto, SP, Brazil</span></span>
+    <div id="map-local" class=""></div>
+    <span style="font-size: 1rem;font-family:'DM Sans',sans-serif"><span data-lang="pt">R. José Borges da Costa, 785 -
+        Sala 11 - Alto da Boa Vista, Ribeirão Preto - SP, 14025-660</span><span data-lang="en">R. José Borges da Costa,
+        785 - Sala 11 - Alto da Boa Vista, Ribeirão Preto - SP, 14025-660</span></span>
   </div>
+  <?php 
+  include "./includes/footer.php";
+  ?>
+</body>
 
-  <!-- FOOTER -->
-  <footer>
-    <div>
-      <div class="footer-brand">Dr. <span>Daniel</span></div>
-      <div class="lgpd-note"><span data-lang="pt">© 2026 · Todos os direitos reservados · LGPD</span><span
-          data-lang="en">© 2026 · All rights reserved · LGPD</span></div>
-    </div>
-    <div class="footer-links">
-      <a href="#home"><span data-lang="pt">Início</span><span data-lang="en">Home</span></a>
-      <a href="#sobre"><span data-lang="pt">Sobre</span><span data-lang="en">About</span></a>
-      <a href="#servicos"><span data-lang="pt">Serviços</span><span data-lang="en">Services</span></a>
-      <a href="#blog">Blog</a>
-      <a href="#contato"><span data-lang="pt">Contato</span><span data-lang="en">Contact</span></a>
-    </div>
-    <div class="footer-copy">CRP 06/130646</div>
-  </footer>
+<a class="whatsapp-float" href="https://wa.me/5516991286116?text=Olá%2C%20gostaria%20de%20agendar%20uma%20consulta"
+  target="_blank" title="WhatsApp">
+  <svg viewBox="0 0 24 24">
+    <path
+      d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+  </svg>
+</a>
 
-  <!-- WHATSAPP FLOAT -->
-  <a class="whatsapp-float" href="https://wa.me/5516999999999?text=Olá%2C%20gostaria%20de%20agendar%20uma%20consulta"
-    target="_blank" title="WhatsApp">
-    <svg viewBox="0 0 24 24">
-      <path
-        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-    </svg>
-  </a>
-
-  <script src="public/js/script.js" defer></script>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="public/js/mapa.js"></script>
+<script src="public/js/script.js" defer></script>
 </body>
 
 </html>
