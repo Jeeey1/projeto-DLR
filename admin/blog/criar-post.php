@@ -50,14 +50,15 @@ if($_SESSION['logado'] != true){
   </nav>
 
 
-  <section class="content-criar content">
-    <form class="row m-5" action="../db/insert-post.php" id="form-criar">
+  <section class="content-criar content container-fluid mt-3 px-3">
+    <h1 class="py-2">Criar novo post</h1>
+    <hr>
 
-      <div class="mb-3 col">
+    <form class="row" action="../db/insert-post.php" id="form-criar">
+
+      <div class="mb-3 col-md-12 d-flex justify-content-end">
         <a class="btn btn-primary btn-voltar">Voltar</a>
       </div>
-
-      <h3>Criar novo post</h3>
 
       <div class="mb-3 col-6">
         <label for="titulo" class="form-label">Título</label>
@@ -96,7 +97,7 @@ if($_SESSION['logado'] != true){
         </select>
       </div>
 
-      <div class="mb-3 col">
+      <div class="mb-3 col-md-12 d-flex justify-content-end">
         <input type="submit" class="btn btn-primary" value="Criar post" id="btn-submit">
       </div>
 

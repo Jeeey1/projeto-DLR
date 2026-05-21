@@ -235,6 +235,49 @@ $postsVitrine = $stmtVitrine->fetchAll(PDO::FETCH_ASSOC);
     </div>
   </section>
 
+  <div style="width: 100%; max-width: 900px; margin: 0 auto;">
+    <a id="zl-url" class="zl-url" href="https://www.doctoralia.com.br/daniel-lataro-de-robbio/psicologo/ribeirao-preto"
+      rel="nofollow" data-zlw-doctor="daniel-lataro-de-robbio" data-zlw-type="big_with_calendar"
+      data-zlw-opinion="false" data-zlw-hide-branding="true" data-zlw-saas-only="true"
+      data-zlw-a11y-title="Widget de marcação de consultas médicas">Marque uma consulta</a>
+  </div>
+
+  <script>
+  ! function($_x, _s, id) {
+    var js, fjs = $_x.getElementsByTagName(_s)[0];
+    if (!$_x.getElementById(id)) {
+      js = $_x.createElement(_s);
+      js.id = id;
+      js.src = "//platform.docplanner.com/js/widget.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }
+  }(document, "script", "zl-widget-s");
+  </script>
+
+
+  <script>
+  ! function($_x, _s, id) {
+    var js, fjs = $_x.getElementsByTagName(_s)[0];
+    if (!$_x.getElementById(id)) {
+      js = $_x.createElement(_s);
+      js.id = id;
+      js.src = "//platform.docplanner.com/js/widget.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }
+  }(document, "script", "zl-widget-s");
+  </script>
+  <script>
+  ! function($_x, _s, id) {
+    var js, fjs = $_x.getElementsByTagName(_s)[0];
+    if (!$_x.getElementById(id)) {
+      js = $_x.createElement(_s);
+      js.id = id;
+      js.src = "//platform.docplanner.com/js/widget.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }
+  }(document, "script", "zl-widget-s");
+  </script>
+
   <footer class="footer-admin">
     <div>
       <div class="footer-brand">Dr. <span>Daniel</span></div>

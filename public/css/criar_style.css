@@ -750,6 +750,7 @@ footer {
   max-width: 1650px;
   margin-left: auto;
   margin-right: auto;
+  height: 90vh;
 }
 
 .btn-voltar a {

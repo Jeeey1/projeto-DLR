@@ -66,8 +66,10 @@ if($_SESSION['logado'] != true){
   </nav>
 
   <section class="container-fluid mt-3 px-3 section-posts">
-    <a href="criar-post.php" class="btn mb-3 btn-criar btn-primary">Criar novo
-      post</a>
+    <div class="d-flex justify-content-end"><a href="criar-post.php" class="btn mb-3 btn-criar btn-primary">Criar novo
+        post
+      </a>
+    </div>
     <?php 
     $pdo = new Conexao();
     $pdo = $pdo->conectar();

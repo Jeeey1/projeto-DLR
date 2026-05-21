@@ -32,11 +32,12 @@ $post = $stmt->fetch(PDO::FETCH_ASSOC);
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500&display=swap"
     rel="stylesheet" />
-  <link rel="stylesheet" href="../../public/css/common.css" />
-  <link rel="stylesheet" href="../../public/css/criar_style.css" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
   <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../public/css/common.css" />
+  <link rel="stylesheet" href="../../public/css/criar_style.css" />
+  <!-- <link rel="stylesheet" href="../../public/css/index_style.css" /> -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 
@@ -58,14 +59,15 @@ $post = $stmt->fetch(PDO::FETCH_ASSOC);
   </nav>
 
 
-  <section class="content-criar content">
-    <form class="row m-5" action="../db/update-post.php" id="form-criar">
+  <section class="content-criar content container-fluid mt-3 px-3">
+    <h1 class="mb-5 mt-2">Editar post</h1>
+    <hr>
+    <form class="row" action="../db/update-post.php" id="form-criar">
 
-      <div class="mb-3 col">
+      <div class="mb-3 col-md-12 d-flex justify-content-end">
         <button class="btn btn-primary btn-voltar">Voltar</button>
       </div>
 
-      <h3 style="text-align: center;" class="mb-5 mt-2">Editar post</h3>
       <div class="mb-3 col-6">
         <label for="titulo" class="form-label">Título</label>
         <input type="text" name="titulo" class="form-control" id="titulo" maxlength="100"
@@ -118,8 +120,8 @@ $post = $stmt->fetch(PDO::FETCH_ASSOC);
       </div>
 
 
-      <div class="mb-3 col">
-        <input type="submit" class="btn btn-primary" value="Confirmar" id="btn-submit">
+      <div class="mb-3 col-md-12 d-flex justify-content-end">
+        <input type="submit" class="btn btn-primary" value="Salvar" id="btn-submit">
       </div>
 
     </form>
@@ -130,7 +132,6 @@ $post = $stmt->fetch(PDO::FETCH_ASSOC);
   <?php 
   include "../../includes/footer-admin.php";
   ?>
-
   <script>
   $(document).ready(function() {
 
