@@ -31,12 +31,13 @@ $postsPublicos = $stmtBlog->fetchAll(PDO::FETCH_ASSOC);
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
   </script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
   <link rel="stylesheet" href="/projeto-DLR/public/css/common.css">
   <link rel="stylesheet" href="/projeto-DLR/public/css/index_style.css">
 </head>
 
 <body>
-  <?php 
+  <?php
   include "./includes/header.php";
   ?>
   <section id="home">
@@ -381,14 +382,11 @@ $postsPublicos = $stmtBlog->fetchAll(PDO::FETCH_ASSOC);
   </section>
 
   <div class="map-section">
-    <svg viewBox="0 0 24 24">
-      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-      <circle cx="12" cy="10" r="3" />
-    </svg>
-    <span style="font-size:.85rem;font-family:'DM Sans',sans-serif"><span data-lang="pt">Alto da Boa Vista · Ribeirão
-        Preto, SP</span><span data-lang="en">Alto da Boa Vista · Ribeirão Preto, SP, Brazil</span></span>
+    <div id="map-local" class=""></div>
+    <span style="font-size: 1rem;font-family:'DM Sans',sans-serif"><span data-lang="pt">R. José Borges da Costa, 785 -
+        Sala 11 - Alto da Boa Vista, Ribeirão Preto - SP, 14025-660</span><span data-lang="en">R. José Borges da Costa,
+        785 - Sala 11 - Alto da Boa Vista, Ribeirão Preto - SP, 14025-660</span></span>
   </div>
-
   <?php 
   include "./includes/footer.php";
   ?>
@@ -402,6 +400,8 @@ $postsPublicos = $stmtBlog->fetchAll(PDO::FETCH_ASSOC);
   </svg>
 </a>
 
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="public/js/mapa.js"></script>
 <script src="public/js/script.js" defer></script>
 </body>
 
