@@ -159,8 +159,11 @@
     <div class="services-header reveal">
       <div class="section-eyebrow"><span data-lang="pt">O que ofereço</span><span data-lang="en">What I offer</span>
       </div>
-      <h2 class="section-title"><span data-lang="pt">Serviços <em>especializados</em></span><span
-          data-lang="en">Specialized <em>services</em></span></h2>
+      <div class="" style="  text-align: center;
+">
+        <h2 class="section-title"><span data-lang="pt">Serviços <em>especializados</em></span><span
+            data-lang="en">Specialized <em>services</em></span></h2>
+      </div>
     </div>
     <div class="services-grid">
       <div class="service-card reveal">
@@ -256,7 +259,7 @@
 
   <!-- INSTAGRAM -->
   <section id="instagram">
-    <div class="section-eyebrow" style="justify-content:center;display:flex;margin-bottom:.5rem">Instagram</div>
+    <div class="section-eyebrow" style="display:flex;margin-bottom:.5rem">Instagram</div>
     <h2 class="section-title" style="text-align:center"><span data-lang="pt">Conteúdo nas <em>redes</em></span><span
         data-lang="en">Content on <em>social</em></span></h2>
     <div class="instagram-grid reveal">
