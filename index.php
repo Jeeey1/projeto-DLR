@@ -351,8 +351,8 @@ $postsPublicos = $stmtBlog->fetchAll(PDO::FETCH_ASSOC);
           </div>
         </div>
       </div>
-      <div class="agenda-consulta">
-        <div>
+      <div class="background-doctoralia">
+        <div class="agenda-consulta">
           <a id="zl-url" class="zl-url"
             href="https://www.doctoralia.com.br/daniel-lataro-de-robbio/psicologo/ribeirao-preto" rel="nofollow"
             data-zlw-doctor="daniel-lataro-de-robbio" data-zlw-type="big_with_calendar" data-zlw-opinion="false"
