@@ -28,7 +28,8 @@ include "../includes/funcoes.php";
     integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
   </script>
   <link rel="stylesheet" href="../public/css/common.css">
-  <link rel="stylesheet" href="../public/css/style.css">
+  <link rel="stylesheet" href="../public/css/index_style.css">
+  <link rel="stylesheet" href="../public/css/login.css">
 </head>
 
 <body>
@@ -57,13 +58,13 @@ include "../includes/funcoes.php";
         <div class="row">
           <div class="col-md pb-3">
             <label for="usuario" class="form-label">Nome de usuário</label>
-            <input type="text" class="form-control" name="usuario">
+            <input type="text" class="form-control" name="usuario" autocomplete="username">
           </div>
         </div>
         <div class="row">
           <div class="col-md py-3">
             <label for="senha" class="form-label">Senha</label>
-            <input type="password" class="form-control" name="senha">
+            <input type="password" class="form-control" name="senha" autocomplete="current-password">
           </div>
         </div>
         <div class="row">
