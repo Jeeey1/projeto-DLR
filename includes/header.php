@@ -7,7 +7,6 @@
       <li><a href="#sobre"><span data-lang="pt">Sobre</span><span data-lang="en">About</span></a></li>
       <li><a href="#servicos"><span data-lang="pt">Serviços</span><span data-lang="en">Services</span></a></li>
       <li><a href="#blog">Blog</a></li>
-      <li><a href="#contato"><span data-lang="pt">Contato</span><span data-lang="en">Contact</span></a></li>
       <li>
         <a class="nav-cta" href="https://www.doctoralia.com.br/daniel-lataro-de-robbio/psicologo/ribeirao-preto"
           target="_blank">
