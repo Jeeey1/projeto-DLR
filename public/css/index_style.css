@@ -144,6 +144,7 @@ nav {
 #home {
   min-height: 100vh;
   background: var(--cream);
+  padding-top: 150px;
 }
 #home::before {
   content: "";
@@ -922,19 +923,21 @@ footer {
   transform: translateY(0);
 }
 
-.agenda-consulta {
+.background-doctoralia {
   display: grid;
   grid-template-columns: 1fr;
-  background: linear-gradient(
-    to right,
-    var(--brown) 10%,
-    var(--brown-mid) 60%,
-    var(--brown-mid) 20%,
-    var(--brown) 90%
-  );
   border-radius: 6px;
   padding: 1.5rem;
   justify-content: center;
+  margin: 0 auto;
+}
+
+.agenda-consulta {
+  border-radius: 10px;
+  max-width: 480px;
+  min-width: 380px;
+  padding: 10px 0;
+  background: white;
 }
 
 .home-content {
@@ -946,7 +949,6 @@ footer {
   justify-content: center;
   max-width: 1450px;
   margin: 0 auto;
-  padding-top: 8rem;
 }
 
 .sobre-content {

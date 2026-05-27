@@ -351,8 +351,8 @@ $postsPublicos = $stmtBlog->fetchAll(PDO::FETCH_ASSOC);
           </div>
         </div>
       </div>
-      <div class="agenda-consulta">
-        <div>
+      <div class="background-doctoralia">
+        <div class="agenda-consulta">
           <a id="zl-url" class="zl-url"
             href="https://www.doctoralia.com.br/daniel-lataro-de-robbio/psicologo/ribeirao-preto" rel="nofollow"
             data-zlw-doctor="daniel-lataro-de-robbio" data-zlw-type="big_with_calendar" data-zlw-opinion="false"
@@ -387,20 +387,25 @@ $postsPublicos = $stmtBlog->fetchAll(PDO::FETCH_ASSOC);
         data-lang="en">Content on <em>social</em></span></h2>
     <div class="instagram-grid reveal">
       <div class="insta-placeholder">
-        <img src="src/img/social_media/post1.png" alt="Imagem post instagram">
+        <a href="https://www.instagram.com/danielrobbioneuropsi/" target="_blank"><img
+            src="src/img/social_media/post1.png" alt="Imagem post instagram"></a>
       </div>
       <div class="insta-placeholder">
-        <img src="src/img/social_media/post2.png" alt="Imagem post instagram">
+        <a href="https://www.instagram.com/danielrobbioneuropsi/" target="_blank"><img
+            src="src/img/social_media/post2.png" alt="Imagem post instagram"></a>
       </div>
       <div class="insta-placeholder">
-        <img src="src/img/social_media/post3.png" alt="Imagem post instagram">
+        <a href="https://www.instagram.com/danielrobbioneuropsi/" target="_blank"><img
+            src="src/img/social_media/post3.png" alt="Imagem post instagram"></a>
       </div>
       <div class="insta-placeholder">
-        <img src="src/img/social_media/post4.png" alt="Imagem post instagram">
+        <a href="https://www.instagram.com/danielrobbioneuropsi/" target="_blank"><img
+            src="src/img/social_media/post4.png" alt="Imagem post instagram"></a>
       </div>
     </div>
-    <p style="margin-top:1.5rem;font-size:.82rem;color:var(--text-light)"><span data-lang="pt">Siga @drdaniel para mais
-        conteúdos</span><span data-lang="en">Follow @drdaniel for more content</span></p>
+    <p style="margin-top:1.5rem;font-size:.82rem;color:var(--text-light)"><span data-lang="pt">Siga
+        @danielrobbioneuropsi para mais
+        conteúdos</span><span data-lang="en">Follow @danielrobbioneuropsi for more content</span></p>
   </section>
 
   <?php 
