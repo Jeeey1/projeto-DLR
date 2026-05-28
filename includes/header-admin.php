@@ -31,6 +31,7 @@ $paginaAtual = basename($_SERVER['PHP_SELF']);
       ?>
       <?php 
       if($paginaAtual === 'dashboard.php'){
+        echo '<li><a href="profile.php">Perfil</a></li>';
         echo '<li><a href="logout.php">Logout</a></li>';
       } else {
         echo '<li><a href="../logout.php">Logout</a></li>';
