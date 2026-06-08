@@ -747,10 +747,10 @@ footer {
 }
 
 .content-criar {
-  max-width: 1650px;
-  margin-left: auto;
-  margin-right: auto;
   height: 90vh;
+  padding-top: 80px;
+  margin-bottom: 100px;
+  max-width: 1450px;
 }
 
 .btn-voltar a {

@@ -73,6 +73,9 @@ div .preview-posts {
   min-height: 80vh;
 }
 
+.section-dashboard {
+  margin-top: 100px;
+}
 
 @media (max-width: 1600px) {
   .post-content,

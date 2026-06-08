@@ -41,200 +41,220 @@ $postsPublicos = $stmtBlog->fetchAll(PDO::FETCH_ASSOC);
   include "./includes/header.php";
   ?>
   <section id="home">
-    <div class="hero-content">
-      <div class="hero-badge"><span data-lang="pt">Psicólogo & Neuropsicólogo Clínico</span><span
-          data-lang="en">Clinical
-          Psychologist & Neuropsychologist</span></div>
-      <h1 class="hero-title">
-        <span data-lang="pt">Cuidado <em>especializado</em><br>para sua saúde<br>mental e cognitiva</span>
-        <span data-lang="en">Specialized <em>care</em><br>for your mental<br>and cognitive health</span>
-      </h1>
-      <p class="hero-subtitle">
-        <span data-lang="pt">Atendimentos presenciais em Ribeirão Preto e online para o Brasil e mundo. Mais de 10 anos
-          de experiência clínica e de pesquisa.</span>
-        <span data-lang="en">In-person sessions in Ribeirão Preto and online for Brazil and worldwide. Over 10 years of
-          clinical and research experience.</span>
-      </p>
-      <div class="hero-actions">
-        <a href="https://www.doctoralia.com.br" target="_blank" class="btn-primary">
-          <span data-lang="pt">Agendar Consulta</span><span data-lang="en">Book a Session</span>
-        </a>
-        <a href="#sobre" class="btn-secondary">
-          <span data-lang="pt">Saiba mais</span><span data-lang="en">Learn more</span>
-        </a>
-      </div>
-      <div class="hero-stats">
-        <div>
-          <div class="stat-num">10+</div>
-          <div class="stat-label"><span data-lang="pt">Anos de experiência</span><span data-lang="en">Years
-              experience</span></div>
+    <div class="home-content">
+
+      <div class="hero-content">
+        <div class="hero-badge"><span data-lang="pt">Psicólogo & Neuropsicólogo Clínico</span><span
+            data-lang="en">Clinical
+            Psychologist & Neuropsychologist</span></div>
+        <h1 class="hero-title">
+          <span data-lang="pt">Cuidado <em>especializado</em><br>para sua saúde<br>mental e cognitiva</span>
+          <span data-lang="en">Specialized <em>care</em><br>for your mental<br>and cognitive health</span>
+        </h1>
+        <p class="hero-subtitle">
+          <span data-lang="pt">Atendimentos presenciais em Ribeirão Preto e online para o Brasil e mundo. Mais de 10
+            anos
+            de experiência clínica e de pesquisa.</span>
+          <span data-lang="en">In-person sessions in Ribeirão Preto and online for Brazil and worldwide. Over 10 years
+            of
+            clinical and research experience.</span>
+        </p>
+        <div class="hero-actions">
+          <a href="https://www.doctoralia.com.br/daniel-lataro-de-robbio/psicologo/ribeirao-preto" target="_blank"
+            class="btn-primary">
+            <span data-lang="pt">Agendar Consulta</span><span data-lang="en">Book a Session</span>
+          </a>
+          <a href="#sobre" class="btn-secondary">
+            <span data-lang="pt">Saiba mais</span><span data-lang="en">Learn more</span>
+          </a>
         </div>
-        <div>
-          <div class="stat-num">2</div>
-          <div class="stat-label"><span data-lang="pt">Especialidades</span><span data-lang="en">Specialties</span>
+        <div class="hero-stats">
+          <div>
+            <div class="stat-num">10+</div>
+            <div class="stat-label"><span data-lang="pt">Anos de experiência</span><span data-lang="en">Years
+                experience</span></div>
           </div>
-        </div>
-        <div>
-          <div class="stat-num">BR</div>
-          <div class="stat-label"><span data-lang="pt">& Internacional</span><span data-lang="en">& International</span>
+          <div>
+            <div class="stat-num">2</div>
+            <div class="stat-label"><span data-lang="pt">Especialidades</span><span data-lang="en">Specialties</span>
+            </div>
           </div>
-        </div>
-      </div>
-    </div>
-    <div class="hero-image">
-      <div style="position:relative;">
-        <div class="hero-deco"></div>
-        <div class="hero-deco2"></div>
-        <div class="hero-photo-frame">
-          <div class="hero-photo-placeholder">
-            <svg class="hero-photo-svg" viewBox="0 0 120 160" width="120" fill="none" stroke="rgba(201,168,76,.5)"
-              stroke-width="1">
-              <circle cx="60" cy="50" r="28" />
-              <path d="M8 140 Q8 100 60 95 Q112 100 112 140" />
-            </svg>
-          </div>
-          <div class="hero-photo-caption">
-            <h3>Dr. Daniel</h3>
-            <p>CRP 06/130646 · Ribeirão Preto, SP</p>
+          <div>
+            <div class="stat-num">BR</div>
+            <div class="stat-label"><span data-lang="pt">& Internacional</span><span data-lang="en">&
+                International</span>
+            </div>
           </div>
         </div>
       </div>
+      <div class="hero-image">
+        <div style="position:relative;">
+          <div class="hero-deco"></div>
+          <div class="hero-deco2"></div>
+          <div class="hero-photo-frame">
+            <div class="hero-photo-placeholder">
+              <svg class="hero-photo-svg" viewBox="0 0 120 160" width="120" fill="none" stroke="rgba(201,168,76,.5)"
+                stroke-width="1">
+                <circle cx="60" cy="50" r="28" />
+                <path d="M8 140 Q8 100 60 95 Q112 100 112 140" />
+              </svg>
+            </div>
+            <div class="hero-photo-caption">
+              <h3>Dr. Daniel</h3>
+              <p>CRP 06/130646 · Ribeirão Preto, SP</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
   <section id="sobre">
-    <div class="reveal">
-      <div class="section-eyebrow"><span data-lang="pt">Sobre o Profissional</span><span data-lang="en">About</span>
+    <div class="sobre-content">
+      <div class="reveal">
+        <div class="section-eyebrow"><span data-lang="pt">Sobre o Profissional</span><span data-lang="en">About</span>
+        </div>
+        <h2 class="section-title">
+          <span data-lang="pt">Daniel Lataro<br><em>De Robbio</em></span>
+          <span data-lang="en">Daniel Lataro<br><em>De Robbio</em></span>
+        </h2>
+        <p class="section-body">
+          <span data-lang="pt">Psicólogo e Neuropsicólogo com mais de 10 anos de experiência clínica e de pesquisa,
+            atuando com pessoas de diferentes idades e contextos, tanto no Brasil quanto online para o mundo
+            todo.</span>
+          <span data-lang="en">Psychologist and Neuropsychologist with over 10 years of clinical and research
+            experience,
+            working with people of different ages and backgrounds, both in Brazil and online worldwide.</span>
+        </p>
+        <p class="section-body">
+          <span data-lang="pt">Sou registrado no Conselho Federal de Psicologia (CRP 06/130646) e recebo em meu
+            consultório no bairro Alto da Boa Vista, em Ribeirão Preto, bem como em atendimentos online que conectam
+            você
+            de qualquer lugar com cuidado especializado.</span>
+          <span data-lang="en">Registered with the Federal Council of Psychology (CRP 06/130646), with an office in Alto
+            da Boa Vista, Ribeirão Preto, and online appointments available worldwide.</span>
+        </p>
+        <span class="crp-badge">CRP 06/130646</span>
       </div>
-      <h2 class="section-title">
-        <span data-lang="pt">Daniel Lataro<br><em>De Robbio</em></span>
-        <span data-lang="en">Daniel Lataro<br><em>De Robbio</em></span>
-      </h2>
-      <p class="section-body">
-        <span data-lang="pt">Psicólogo e Neuropsicólogo com mais de 10 anos de experiência clínica e de pesquisa,
-          atuando com pessoas de diferentes idades e contextos, tanto no Brasil quanto online para o mundo todo.</span>
-        <span data-lang="en">Psychologist and Neuropsychologist with over 10 years of clinical and research experience,
-          working with people of different ages and backgrounds, both in Brazil and online worldwide.</span>
-      </p>
-      <p class="section-body">
-        <span data-lang="pt">Sou registrado no Conselho Federal de Psicologia (CRP 06/130646) e recebo em meu
-          consultório no bairro Alto da Boa Vista, em Ribeirão Preto, bem como em atendimentos online que conectam você
-          de qualquer lugar com cuidado especializado.</span>
-        <span data-lang="en">Registered with the Federal Council of Psychology (CRP 06/130646), with an office in Alto
-          da Boa Vista, Ribeirão Preto, and online appointments available worldwide.</span>
-      </p>
-      <span class="crp-badge">CRP 06/130646</span>
-    </div>
-    <div class="sobre-card reveal" style="transition-delay:.15s">
-      <div class="section-eyebrow"><span data-lang="pt">Missão & Valores</span><span data-lang="en">Mission &
-          Values</span></div>
-      <p class="section-body" style="margin-top:0">
-        <span data-lang="pt">Promover saúde mental e desenvolvimento cognitivo por meio de atendimentos e avaliações
-          baseados em evidências científicas, contribuindo para o bem-estar e a autonomia dos indivíduos.</span>
-        <span data-lang="en">To promote mental health and cognitive development through evidence-based assessments and
-          interventions, contributing to individual well-being and autonomy.</span>
-      </p>
-      <div class="sobre-values">
-        <div class="value-item">
-          <div class="value-dot"></div>
-          <p><strong><span data-lang="pt">Ética e Responsabilidade</span><span data-lang="en">Ethics &
-                Responsibility</span></strong><span data-lang="pt">Princípios científicos e respeito humano</span><span
-              data-lang="en">Scientific principles and human respect</span></p>
-        </div>
-        <div class="value-item">
-          <div class="value-dot"></div>
-          <p><strong><span data-lang="pt">Acolhimento e Empatia</span><span data-lang="en">Warmth &
-                Empathy</span></strong><span data-lang="pt">Cuidado genuíno em cada atendimento</span><span
-              data-lang="en">Genuine care in every session</span></p>
-        </div>
-        <div class="value-item">
-          <div class="value-dot"></div>
-          <p><strong><span data-lang="pt">Excelência Técnica</span><span data-lang="en">Technical
-                Excellence</span></strong><span data-lang="pt">Práticas baseadas em evidências</span><span
-              data-lang="en">Evidence-based practices</span></p>
-        </div>
-        <div class="value-item">
-          <div class="value-dot"></div>
-          <p><strong><span data-lang="pt">Desenvolvimento Contínuo</span><span data-lang="en">Continuous
-                Growth</span></strong><span data-lang="pt">Atualização e crescimento constantes</span><span
-              data-lang="en">Constant learning and improvement</span></p>
+      <div class="sobre-card reveal" style="transition-delay:.15s">
+        <div class="section-eyebrow"><span data-lang="pt">Missão & Valores</span><span data-lang="en">Mission &
+            Values</span></div>
+        <p class="section-body" style="margin-top:0">
+          <span data-lang="pt">Promover saúde mental e desenvolvimento cognitivo por meio de atendimentos e avaliações
+            baseados em evidências científicas, contribuindo para o bem-estar e a autonomia dos indivíduos.</span>
+          <span data-lang="en">To promote mental health and cognitive development through evidence-based assessments and
+            interventions, contributing to individual well-being and autonomy.</span>
+        </p>
+        <div class="sobre-values">
+          <div class="value-item">
+            <div class="value-dot"></div>
+            <p><strong><span data-lang="pt">Ética e Responsabilidade</span><span data-lang="en">Ethics &
+                  Responsibility</span></strong><span data-lang="pt">Princípios científicos e respeito
+                humano</span><span data-lang="en">Scientific principles and human respect</span></p>
+          </div>
+          <div class="value-item">
+            <div class="value-dot"></div>
+            <p><strong><span data-lang="pt">Acolhimento e Empatia</span><span data-lang="en">Warmth &
+                  Empathy</span></strong><span data-lang="pt">Cuidado genuíno em cada atendimento</span><span
+                data-lang="en">Genuine care in every session</span></p>
+          </div>
+          <div class="value-item">
+            <div class="value-dot"></div>
+            <p><strong><span data-lang="pt">Excelência Técnica</span><span data-lang="en">Technical
+                  Excellence</span></strong><span data-lang="pt">Práticas baseadas em evidências</span><span
+                data-lang="en">Evidence-based practices</span></p>
+          </div>
+          <div class="value-item">
+            <div class="value-dot"></div>
+            <p><strong><span data-lang="pt">Desenvolvimento Contínuo</span><span data-lang="en">Continuous
+                  Growth</span></strong><span data-lang="pt">Atualização e crescimento constantes</span><span
+                data-lang="en">Constant learning and improvement</span></p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <section id="servicos">
-    <div class="services-header reveal">
-      <div class="section-eyebrow"><span data-lang="pt">O que ofereço</span><span data-lang="en">What I offer</span>
-      </div>
-      <div class="" style="  text-align: center;
-">
-        <h2 class="section-title"><span data-lang="pt">Serviços <em>especializados</em></span><span
-            data-lang="en">Specialized <em>services</em></span></h2>
-      </div>
-    </div>
-    <div class="services-grid">
-      <div class="service-card reveal">
-        <div class="service-num">01</div>
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24">
-            <path d="M12 2a9 9 0 1 0 0 18A9 9 0 0 0 12 2z" />
-            <path d="M12 8v4l3 3" />
-          </svg>
+    <div class="servicos-content">
+      <div class="reveal">
+        <div class="section-eyebrow"><span data-lang="pt">O que ofereço</span><span data-lang="en">What I offer</span>
         </div>
-        <h3 class="service-title"><span data-lang="pt">Neuropsicologia</span><span data-lang="en">Neuropsychology</span>
-        </h3>
-        <p class="service-desc"><span data-lang="pt">Avaliação neuropsicológica completa para mapeamento das funções
-            cognitivas, com laudos detalhados e plano de intervenção.</span><span data-lang="en">Complete
-            neuropsychological assessment for mapping cognitive functions, with detailed reports and intervention
-            plans.</span></p>
-        <ul class="service-list">
-          <li><span data-lang="pt">Avaliação neuropsicológica</span><span data-lang="en">Neuropsychological
-              assessment</span></li>
-          <li><span data-lang="pt">Métodos baseados em evidências</span><span data-lang="en">Evidence-based
-              methods</span></li>
-          <li><span data-lang="pt">Laudos e aplicações</span><span data-lang="en">Reports and applications</span></li>
-          <li><span data-lang="pt">Reabilitação cognitiva</span><span data-lang="en">Cognitive rehabilitation</span>
-          </li>
-        </ul>
-      </div>
-      <div class="service-card reveal" style="transition-delay:.1s">
-        <div class="service-num">02</div>
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24">
-            <path
-              d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-          </svg>
+        <div class="" style="  text-align: center;">
+
+          <div class="d-flex justify-content-start mb-3">
+            <h2 class="section-title"><span data-lang="pt">Serviços <em>especializados</em></span><span
+                data-lang="en">Specialized <em>services</em></span></h2>
+          </div>
         </div>
-        <h3 class="service-title"><span data-lang="pt">Psicoterapia</span><span data-lang="en">Psychotherapy</span></h3>
-        <p class="service-desc"><span data-lang="pt">Atendimento psicoterápico individual com abordagem baseada em
-            evidências, voltado para o desenvolvimento emocional e bem-estar.</span><span data-lang="en">Individual
-            psychotherapy with an evidence-based approach, focused on emotional development and well-being.</span></p>
-        <ul class="service-list">
-          <li><span data-lang="pt">Abordagem terapêutica individualizada</span><span data-lang="en">Individualized
-              therapeutic approach</span></li>
-          <li><span data-lang="pt">Especialidades clínicas</span><span data-lang="en">Clinical specialties</span></li>
-          <li><span data-lang="pt">Presencial e online</span><span data-lang="en">In-person and online</span></li>
-          <li><span data-lang="pt">Todas as idades</span><span data-lang="en">All ages</span></li>
-        </ul>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-num">01</div>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2a9 9 0 1 0 0 18A9 9 0 0 0 12 2z" />
+              <path d="M12 8v4l3 3" />
+            </svg>
+          </div>
+          <h3 class="service-title"><span data-lang="pt">Neuropsicologia</span><span
+              data-lang="en">Neuropsychology</span>
+          </h3>
+          <p class="service-desc"><span data-lang="pt">Avaliação neuropsicológica completa para mapeamento das funções
+              cognitivas, com laudos detalhados e plano de intervenção.</span><span data-lang="en">Complete
+              neuropsychological assessment for mapping cognitive functions, with detailed reports and intervention
+              plans.</span></p>
+          <ul class="service-list">
+            <li><span data-lang="pt">Avaliação neuropsicológica</span><span data-lang="en">Neuropsychological
+                assessment</span></li>
+            <li><span data-lang="pt">Métodos baseados em evidências</span><span data-lang="en">Evidence-based
+                methods</span></li>
+            <li><span data-lang="pt">Laudos e aplicações</span><span data-lang="en">Reports and applications</span></li>
+            <li><span data-lang="pt">Reabilitação cognitiva</span><span data-lang="en">Cognitive rehabilitation</span>
+            </li>
+          </ul>
+        </div>
+        <div class="service-card reveal" style="transition-delay:.1s">
+          <div class="service-num">02</div>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+            </svg>
+          </div>
+          <h3 class="service-title"><span data-lang="pt">Psicoterapia</span><span data-lang="en">Psychotherapy</span>
+          </h3>
+          <p class="service-desc"><span data-lang="pt">Atendimento psicoterápico individual com abordagem baseada em
+              evidências, voltado para o desenvolvimento emocional e bem-estar.</span><span data-lang="en">Individual
+              psychotherapy with an evidence-based approach, focused on emotional development and well-being.</span></p>
+          <ul class="service-list">
+            <li><span data-lang="pt">Abordagem terapêutica individualizada</span><span data-lang="en">Individualized
+                therapeutic approach</span></li>
+            <li><span data-lang="pt">Especialidades clínicas</span><span data-lang="en">Clinical specialties</span></li>
+            <li><span data-lang="pt">Presencial e online</span><span data-lang="en">In-person and online</span></li>
+            <li><span data-lang="pt">Todas as idades</span><span data-lang="en">All ages</span></li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
 
   <section id="blog">
-    <div class="blog-header reveal">
-      <div>
-        <div class="section-eyebrow"><span data-lang="pt">Conteúdo educativo</span><span data-lang="en">Educational
-            content</span></div>
-        <h2 class="section-title"><span data-lang="pt">Artigos & <em>Publicações</em></span><span
-            data-lang="en">Articles & <em>Publications</em></span></h2>
+    <div class="blog-content">
+      <div class="blog-header reveal">
+        <div>
+          <div class="section-eyebrow"><span data-lang="pt">Conteúdo educativo</span><span data-lang="en">Educational
+              content</span></div>
+          <h2 class="section-title"><span data-lang="pt">Artigos & <em>Publicações</em></span><span
+              data-lang="en">Articles & <em>Publications</em></span></h2>
+        </div>
+        <a href="blog.php" class="btn-secondary" style="align-self:flex-end"><span data-lang="pt">Ver todos</span><span
+            data-lang="en">See all</span></a>
       </div>
-      <a href="blog.php" class="btn-secondary" style="align-self:flex-end"><span data-lang="pt">Ver todos</span><span
-          data-lang="en">See all</span></a>
-    </div>
 
-    <div class="blog-grid">
-      <?php 
+      <div class="blog-grid">
+        <?php 
       // Loop travado em 3 para manter o Grid sempre perfeito
       for ($i = 0; $i < 3; $i++) {
           $delay = $i * 0.1; // Cria o efeito cascata do reveal (0s, 0.1s, 0.2s)
@@ -279,108 +299,78 @@ $postsPublicos = $stmtBlog->fetchAll(PDO::FETCH_ASSOC);
           }
       }
       ?>
+      </div>
     </div>
-  </section>
-
-  <section id="instagram">
-    <div class="section-eyebrow" style="display:flex;margin-bottom:.5rem">Instagram</div>
-    <h2 class="section-title" style="text-align:center"><span data-lang="pt">Conteúdo nas <em>redes</em></span><span
-        data-lang="en">Content on <em>social</em></span></h2>
-    <div class="instagram-grid reveal">
-      <div class="insta-placeholder">▶</div>
-      <div class="insta-placeholder">▶</div>
-      <div class="insta-placeholder">▶</div>
-      <div class="insta-placeholder">▶</div>
-    </div>
-    <p style="margin-top:1.5rem;font-size:.82rem;color:var(--text-light)"><span data-lang="pt">Siga @drdaniel para mais
-        conteúdos</span><span data-lang="en">Follow @drdaniel for more content</span></p>
   </section>
 
   <section id="contato">
-    <div class="contato-info reveal">
-      <div class="section-eyebrow"><span data-lang="pt">Fale comigo</span><span data-lang="en">Get in touch</span></div>
-      <h2 class="section-title"><span data-lang="pt">Agende sua <em>consulta</em></span><span data-lang="en">Book your
-          <em>appointment</em></span></h2>
-      <p class="section-body"><span data-lang="pt">Estou disponível para atendimentos presenciais em Ribeirão Preto e
-          online para todo o Brasil e mundo.</span><span data-lang="en">Available for in-person sessions in Ribeirão
-          Preto and online worldwide.</span></p>
-      <div class="contact-items">
-        <div class="contact-item">
-          <div class="contact-item-icon">
-            <svg viewBox="0 0 24 24">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-              <circle cx="12" cy="10" r="3" />
-            </svg>
-          </div>
-          <div>
-            <div class="contact-item-label"><span data-lang="pt">Endereço</span><span data-lang="en">Address</span>
+    <div class="contato-content">
+      <div class="contato-info reveal">
+        <div class="section-eyebrow"><span data-lang="pt">Fale comigo</span><span data-lang="en">Get in touch</span>
+        </div>
+        <h2 class="section-title"><span data-lang="pt">Agende sua <em>consulta</em></span><span data-lang="en">Book your
+            <em>appointment</em></span></h2>
+        <p class="section-body"><span data-lang="pt">Estou disponível para atendimentos presenciais em Ribeirão Preto e
+            online para todo o Brasil e mundo.</span><span data-lang="en">Available for in-person sessions in Ribeirão
+            Preto and online worldwide.</span></p>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-item-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
             </div>
-            <div class="contact-item-value"><span data-lang="pt">Alto da Boa Vista, Ribeirão Preto – SP</span><span
-                data-lang="en">Alto da Boa Vista, Ribeirão Preto – SP, Brazil</span></div>
+            <div>
+              <div class="contact-item-label"><span data-lang="pt">Endereço</span><span data-lang="en">Address</span>
+              </div>
+              <div class="contact-item-value"><span data-lang="pt">Alto da Boa Vista, Ribeirão Preto – SP</span><span
+                  data-lang="en">Alto da Boa Vista, Ribeirão Preto – SP, Brazil</span></div>
+            </div>
           </div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-item-icon">
-            <svg viewBox="0 0 24 24">
-              <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
-              <line x1="12" y1="18" x2="12.01" y2="18" />
-            </svg>
+          <div class="contact-item">
+            <div class="contact-item-icon">
+              <svg viewBox="0 0 24 24">
+                <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
+                <line x1="12" y1="18" x2="12.01" y2="18" />
+              </svg>
+            </div>
+            <div>
+              <div class="contact-item-label"><span data-lang="pt">WhatsApp</span>
+              </div>
+              <div class="contact-item-value"><a
+                  href="https://wa.me/5516991286116?text=Olá%2C%20gostaria%20de%20agendar%20uma%20consulta"
+                  target="_blank" style="color:rgba(245,240,232,.8);text-decoration:none">(16) 99128-6116</a></div>
+            </div>
           </div>
-          <div>
-            <div class="contact-item-label">WhatsApp</div>
-            <div class="contact-item-value"><a
-                href="https://wa.me/5516999999999?text=Olá%2C%20gostaria%20de%20agendar%20uma%20consulta"
-                target="_blank" style="color:rgba(245,240,232,.8);text-decoration:none">(16) 99999-9999</a></div>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-item-icon">
-            <svg viewBox="0 0 24 24">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-              <polyline points="22,6 12,13 2,6" />
-            </svg>
-          </div>
-          <div>
-            <div class="contact-item-label">Doctoralia</div>
-            <div class="contact-item-value"><a href="https://www.doctoralia.com.br" target="_blank"
-                style="color:rgba(245,240,232,.8);text-decoration:none"><span data-lang="pt">Agendar online</span><span
-                  data-lang="en">Book online</span> →</a></div>
+          <div class="contact-item mt-2">
+            <a class="btn btn-primary"
+              href="https://www.doctoralia.com.br/daniel-lataro-de-robbio/psicologo/ribeirao-preto"><span
+                data-lang="pt">Mais detalhes</span><span data-lang="en">More
+                Details</span></a>
           </div>
         </div>
       </div>
-    </div>
-    <div class="contato-form reveal form-index" style="transition-delay:.15s">
-      <h3
-        style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;color:var(--cream);margin-bottom:1.5rem">
-        <span data-lang="pt">Envie uma mensagem</span><span data-lang="en">Send a message</span>
-      </h3>
-      <div class="form-group">
-        <label><span data-lang="pt">Nome completo</span><span data-lang="en">Full name</span></label>
-        <input type="text" placeholder="Dr. João Silva">
+      <div class="background-doctoralia">
+        <div class="agenda-consulta">
+          <a id="zl-url" class="zl-url"
+            href="https://www.doctoralia.com.br/daniel-lataro-de-robbio/psicologo/ribeirao-preto" rel="nofollow"
+            data-zlw-doctor="daniel-lataro-de-robbio" data-zlw-type="big_with_calendar" data-zlw-opinion="false"
+            data-zlw-hide-branding="true" data-zlw-saas-only="true"
+            data-zlw-a11y-title="Widget de marcação de consultas médicas">Marque uma consulta</a>
+          <script>
+          ! function($_x, _s, id) {
+            var js, fjs = $_x.getElementsByTagName(_s)[0];
+            if (!$_x.getElementById(id)) {
+              js = $_x.createElement(_s);
+              js.id = id;
+              js.src = "//platform.docplanner.com/js/widget.js";
+              fjs.parentNode.insertBefore(js, fjs);
+            }
+          }(document, "script", "zl-widget-s");
+          </script>
+        </div>
       </div>
-      <div class="form-group">
-        <label>E-mail</label>
-        <input type="email" placeholder="joao@email.com">
-      </div>
-      <div class="form-group">
-        <label><span data-lang="pt">Serviço de interesse</span><span data-lang="en">Service of interest</span></label>
-        <select>
-          <option value=""><span data-lang="pt">Selecione</span></option>
-          <option><span data-lang="pt">Psicoterapia</span><span data-lang="en">Psychotherapy</span></option>
-          <option><span data-lang="pt">Avaliação Neuropsicológica</span><span data-lang="en">Neuropsychological
-              Assessment</span></option>
-          <option><span data-lang="pt">Outros</span><span data-lang="en">Other</span></option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label><span data-lang="pt">Mensagem</span><span data-lang="en">Message</span></label>
-        <textarea placeholder="Como posso ajudá-lo(a)?"></textarea>
-      </div>
-      <p class="form-note"><span data-lang="pt">Seus dados são protegidos conforme a LGPD.</span><span
-          data-lang="en">Your
-          data is protected under LGPD regulations.</span></p>
-      <button class="btn-submit" style="margin-top:1rem"><span data-lang="pt">Enviar mensagem</span><span
-          data-lang="en">Send message</span></button>
     </div>
   </section>
 
@@ -390,6 +380,34 @@ $postsPublicos = $stmtBlog->fetchAll(PDO::FETCH_ASSOC);
         Sala 11 - Alto da Boa Vista, Ribeirão Preto - SP, 14025-660</span><span data-lang="en">R. José Borges da Costa,
         785 - Sala 11 - Alto da Boa Vista, Ribeirão Preto - SP, 14025-660</span></span>
   </div>
+
+  <section id="instagram">
+    <div class="section-eyebrow" style="display:flex;margin-bottom:.5rem;justify-content:center;">Instagram</div>
+    <h2 class="section-title" style="text-align:center"><span data-lang="pt">Conteúdo nas <em>redes</em></span><span
+        data-lang="en">Content on <em>social</em></span></h2>
+    <div class="instagram-grid reveal">
+      <div class="insta-placeholder">
+        <a href="https://www.instagram.com/danielrobbioneuropsi/" target="_blank"><img
+            src="src/img/social_media/post1.png" alt="Imagem post instagram"></a>
+      </div>
+      <div class="insta-placeholder">
+        <a href="https://www.instagram.com/danielrobbioneuropsi/" target="_blank"><img
+            src="src/img/social_media/post2.png" alt="Imagem post instagram"></a>
+      </div>
+      <div class="insta-placeholder">
+        <a href="https://www.instagram.com/danielrobbioneuropsi/" target="_blank"><img
+            src="src/img/social_media/post3.png" alt="Imagem post instagram"></a>
+      </div>
+      <div class="insta-placeholder">
+        <a href="https://www.instagram.com/danielrobbioneuropsi/" target="_blank"><img
+            src="src/img/social_media/post4.png" alt="Imagem post instagram"></a>
+      </div>
+    </div>
+    <p style="margin-top:1.5rem;font-size:.82rem;color:var(--text-light)"><span data-lang="pt">Siga
+        @danielrobbioneuropsi para mais
+        conteúdos</span><span data-lang="en">Follow @danielrobbioneuropsi for more content</span></p>
+  </section>
+
   <?php 
   include "./includes/footer.php";
   ?>
@@ -405,7 +423,7 @@ $postsPublicos = $stmtBlog->fetchAll(PDO::FETCH_ASSOC);
 
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 <script src="public/js/mapa.js"></script>
-<script src="public/js/script.js" defer></script>
+<script src="public/js/script.js"></script>
 </body>
 
 </html>

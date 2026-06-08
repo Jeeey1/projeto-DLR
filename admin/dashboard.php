@@ -60,7 +60,9 @@ $postsVitrine = $stmtVitrine->fetchAll(PDO::FETCH_ASSOC);
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../public/css/common.css" />
   <link rel="stylesheet" href="../public/css/admin_style.css" />
-  <link rel="stylesheet" href="../public/css/index_style.css" />
+  <link rel="stylesheet" href="../public/css/header_admin.css" />
+  <link rel="stylesheet" href="../public/css/footer_admin.css" />
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
   <style>
@@ -74,24 +76,17 @@ $postsVitrine = $stmtVitrine->fetchAll(PDO::FETCH_ASSOC);
   </style>
 </head>
 
-<body class="blog-page">
+<body>
 
-  <nav id="navbar">
-    <div class="nav-logo">Dr. <span>Daniel</span></div>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="./blog/posts.php"><span data-lang="pt">Posts</span></a></li>
-      <li><a href="logout.php"><span data-lang="pt">Logout</span></a></li>
-      <div class="hamburger" id="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
-        <span></span><span></span><span></span>
-      </div>
-    </ul>
-  </nav>
+  <?php 
+    include '../includes/header-admin.php';
+  ?>
 
-  <section class="container mt-4 mb-5 admin-section">
+  <section class="container mb-5 section-dashboard">
 
     <?php 
     $nomeUsuario = !empty($_SESSION['usuario_nome']) ? ucfirst($_SESSION['usuario_nome']) : '';
-    echo "<h2 class='mb-4' style='font-family: \"Cormorant Garamond\", serif;'>Seja bem-vindo(a), " . htmlspecialchars($nomeUsuario) . "! 👋</h2>";
+    echo "<h1 class='pb-4' style='font-family: \"Cormorant Garamond\", serif;'>Seja bem-vindo(a), " . htmlspecialchars($nomeUsuario) . "!</h1>";
     ?>
 
     <div class="row mb-4">
@@ -235,26 +230,6 @@ $postsVitrine = $stmtVitrine->fetchAll(PDO::FETCH_ASSOC);
     </div>
   </section>
 
-  <div style="width: 100%; max-width: 900px; margin: 0 auto;">
-    <a id="zl-url" class="zl-url" href="https://www.doctoralia.com.br/daniel-lataro-de-robbio/psicologo/ribeirao-preto"
-      rel="nofollow" data-zlw-doctor="daniel-lataro-de-robbio" data-zlw-type="big_with_calendar"
-      data-zlw-opinion="false" data-zlw-hide-branding="true" data-zlw-saas-only="true"
-      data-zlw-a11y-title="Widget de marcação de consultas médicas">Marque uma consulta</a>
-  </div>
-
-  <script>
-  ! function($_x, _s, id) {
-    var js, fjs = $_x.getElementsByTagName(_s)[0];
-    if (!$_x.getElementById(id)) {
-      js = $_x.createElement(_s);
-      js.id = id;
-      js.src = "//platform.docplanner.com/js/widget.js";
-      fjs.parentNode.insertBefore(js, fjs);
-    }
-  }(document, "script", "zl-widget-s");
-  </script>
-
-
   <script>
   ! function($_x, _s, id) {
     var js, fjs = $_x.getElementsByTagName(_s)[0];
@@ -278,16 +253,9 @@ $postsVitrine = $stmtVitrine->fetchAll(PDO::FETCH_ASSOC);
   }(document, "script", "zl-widget-s");
   </script>
 
-  <footer class="footer-admin">
-    <div>
-      <div class="footer-brand">Dr. <span>Daniel</span></div>
-      <div class="lgpd-note">
-        <span data-lang="pt">© 2026 · Todos os direitos reservados · LGPD</span>
-        <span data-lang="en">© 2026 · All rights reserved · LGPD</span>
-      </div>
-    </div>
-    <div class="footer-copy">CRP 06/130646</div>
-  </footer>
+  <?php
+  include '../includes/footer-admin.php'; 
+  ?>
 
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
