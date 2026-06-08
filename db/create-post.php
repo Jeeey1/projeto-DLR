@@ -2,7 +2,7 @@
 include '../includes/conexao.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
-  $pastaDestino = __DIR__ . '../../src/img/posts/';
+  $pastaDestino = __DIR__ . '/../src/img/posts/';
 
   // Garante que a pasta existe
   if (!is_dir($pastaDestino)){

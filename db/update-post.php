@@ -6,8 +6,8 @@ $pdo = (new Conexao())->conectar();
 
 $id = $_POST['id'];
 
-// Pega as categorias selecionadas ou um array vazio
-$categorias = $_POST['categ'] ?? [];
+// Pega a categoria selecionada
+$categoria = $_POST['categoria'] ?? null;
 
 $arquivo = $_FILES['img'] ?? null;
 $temArquivo = $arquivo && $arquivo['error'] === UPLOAD_ERR_OK;
