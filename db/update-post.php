@@ -34,6 +34,9 @@ if($temArquivo){
     if(!empty($imagemAntiga) && file_exists(__DIR__ . '/../' . $imagemAntiga)){
         unlink(__DIR__ . '/../' . $imagemAntiga);
     }
+  } else {
+    echo json_encode(['status' => 'error', 'message' => 'Erro ao fazer upload da imagem']);
+    exit;
   }
 }
 

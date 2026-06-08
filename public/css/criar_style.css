@@ -747,9 +747,9 @@ footer {
 }
 
 .content-criar {
-  height: 90vh;
-  padding-top: 80px;
-  margin-bottom: 100px;
+  min-height: auto;
+  padding-top: 30px;
+  padding-bottom: 100px;
   max-width: 1450px;
 }
 
