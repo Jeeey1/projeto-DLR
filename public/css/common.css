@@ -144,3 +144,41 @@ footer {
 div:has(#editor) {
   margin-bottom: 20px;
 }
+
+/* ── RESPONSIVIDADE ADICIONAL (common.css) ── */
+
+@media (max-width: 1200px) {
+  nav {
+    padding: 1.2rem 2rem;
+  }
+  footer {
+    padding: 2rem 2rem;
+  }
+}
+
+@media (max-width: 900px) {
+  nav {
+    padding: 1rem 1.5rem;
+  }
+  .nav-links {
+    display: none;
+  }
+  .hamburger {
+    display: flex;
+  }
+  footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.5rem 1.5rem;
+  }
+}
+
+@media (max-width: 380px) {
+  nav {
+    padding: 1rem;
+  }
+  footer {
+    padding: 1.5rem 1rem;
+  }
+}
