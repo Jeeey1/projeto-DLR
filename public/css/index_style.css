@@ -1114,6 +1114,112 @@ footer {
   }
 }
 
+/* ── TABLET / NOTEBOOK MÉDIO ── */
+@media (max-width: 1200px) {
+  nav {
+    padding: 1.2rem 2rem;
+  }
+  #home {
+    padding: 8rem 2rem 4rem;
+    gap: 2rem;
+  }
+  .hero-photo-frame {
+    width: 340px;
+    height: 420px;
+  }
+  #sobre {
+    padding: 6rem 2rem;
+    gap: 3.5rem;
+  }
+  #servicos,
+  #blog {
+    padding: 6rem 2rem;
+  }
+  #contato {
+    padding: 6rem 2rem;
+    gap: 3.5rem;
+  }
+  footer {
+    padding: 2.5rem 2rem;
+  }
+  .hero-stats {
+    gap: 2.5rem;
+  }
+}
+
+/* ── MOBILE GRANDE (600px) ── */
+@media (max-width: 600px) {
+  .hero-title {
+    font-size: clamp(2.2rem, 8vw, 3rem);
+  }
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+  .hero-stats {
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+  .stat-num {
+    font-size: 2rem;
+  }
+  .sobre-values {
+    grid-template-columns: 1fr;
+  }
+  .service-card {
+    padding: 2.2rem;
+  }
+  .blog-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .contato-form {
+    padding: 1.8rem 1.3rem;
+  }
+  footer {
+    gap: 1rem;
+  }
+  .footer-links {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+}
+
+/* ── MOBILE PEQUENO (380px) ── */
+@media (max-width: 380px) {
+  #home {
+    padding: 6rem 1rem 3rem;
+  }
+  #sobre,
+  #contato {
+    padding: 4rem 1rem;
+  }
+  #servicos,
+  #blog,
+  #instagram {
+    padding: 4rem 1rem;
+  }
+  .btn-primary,
+  .btn-secondary {
+    padding: 0.8rem 1.4rem;
+    font-size: 0.9rem;
+    width: 100%;
+    text-align: center;
+  }
+  .hero-actions {
+    flex-direction: column;
+  }
+  .sobre-card {
+    padding: 2rem 1.2rem;
+  }
+  .contato-form {
+    padding: 1.5rem 1rem;
+  }
+  footer {
+    padding: 1.5rem 1rem;
+  }
+}
+
 /* ── LANG PT/EN ── */
 [data-lang="en"] {
   display: none;

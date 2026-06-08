@@ -119,3 +119,43 @@ div .preview-posts {
     padding: 0 0.5rem;
   }
 }
+
+/* ── RESPONSIVIDADE ADICIONAL (admin_style) ── */
+
+@media (max-width: 1200px) {
+  .post-content,
+  .div-btn-criar {
+    max-width: 900px;
+    padding: 0 2rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .post-content {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .post-content {
+    grid-template-columns: 1fr;
+  }
+  .div-btn-criar {
+    padding: 0 1rem;
+    justify-content: stretch;
+  }
+  .div-btn-criar .btn-primary,
+  .div-btn-criar a {
+    width: 100%;
+    text-align: center;
+  }
+  .preview-posts h3 {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .post-content {
+    padding: 0 0.5rem;
+  }
+}

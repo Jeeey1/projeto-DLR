@@ -474,3 +474,75 @@
     padding: 1.5rem 1rem;
   }
 }
+
+/* ── RESPONSIVIDADE ADICIONAL (blog_style.css) ── */
+
+/* Tablet / Notebook médio */
+@media (max-width: 1200px) {
+  .bp-header,
+  .bp-filters,
+  .bp-featured,
+  .bp-grid {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  .bp-featured {
+    gap: 2.5rem;
+  }
+  .bp-grid {
+    gap: 2rem 1.5rem;
+  }
+  .bp-footer {
+    padding: 2rem 2rem;
+  }
+}
+
+/* Mobile grande */
+@media (max-width: 600px) {
+  .bp-header {
+    padding-top: 120px;
+    padding-bottom: 30px;
+  }
+  .bp-title {
+    font-size: clamp(2rem, 8vw, 2.8rem);
+  }
+  .bp-featured-title {
+    font-size: clamp(1.6rem, 6vw, 2.2rem);
+  }
+  .bp-grid {
+    grid-template-columns: 1fr;
+  }
+  .bp-news-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .bp-news-form input {
+    max-width: 100%;
+  }
+  .bp-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+  .bp-footer-links {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+}
+
+/* Mobile pequeno */
+@media (max-width: 380px) {
+  .bp-header,
+  .bp-filters,
+  .bp-featured,
+  .bp-grid {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .bp-newsletter {
+    padding: 3rem 1rem;
+  }
+  .bp-footer {
+    padding: 1.5rem 1rem;
+  }
+}
