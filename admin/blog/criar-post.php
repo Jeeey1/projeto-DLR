@@ -50,7 +50,7 @@ if($_SESSION['logado'] != true){
     <h1 class="py-2">Criar novo post</h1>
     <hr>
 
-    <form class="row" action="../db/insert-post.php" id="form-criar">
+    <form class="row" action="../../db/create-post.php" id="form-criar">
 
       <div class="mb-3 col-md-12 d-flex justify-content-end">
         <a class="btn btn-primary btn-voltar">Voltar</a>
