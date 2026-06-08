@@ -1,4 +1,5 @@
 <?php 
+header('Content-Type: application/json');
 session_start();
 include '../includes/conexao.php';
 
@@ -73,8 +74,10 @@ $data = [
 
 $qry = "UPDATE posts SET titulo=?, descricao=?, corpo=?, imagem=?, categoria=?, autor=?, data_criacao=? WHERE id=?";
 $stmt = $pdo->prepare($qry);
-$stmt->execute($data);
 
-// Retorna sucesso para o Javascript
-echo json_encode(['status' => 'success', 'message' => 'Post atualizado com sucesso!']);
-?>
+try {
+  $stmt->execute($data);
+  echo json_encode(['status' => 'success', 'message' => 'Post atualizado com sucesso!']);
+} catch (PDOException $e) {
+  echo json_encode(['status' => 'error', 'message' => 'Erro no banco de dados: ' . $e->getMessage()]);
+}

@@ -1,4 +1,5 @@
 <?php 
+header('Content-Type: application/json');
 include '../includes/conexao.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
@@ -53,12 +54,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
       $qry = "INSERT INTO posts (titulo, descricao, corpo, imagem, categoria, autor, data_criacao, usuario_id) values (?, ?, ?, ?, ?, ?, ?, ?)";
       $stmt = $pdo->prepare($qry);
-      $stmt->execute($data);
-
-      if ($stmt->rowCount() > 0){
-        echo json_encode(['status' => 'success', 'message' => 'Post criado com sucesso!']);
-      } else {
-        echo json_encode(['status' => 'error', 'message' => 'Erro ao criar o post.']);
+      
+      try {
+        $stmt->execute($data);
+        if ($stmt->rowCount() > 0){
+          echo json_encode(['status' => 'success', 'message' => 'Post criado com sucesso!']);
+        } else {
+          echo json_encode(['status' => 'error', 'message' => 'Erro ao criar o post.']);
+        }
+      } catch (PDOException $e) {
+        echo json_encode(['status' => 'error', 'message' => 'Erro no banco de dados: ' . $e->getMessage()]);
       }
 
     } else {
@@ -85,15 +90,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
       $pdo = $pdo->conectar();
       $qry = "INSERT INTO posts (titulo, descricao, corpo, categoria, autor, data_criacao, usuario_id) values (?, ?, ?, ?, ?, ?, ?)";
       $stmt = $pdo->prepare($qry);
-      $stmt->execute($data);
-
-      if ($stmt->rowCount() > 0){
-        echo json_encode(['status' => 'success', 'message' => 'Post criado com sucesso!']);
-      } else {
-        echo json_encode(['status' => 'error', 'message' => 'Erro ao criar o post.']);
+      
+      try {
+        $stmt->execute($data);
+        if ($stmt->rowCount() > 0){
+          echo json_encode(['status' => 'success', 'message' => 'Post criado com sucesso!']);
+        } else {
+          echo json_encode(['status' => 'error', 'message' => 'Erro ao criar o post.']);
+        }
+      } catch (PDOException $e) {
+        echo json_encode(['status' => 'error', 'message' => 'Erro no banco de dados: ' . $e->getMessage()]);
       }
   }
 
 }
-
-?>
