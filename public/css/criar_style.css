@@ -747,9 +747,9 @@ footer {
 }
 
 .content-criar {
-  height: 90vh;
-  padding-top: 80px;
-  margin-bottom: 100px;
+  min-height: auto;
+  padding-top: 30px;
+  padding-bottom: 100px;
   max-width: 1450px;
 }
 
@@ -777,7 +777,124 @@ footer {
   margin-bottom: 0;
 }
 
-/* ── MOBILE ── */
+/* ── RESPONSIVIDADE CRIAR/EDITAR POST ── */
+/* Essas regras focam nas páginas admin/blog/criar-post.php e editar-post.php */
+
+/* Tablets e notebooks pequenos */
+@media (max-width: 1024px) {
+  .content-criar {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  /* Layout do formulário: mantém 2 colunas até onde der */
+  .content-criar form.row {
+    gap: 12px;
+  }
+
+  /* Quill editor: libera espaço e evita overflow */
+  #editor,
+  .ql-editor {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Botões/links longos */
+  .btn-voltar,
+  .btn-criar,
+  #btn-submit {
+    width: 100%;
+  }
+}
+
+/* Celulares (padrão) */
+@media (max-width: 768px) {
+  /* Ajusta navbar para não “roubar” espaço e melhorar rolagem */
+  nav {
+    padding: 1rem 1.2rem;
+  }
+
+  .content-criar {
+    padding-top: 18px;
+    padding-bottom: 60px;
+  }
+
+  /* Força o formulário a empilhar campos */
+  .content-criar form.row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .content-criar form .col,
+  .content-criar form .col-3,
+  .content-criar form .col-6,
+  .content-criar form .col-md-12 {
+    width: 100% !important;
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Campos com seleção/file: evita esticamento feio */
+  select.form-control,
+  input.form-control {
+    width: 100% !important;
+  }
+
+  /* Título e texto em telas pequenas */
+  .content-criar h1 {
+    font-size: 1.6rem;
+  }
+
+  /* Editor Quill ocupa bem sem estourar altura */
+  #editor {
+    min-height: 180px;
+  }
+
+  .ql-editor {
+    font-size: 0.95rem;
+    max-height: 320px;
+    overflow-y: auto;
+  }
+
+  /* Alinhamentos laterais viram centra/alto */
+  .d-flex.justify-content-end {
+    justify-content: flex-start !important;
+  }
+
+  /* Alert no topo: não encosta na lateral em celular */
+  .alerta-sucesso-criar-post {
+    right: 12px;
+    left: 12px;
+    max-width: none;
+  }
+}
+
+/* ── Mobile pequeno (até ~480px) ── */
+@media (max-width: 480px) {
+  .content-criar {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  .alerta-sucesso-criar-post {
+    top: 70px;
+    right: 10px;
+    left: 10px;
+  }
+
+  #editor {
+    min-height: 160px;
+  }
+
+  .ql-editor {
+    font-size: 0.92rem;
+    max-height: 280px;
+  }
+}
+
+/* ── MOBILE (layout principal do site) ── */
 @media (max-width: 900px) {
   nav {
     padding: 1rem 1.5rem;
