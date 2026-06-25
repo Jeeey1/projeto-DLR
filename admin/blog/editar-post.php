@@ -56,7 +56,7 @@ $post = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
   <section class="content-criar content container-fluid mt-3 px-3">
-    <h1 class="mb-5 mt-2">Editar post</h1>
+    <h1 class="mb-5 mt-5">Editar post</h1>
     <hr>
     <form class="row" action="../db/update-post.php" id="form-criar">
 
