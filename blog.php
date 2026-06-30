@@ -1,4 +1,4 @@
-<?php 
+<?php
 // 1. Conexão com o banco de dados
 include_once "./includes/conexao.php";
 $pdo = (new Conexao())->conectar();
@@ -14,27 +14,28 @@ $todosPosts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 // 3. Extrai apenas as categorias que possuem posts (para criar os filtros dinâmicos)
 $categoriasAtivas = [];
 foreach ($todosPosts as $post) {
-    $nomeCat = !empty($post['nome_categoria']) ? ucfirst($post['nome_categoria']) : 'Sem categoria';
-    // Cria um 'slug' simples para o filtro (ex: "Saúde Mental" vira "saude-mental")
-    $slugCat = strtolower(preg_replace('/[^a-zA-Z0-9-]/', '-', iconv('UTF-8', 'ASCII//TRANSLIT', $nomeCat)));
-    
-    if (!isset($categoriasAtivas[$slugCat])) {
-        $categoriasAtivas[$slugCat] = $nomeCat;
-    }
+  $nomeCat = !empty($post['nome_categoria']) ? ucfirst($post['nome_categoria']) : 'Sem categoria';
+  // Cria um 'slug' simples para o filtro (ex: "Saúde Mental" vira "saude-mental")
+  $slugCat = strtolower(preg_replace('/[^a-zA-Z0-9-]/', '-', iconv('UTF-8', 'ASCII//TRANSLIT', $nomeCat)));
+
+  if (!isset($categoriasAtivas[$slugCat])) {
+    $categoriasAtivas[$slugCat] = $nomeCat;
+  }
 }
 
 // 4. Separa o post mais recente para ser o "Destaque" e o resto para o "Grid"
 $postDestaque = null;
 if (count($todosPosts) > 0) {
-    // Tira o primeiro post do array e joga na variável destaque
-    $postDestaque = array_shift($todosPosts); 
+  // Tira o primeiro post do array e joga na variável destaque
+  $postDestaque = array_shift($todosPosts);
 }
 
 // Helper para formatar a data em português (ex: 06 Mai 2026)
 $meses = ['', 'Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
-function formataDataPT($dataStr, $mesesArray) {
-    $data = new DateTime($dataStr);
-    return $data->format('d') . ' ' . $mesesArray[(int)$data->format('m')] . ' ' . $data->format('Y');
+function formataDataPT($dataStr, $mesesArray)
+{
+  $data = new DateTime($dataStr);
+  return $data->format('d') . ' ' . $mesesArray[(int)$data->format('m')] . ' ' . $data->format('Y');
 }
 ?>
 <!DOCTYPE html>
@@ -54,20 +55,63 @@ function formataDataPT($dataStr, $mesesArray) {
   <link rel="stylesheet" href="/projeto-DLR/public/css/common.css">
   <link rel="stylesheet" href="/projeto-DLR/public/css/index_style.css">
   <link rel="stylesheet" href="/projeto-DLR/public/css/blog_style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
-  /* Estilo extra para o link não quebrar o layout do texto */
-  .link-post {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-  }
+    /* Estilo extra para o link não quebrar o layout do texto */
+    .link-post {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
 
-  .link-post:hover .bp-featured-title,
-  .link-post:hover .bp-card-title {
-    color: rgba(201, 168, 76, 1);
-    transition: color 0.3s;
-  }
+    .link-post:hover .bp-featured-title,
+    .link-post:hover .bp-card-title {
+      color: rgba(201, 168, 76, 1);
+      transition: color 0.3s;
+    }
+
+    .whatsapp-icon {
+      font-size: 48px;
+      /* Tamanho do ícone */
+      color: #25D366;
+      /* Cor oficial do WhatsApp */
+      text-decoration: none;
+      /* Remove sublinhado */
+    }
+
+    .whatsapp-icon:hover {
+      color: #1ebe5d;
+      /* Cor ao passar o mouse */
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 2.2rem;
+      right: 2.2rem;
+      z-index: 200;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: #25d366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+      cursor: pointer;
+      transition: transform 0.25s;
+      text-decoration: none;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+    }
+
+    .whatsapp-float svg {
+      width: 28px;
+      height: 28px;
+      fill: #fff;
+    }
   </style>
 </head>
 
@@ -113,102 +157,107 @@ function formataDataPT($dataStr, $mesesArray) {
   <div class="bp-filters">
     <button class="bp-chip bp-chip-active" data-filter="todos">Todos</button>
     <?php foreach ($categoriasAtivas as $slug => $nome): ?>
-    <button class="bp-chip" data-filter="<?= $slug ?>"><?= htmlspecialchars($nome) ?></button>
+      <button class="bp-chip" data-filter="<?= $slug ?>"><?= htmlspecialchars($nome) ?></button>
     <?php endforeach; ?>
   </div>
 
-  <?php if ($postDestaque): 
+  <?php if ($postDestaque):
     $catNomeDest = !empty($postDestaque['nome_categoria']) ? ucfirst($postDestaque['nome_categoria']) : 'Sem categoria';
     $slugDest = strtolower(preg_replace('/[^a-zA-Z0-9-]/', '-', iconv('UTF-8', 'ASCII//TRANSLIT', $catNomeDest)));
     $imgDest = !empty($postDestaque['imagem']) ? $postDestaque['imagem'] : '';
-    $styleDest = $imgDest ? "background-image: url('".$imgDest."'); background-size: cover; background-position: center;" : "";
-?>
-  <article class="bp-featured item-filtrable" data-category="<?= $slugDest ?>">
-    <div class="bp-featured-thumb" style="<?= $styleDest ?>">
-      <?php if(!$imgDest) echo '<div class="bp-thumb-inner">✦</div>'; ?>
-    </div>
-    <div>
-      <div class="bp-tag"><?= htmlspecialchars($catNomeDest) ?></div>
-
-      <a href="template_post.php?id=<?= $postDestaque['id'] ?>" class="link-post">
-        <h2 class="bp-featured-title"><?= htmlspecialchars($postDestaque['titulo']) ?></h2>
-        <p class="bp-featured-excerpt">
-          <?= !empty($postDestaque['descricao']) ? htmlspecialchars($postDestaque['descricao']) : 'Clique para ler o artigo completo.' ?>
-        </p>
-      </a>
-
-      <div class="bp-meta">
-        <span><?= formataDataPT($postDestaque['data_criacao'], $meses) ?></span>
+    $styleDest = $imgDest ? "background-image: url('" . $imgDest . "'); background-size: cover; background-position: center;" : "";
+  ?>
+    <article class="bp-featured item-filtrable" data-category="<?= $slugDest ?>">
+      <div class="bp-featured-thumb" style="<?= $styleDest ?>">
+        <?php if (!$imgDest) echo '<div class="bp-thumb-inner">✦</div>'; ?>
       </div>
-      <a href="template_post.php?id=<?= $postDestaque['id'] ?>" class="bp-read-more" style="text-decoration:none;">Ler
-        artigo →</a>
-    </div>
-  </article>
+      <div>
+        <div class="bp-tag"><?= htmlspecialchars($catNomeDest) ?></div>
+
+        <a href="template_post.php?id=<?= $postDestaque['id'] ?>" class="link-post">
+          <h2 class="bp-featured-title"><?= htmlspecialchars($postDestaque['titulo']) ?></h2>
+          <p class="bp-featured-excerpt">
+            <?= !empty($postDestaque['descricao']) ? htmlspecialchars($postDestaque['descricao']) : 'Clique para ler o artigo completo.' ?>
+          </p>
+        </a>
+
+        <div class="bp-meta">
+          <span><?= formataDataPT($postDestaque['data_criacao'], $meses) ?></span>
+        </div>
+        <a href="template_post.php?id=<?= $postDestaque['id'] ?>" class="bp-read-more" style="text-decoration:none;">Ler
+          artigo →</a>
+      </div>
+    </article>
   <?php endif; ?>
 
   <section class="bp-grid">
-    <?php foreach ($todosPosts as $p): 
+    <?php foreach ($todosPosts as $p):
       $catNome = !empty($p['nome_categoria']) ? ucfirst($p['nome_categoria']) : 'Sem categoria';
       $slug = strtolower(preg_replace('/[^a-zA-Z0-9-]/', '-', iconv('UTF-8', 'ASCII//TRANSLIT', $catNome)));
       $img = !empty($p['imagem']) ? $p['imagem'] : '';
-      $styleImg = $img ? "background-image: url('".$img."'); background-size: cover; background-position: center;" : "";
-  ?>
-    <article class="bp-card item-filtrable" data-category="<?= $slug ?>">
-      <div class="bp-thumb" style="<?= $styleImg ?>">
-        <?php if(!$img) echo '<div class="bp-thumb-inner">✦</div>'; ?>
-      </div>
-      <div class="bp-tag"><?= htmlspecialchars($catNome) ?></div>
+      $styleImg = $img ? "background-image: url('" . $img . "'); background-size: cover; background-position: center;" : "";
+    ?>
+      <article class="bp-card item-filtrable" data-category="<?= $slug ?>">
+        <div class="bp-thumb" style="<?= $styleImg ?>">
+          <?php if (!$img) echo '<div class="bp-thumb-inner">✦</div>'; ?>
+        </div>
+        <div class="bp-tag"><?= htmlspecialchars($catNome) ?></div>
 
-      <a href="template_post.php?id=<?= $p['id'] ?>" class="link-post">
-        <h3 class="bp-card-title"><?= htmlspecialchars($p['titulo']) ?></h3>
-        <p class="bp-card-excerpt">
-          <?= !empty($p['descricao']) ? htmlspecialchars($p['descricao']) : 'Ler artigo completo...' ?></p>
-      </a>
+        <a href="template_post.php?id=<?= $p['id'] ?>" class="link-post">
+          <h3 class="bp-card-title"><?= htmlspecialchars($p['titulo']) ?></h3>
+          <p class="bp-card-excerpt">
+            <?= !empty($p['descricao']) ? htmlspecialchars($p['descricao']) : 'Ler artigo completo...' ?></p>
+        </a>
 
-      <div class="bp-meta"><span><?= formataDataPT($p['data_criacao'], $meses) ?></span></div>
-    </article>
+        <div class="bp-meta"><span><?= formataDataPT($p['data_criacao'], $meses) ?></span></div>
+      </article>
     <?php endforeach; ?>
 
-    <?php if(empty($postDestaque) && empty($todosPosts)): ?>
-    <div style="grid-column: 1 / -1; text-align: center; padding: 50px; color: #6b5444;">
-      <p>Ainda não há artigos publicados.</p>
-    </div>
+    <?php if (empty($postDestaque) && empty($todosPosts)): ?>
+      <div style="grid-column: 1 / -1; text-align: center; padding: 50px; color: #6b5444;">
+        <p>Ainda não há artigos publicados.</p>
+      </div>
     <?php endif; ?>
   </section>
 
-  <?php 
+  <?php
   include "./includes/footer.php";
   ?>
 
-  <a href="https://wa.me/5516999999999" class="bp-whatsapp" aria-label="WhatsApp" target="_blank" rel="noopener">
+  <a class="whatsapp-float"
+    href="https://wa.me/5516991286116?text=Olá%2C%20gostaria%20de%20agendar%20uma%20consulta"
+    target="_blank"
+    rel="noopener"
+    title="WhatsApp">
+
     <svg viewBox="0 0 24 24">
-      <path
-        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12.005 2C6.486 2 2 6.486 2 12.005c0 1.768.462 3.508 1.34 5.038L2 22l5.142-1.318a9.949 9.949 0 0 0 4.863 1.244h.004C17.524 21.926 22 17.44 22 11.92c0-2.659-1.034-5.16-2.91-7.043A9.901 9.901 0 0 0 12.005 2z" />
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 7.003c-.003 5.452-4.437 9.886-9.89 9.886z" />
     </svg>
+
   </a>
 
   <script>
-  // Script Melhorado: Filtra Destaque e Grid!
-  document.querySelectorAll('.bp-chip').forEach(chip => {
-    chip.addEventListener('click', () => {
-      // Remove classe ativa de todos e adiciona no clicado
-      document.querySelectorAll('.bp-chip').forEach(c => c.classList.remove('bp-chip-active'));
-      chip.classList.add('bp-chip-active');
+    // Script Melhorado: Filtra Destaque e Grid!
+    document.querySelectorAll('.bp-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        // Remove classe ativa de todos e adiciona no clicado
+        document.querySelectorAll('.bp-chip').forEach(c => c.classList.remove('bp-chip-active'));
+        chip.classList.add('bp-chip-active');
 
-      const filtro = chip.dataset.filter;
+        const filtro = chip.dataset.filter;
 
-      // Busca TODOS os elementos com a classe .item-filtrable (Destaque e Cards do Grid)
-      document.querySelectorAll('.item-filtrable').forEach(item => {
-        const categoria = item.dataset.category;
+        // Busca TODOS os elementos com a classe .item-filtrable (Destaque e Cards do Grid)
+        document.querySelectorAll('.item-filtrable').forEach(item => {
+          const categoria = item.dataset.category;
 
-        if (filtro === 'todos' || categoria === filtro) {
-          item.style.display = ''; // Mostra
-        } else {
-          item.style.display = 'none'; // Esconde
-        }
+          if (filtro === 'todos' || categoria === filtro) {
+            item.style.display = ''; // Mostra
+          } else {
+            item.style.display = 'none'; // Esconde
+          }
+        });
       });
     });
-  });
   </script>
   <script src="public/js/script.js"></script>
 

@@ -145,6 +145,8 @@ nav {
   min-height: 100vh;
   background: var(--cream);
   padding-top: 150px;
+  padding-left: 4rem; 
+  padding-right: 4rem; 
 }
 #home::before {
   content: "";
@@ -940,27 +942,6 @@ footer {
   background: white;
 }
 
-.home-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-  justify-content: center;
-  max-width: 1450px;
-  margin: 0 auto;
-}
-
-.sobre-content {
-  padding: 8rem 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 6rem;
-  align-items: center;
-  max-width: 1450px;
-  margin: 0 auto;
-}
-
 .servicos-content,
 .blog-content,
 .contato-content {
@@ -1076,10 +1057,4 @@ body.en [data-lang="pt"] {
 }
 body.en [data-lang="en"] {
   display: block;
-}
-body.en span[data-lang="en"] {
-  display: inline;
-}
-body.en span[data-lang="pt"] {
-  display: none;
 }
