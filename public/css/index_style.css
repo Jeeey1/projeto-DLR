@@ -1064,5 +1064,5 @@ body.en [data-lang="pt"] {
   display: none;
 }
 body.en [data-lang="en"] {
-  display: block;
+  display: inline;
 }

@@ -56,6 +56,19 @@ $postsPublicos = $stmtBlog->fetchAll(PDO::FETCH_ASSOC);
       max-width: 1450px;
       margin: 0 auto; */
     }
+
+    .hero-btn-primary {
+      background: var(--gold);
+      color: #fff;
+      padding: .9rem 2.2rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+      border-radius: 2px;
+    }
+    
   </style>
 </head>
 
@@ -84,7 +97,7 @@ $postsPublicos = $stmtBlog->fetchAll(PDO::FETCH_ASSOC);
         </p>
         <div class="hero-actions">
           <a href="https://www.doctoralia.com.br/daniel-lataro-de-robbio/psicologo/ribeirao-preto" target="_blank"
-            class="btn-primary">
+            class="hero-btn-primary">
             <span data-lang="pt">Agendar Consulta</span><span data-lang="en">Book a Session</span>
           </a>
           <a href="#sobre" class="btn-secondary">
@@ -278,51 +291,52 @@ $postsPublicos = $stmtBlog->fetchAll(PDO::FETCH_ASSOC);
       </div>
 
       <div class="blog-grid">
-        <?php 
-      // Loop travado em 3 para manter o Grid sempre perfeito
-      for ($i = 0; $i < 3; $i++) {
+        <?php
+        // Loop travado em 3 para manter o Grid sempre perfeito
+        for ($i = 0; $i < 3; $i++) {
           $delay = $i * 0.1; // Cria o efeito cascata do reveal (0s, 0.1s, 0.2s)
-          
+
           if (isset($postsPublicos[$i])) {
-              $p = $postsPublicos[$i];
-              
-              // Ajusta imagem (se o caminho já estiver salvo no banco como relativo, ex: src/img/posts/foto.jpg)
-              $imagem = !empty($p['imagem']) ? $p['imagem'] : '';
-              $bgStyle = $imagem ? "background-image: url('".$imagem."'); background-size: cover; background-position: center;" : "";
-              
-              // Ajusta categoria e data
-              $categoria = !empty($p['nome_categoria']) ? ucfirst($p['nome_categoria']) : 'Sem categoria';
-              $dataFmt = (new DateTime($p['data_criacao']))->format('d/m/Y');
-              
-              // Renderiza o POST REAL
-              echo '<div class="blog-card reveal" style="position: relative; transition-delay:'.$delay.'s">';
-              echo '  <div class="blog-thumb" style="'.$bgStyle.'">';
-              
-              // Se não tiver foto, exibe o símbolo Psi padrão do seu CSS
-              if (!$imagem) { echo '<div class="blog-thumb-inner">Ψ</div>'; }
-              
-              echo '  </div>';
-              echo '  <div class="blog-tag">'.htmlspecialchars($categoria).'</div>';
-              echo '  <h3 class="blog-title">';
-              // A classe stretched-link faz o card todo ficar clicável
-              echo '    <a href="template_post.php?id='.$p['id'].'" class="text-decoration-none text-reset stretched-link">'.htmlspecialchars($p['titulo']).'</a>';
-              echo '  </h3>';
-              echo '  <div class="blog-meta">Publicado em '.$dataFmt.'</div>';
-              echo '</div>';
-              
+            $p = $postsPublicos[$i];
+
+            // Ajusta imagem (se o caminho já estiver salvo no banco como relativo, ex: src/img/posts/foto.jpg)
+            $imagem = !empty($p['imagem']) ? $p['imagem'] : '';
+            $bgStyle = $imagem ? "background-image: url('" . $imagem . "'); background-size: cover; background-position: center;" : "";
+
+            // Ajusta categoria e data
+            $categoria = !empty($p['nome_categoria']) ? ucfirst($p['nome_categoria']) : 'Sem categoria';
+            $dataFmt = (new DateTime($p['data_criacao']))->format('d/m/Y');
+
+            // Renderiza o POST REAL
+            echo '<div class="blog-card reveal" style="position: relative; transition-delay:' . $delay . 's">';
+            echo '  <div class="blog-thumb" style="' . $bgStyle . '">';
+
+            // Se não tiver foto, exibe o símbolo Psi padrão do seu CSS
+            if (!$imagem) {
+              echo '<div class="blog-thumb-inner">Ψ</div>';
+            }
+
+            echo '  </div>';
+            echo '  <div class="blog-tag">' . htmlspecialchars($categoria) . '</div>';
+            echo '  <h3 class="blog-title">';
+            // A classe stretched-link faz o card todo ficar clicável
+            echo '    <a href="template_post.php?id=' . $p['id'] . '" class="text-decoration-none text-reset stretched-link">' . htmlspecialchars($p['titulo']) . '</a>';
+            echo '  </h3>';
+            echo '  <div class="blog-meta">Publicado em ' . $dataFmt . '</div>';
+            echo '</div>';
           } else {
-              // Renderiza o POST FANTASMA (Para não quebrar a tela)
-              echo '<div class="blog-card reveal" style="transition-delay:'.$delay.'s; border: 2px dashed rgba(201,168,76,.4); background: transparent; box-shadow: none;">';
-              echo '  <div class="blog-thumb" style="background: rgba(201,168,76,.05); display: flex; align-items: center; justify-content: center;">';
-              echo '    <svg viewBox="0 0 24 24" width="40" height="40" stroke="rgba(201,168,76,.5)" stroke-width="1" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>';
-              echo '  </div>';
-              echo '  <div class="blog-tag" style="background: rgba(201,168,76,.1); color: transparent; width: 100px; height: 22px; margin-bottom: 15px;"></div>';
-              echo '  <h3 class="blog-title" style="color: rgba(201,168,76,.6); font-size: 1.2rem;">Espaço disponível</h3>';
-              echo '  <div class="blog-meta" style="color: rgba(201,168,76,.5);">Aguardando publicação</div>';
-              echo '</div>';
+            // Renderiza o POST FANTASMA (Para não quebrar a tela)
+            echo '<div class="blog-card reveal" style="transition-delay:' . $delay . 's; border: 2px dashed rgba(201,168,76,.4); background: transparent; box-shadow: none;">';
+            echo '  <div class="blog-thumb" style="background: rgba(201,168,76,.05); display: flex; align-items: center; justify-content: center;">';
+            echo '    <svg viewBox="0 0 24 24" width="40" height="40" stroke="rgba(201,168,76,.5)" stroke-width="1" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>';
+            echo '  </div>';
+            echo '  <div class="blog-tag" style="background: rgba(201,168,76,.1); color: transparent; width: 100px; height: 22px; margin-bottom: 15px;"></div>';
+            echo '  <h3 class="blog-title" style="color: rgba(201,168,76,.6); font-size: 1.2rem;">Espaço disponível</h3>';
+            echo '  <div class="blog-meta" style="color: rgba(201,168,76,.5);">Aguardando publicação</div>';
+            echo '</div>';
           }
-      }
-      ?>
+        }
+        ?>
       </div>
     </div>
   </section>
@@ -383,15 +397,15 @@ $postsPublicos = $stmtBlog->fetchAll(PDO::FETCH_ASSOC);
             data-zlw-hide-branding="true" data-zlw-saas-only="true"
             data-zlw-a11y-title="Widget de marcação de consultas médicas">Marque uma consulta</a>
           <script>
-          ! function($_x, _s, id) {
-            var js, fjs = $_x.getElementsByTagName(_s)[0];
-            if (!$_x.getElementById(id)) {
-              js = $_x.createElement(_s);
-              js.id = id;
-              js.src = "//platform.docplanner.com/js/widget.js";
-              fjs.parentNode.insertBefore(js, fjs);
-            }
-          }(document, "script", "zl-widget-s");
+            ! function($_x, _s, id) {
+              var js, fjs = $_x.getElementsByTagName(_s)[0];
+              if (!$_x.getElementById(id)) {
+                js = $_x.createElement(_s);
+                js.id = id;
+                js.src = "//platform.docplanner.com/js/widget.js";
+                fjs.parentNode.insertBefore(js, fjs);
+              }
+            }(document, "script", "zl-widget-s");
           </script>
         </div>
       </div>
