@@ -145,8 +145,8 @@ nav {
   min-height: 100vh;
   background: var(--cream);
   padding-top: 150px;
-  padding-left: 4rem; 
-  padding-right: 4rem; 
+  padding-left: 4rem;
+  padding-right: 4rem;
 }
 #home::before {
   content: "";
@@ -372,10 +372,18 @@ nav {
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--gold);
-  border-left: 2px solid var(--gold);
+  border-left: 2px solid var(--gold) !important;
   padding-left: 0.8rem;
   margin-bottom: 1.5rem;
 }
+
+.instagram-title {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 0.5rem;
+}
+
 .section-title {
   font-family: "Cormorant Garamond", serif;
   font-size: clamp(2.2rem, 3.5vw, 3.2rem);
