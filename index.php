@@ -1,4 +1,4 @@
-<?php 
+<?php
 // 1. Conexão com o banco de dados
 include_once "./includes/conexao.php";
 $pdo = (new Conexao())->conectar();
@@ -34,6 +34,29 @@ $postsPublicos = $stmtBlog->fetchAll(PDO::FETCH_ASSOC);
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
   <link rel="stylesheet" href="/projeto-DLR/public/css/common.css">
   <link rel="stylesheet" href="/projeto-DLR/public/css/index_style.css">
+
+  <style>
+    .sobre-container {
+      padding: 8rem 4rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      max-width: 1450px;
+      margin: 0 auto;
+    }
+
+    .home-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding: 1rem 4rem;
+      /* align-items: center; */
+      /* position: relative;
+      overflow: hidden;
+      justify-content: center;
+      max-width: 1450px;
+      margin: 0 auto; */
+    }
+  </style>
 </head>
 
 <body>
@@ -111,8 +134,8 @@ $postsPublicos = $stmtBlog->fetchAll(PDO::FETCH_ASSOC);
   </section>
 
   <section id="sobre">
-    <div class="sobre-content">
-      <div class="reveal">
+    <div class="sobre-container" style="">
+      <div class="sobre-card reveal">
         <div class="section-eyebrow"><span data-lang="pt">Sobre o Profissional</span><span data-lang="en">About</span>
         </div>
         <h2 class="section-title">
@@ -138,6 +161,7 @@ $postsPublicos = $stmtBlog->fetchAll(PDO::FETCH_ASSOC);
         <span class="crp-badge">CRP 06/130646</span>
       </div>
       <div class="sobre-card reveal" style="transition-delay:.15s">
+
         <div class="section-eyebrow"><span data-lang="pt">Missão & Valores</span><span data-lang="en">Mission &
             Values</span></div>
         <p class="section-body" style="margin-top:0">
@@ -324,8 +348,8 @@ $postsPublicos = $stmtBlog->fetchAll(PDO::FETCH_ASSOC);
             <div>
               <div class="contact-item-label"><span data-lang="pt">Endereço</span><span data-lang="en">Address</span>
               </div>
-              <div class="contact-item-value"><span data-lang="pt">Alto da Boa Vista, Ribeirão Preto – SP</span><span
-                  data-lang="en">Alto da Boa Vista, Ribeirão Preto – SP, Brazil</span></div>
+              <div class="contact-item-value"><span data-lang="pt">R. José Borges da Costa, 785 - Sala 11 - Alto da Boa Vista, Ribeirão Preto - SP, 14025-660</span><span
+                  data-lang="en">Room 11, 785 José Borges da Costa Street, Alto da Boa Vista, Ribeirão Preto, SP, 14025-660, Brazil</span></div>
             </div>
           </div>
           <div class="contact-item">
@@ -408,7 +432,7 @@ $postsPublicos = $stmtBlog->fetchAll(PDO::FETCH_ASSOC);
         conteúdos</span><span data-lang="en">Follow @danielrobbioneuropsi for more content</span></p>
   </section>
 
-  <?php 
+  <?php
   include "./includes/footer.php";
   ?>
 </body>

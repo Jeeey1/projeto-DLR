@@ -47,7 +47,7 @@ if($_SESSION['logado'] != true){
 
 
   <section class="content-criar content container-fluid mt-3 px-3">
-    <h1 class="py-2">Criar novo post</h1>
+    <h1 class="my-5">Criar novo post</h1>
     <hr>
 
     <form class="row" action="../db/insert-post.php" id="form-criar">
