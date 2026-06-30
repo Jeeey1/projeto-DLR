@@ -406,7 +406,7 @@ $postsPublicos = $stmtBlog->fetchAll(PDO::FETCH_ASSOC);
   </div>
 
   <section id="instagram">
-    <div class="section-eyebrow" style="display:flex;margin-bottom:.5rem;justify-content:center;">Instagram</div>
+    <div class="section-eyebrow instagram-title">Instagram</div>
     <h2 class="section-title" style="text-align:center"><span data-lang="pt">Conteúdo nas <em>redes</em></span><span
         data-lang="en">Content on <em>social</em></span></h2>
     <div class="instagram-grid reveal">
